@@ -19,6 +19,23 @@ server.get('/api/recipes', async (req, res) => {
     .select(db.ref('recipes.name').as('Recipe'), db.ref('dishes.name').as('Dish'));
   res.status(200).json(payload);
 });
+server.get('/api/recipes/:id', async (req, res) => {
+  const { id } = req.params;
+  const recipePromise = db('recipes')
+    .where('recipes.id', '=', id)
+    .leftJoin('dishes', 'recipes.dishId', '=', 'dishes.id')
+    .select(db.ref('recipes.name').as('recipeName'), db.ref('dishes.name').as('dishName'));
+  const ingredientsPromise = db('ingredients').where('recipeId', '=', id);
+  const stepsPromise = db('steps').where('recipeId', '=', id).orderBy('stepNumber');
+  const dataLump = await Promise.all([recipePromise, ingredientsPromise, stepsPromise]);
+  const [[recipe], ingredients, steps] = dataLump;
+  const payload = {
+    ...recipe,
+    ingredients,
+    steps: steps.map(item => ({ stepNumber: item.stepNumber, description: item.description })),
+  };
+  res.status(200).json(payload);
+});
 
 server.use((err, req, res, next) => {
   res.status(500).json(err);
