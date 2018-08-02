@@ -2,9 +2,9 @@
   "name": "db-recipe-book",
   "version": "1.0.0",
   "description": "recipe book sql express lab",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "ls"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
