@@ -7,17 +7,17 @@ exports.up = function(knex, Promise) {
         .string('amount')
         .notNullable();
       table
-        .integer('dishId')
-        .unsigned()
-        .notNullable()
-        .references('id')
-        .inTable('dishes');
-      table
         .integer('recipeId')
         .unsigned()
         .notNullable()
         .references('id')
         .inTable('recipes');
+      table
+        .integer('ingredientId')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('ingredients');
       table
         .timestamp('created_at')
         .defaultTo(knex.fn.now());
