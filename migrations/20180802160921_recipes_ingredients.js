@@ -18,7 +18,6 @@ exports.up = function (knex, Promise) {
       .unsigned()
       .notNullable();
     tbl.string("measurements", 128)
-    tbl.text("directions");
   });
 };
 
