@@ -8,6 +8,9 @@ module.exports = {
       filename: './data/recipe_book_db.db'
     },
     useNullAsDefault: true,
+    seeds:{
+        directory: './data/seeds'
+     }
   },
 
   staging: {
