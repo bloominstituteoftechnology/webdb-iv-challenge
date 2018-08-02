@@ -12,7 +12,8 @@ module.exports = {
       .join('dishes as d', 'd.id', 'r.dishId')
       .join('recipeingredients as ri', 'ri.recipeId', 'r.id')
       .join('ingredients as i', 'i.id', 'ri.ingredientId')
-      .select('r.name as recipeName', 'd.name as dishName', 'i.name as ingredientName', 'ri.amount as amount')
+      .join('steps as s', 's.recipeId', 'r.id')
+      .select('r.name as recipeName', 'd.name as dishName', 'i.name as ingredientName', 'ri.amount as amount', 's.text as instructions')
       .where('r.id', id);
   }
 };
