@@ -1,6 +1,6 @@
 const express = require('express');
 
-const db = require('./data/db.js');
+const dishesDb = require('./helpers/dishesDb');
 
 const server = express();
 
@@ -13,9 +13,11 @@ server.get('/', (req, res) => {
     res.send('We runnin....')
   })
 
-
+//Dishes
+//Get All Dishes
 server.get('/dishes', (req, res) => {
-      db('dishes')
+     dishesDb
+     .getDishes()
       .then(dish => {
         res.status(200).json(dish);
       })
