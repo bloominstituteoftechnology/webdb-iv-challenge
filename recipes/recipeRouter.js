@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dishDb = require('../data/helpers/dishModel');
+const recipeDb = require('../data/helpers/recipeModel');
 
 // dishes
 router.get('/', async (req, res) => {
@@ -13,16 +13,16 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const dish = await dishDb.getDish(id);
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const user = await userDb.get(id);
 
-        res.status(200).json(dish);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.status(200).json(user);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 // router.get('/:id/posts', async (req, res) => {
 //     try {
