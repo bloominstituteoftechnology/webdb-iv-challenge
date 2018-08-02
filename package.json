@@ -11,5 +11,8 @@
     "node": "^10.8.0",
     "nodemon": "^1.18.3",
     "sqlite3": "^4.0.2"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
   }
 }
