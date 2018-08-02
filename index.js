@@ -3,7 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 
 // routers
-// const userRouter = require('./users/userRouter');
+const dishRouter = require('./dishes/dishRouter');
 // const postRouter = require('./posts/postRouter');
 // const tagRouter = require('./tags/tagRouter');
 
@@ -12,7 +12,7 @@ server.use(cors());
 server.use(express.json());
 server.use(helmet());
 
-// server.use('/users', userRouter);
+server.use('/dishes', dishRouter);
 // server.use('/posts', postRouter);
 // server.use('/tags', tagRouter);
 
