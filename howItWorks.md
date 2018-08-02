@@ -81,3 +81,40 @@ server.get('/', (req, res) => {
     res.send('up and running...')
 })
 ```
+
+10. Create a `/routes` folder and fill it with `apiRouter.js`, `dishRoutes.js`, `recipeRoutes.js`, `ingredientRoutes.js` files
+
+11. `apiRouter.js` should look something like this
+
+```
+const express = require('express');
+const server = express.Router();
+
+const dishRoutes = require('./dishRoutes');
+const recipeRoutes = require('./recipeRoutes');
+const ingredientRoutes = require('./ingredientRoutes');
+
+server.use('/dishs', dishRoutes);
+server.use('/recipes', recipeRoutes);
+server.use('/ingredients', ingredientRoutes);
+
+module.exports = server;
+```
+
+12. Add this to the `server.js` file
+
+```
+const apiRouter = require('./routes/apiRouter');
+server.use('/', apiRouter);
+```
+
+13. `dishRoutes.js`, `recipeRoutes.js` and `ingredientRoutes.js` should look something like this
+
+```
+const express = require('express');
+const server = express.Router();
+const db = require('../data/db');
+
+// endpoints go here
+
+ module.exports = server;
