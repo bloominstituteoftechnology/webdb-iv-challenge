@@ -13,12 +13,15 @@ module.exports = {
             if (results[1].length > 0) {
                 let [recipe, ingredients] = results;
                 recipe.ingredients = ingredients.map(i => {
-                    return { ingredient: i.name, quantity: i.quantity}
+                    return { ingredient: i.name, quantity: i.quantity }
                 });
 
                 return recipe;
             }
             return results[0];
         })
+    },
+    addRecipe: recipe => {
+        return db('recipes').insert(recipe).then(ids => ({ id: ids[0] }));
     }
 }

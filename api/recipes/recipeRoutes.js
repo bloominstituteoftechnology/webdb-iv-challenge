@@ -3,6 +3,17 @@ const recipes = require('../../data/helpers/recipeDb');
 
 const router = express.Router();
 
+router.post('/', async (req, res, next) => {
+    const { name, dish_id } = req.body;
+    if (!name || !dish_id) return next({ code: 400, errorMessage: 'Please provide name / dish_id' });
+    try {
+        const response = await recipes.addRecipe({ name, dish_id });
+        return res.status(201).json(response);
+    } catch (err) {
+        return next({ code: 500, error: 'The recipe could not be saved to the database' });
+    }
+})
+
 router.get('/', async (req, res, next) => {
     try {
         const response = await recipes.getRecipes();
