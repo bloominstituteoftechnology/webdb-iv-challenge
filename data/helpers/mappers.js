@@ -27,6 +27,6 @@ function recipeToBody(recipe) {
   return result;
 }
 
-// function tagToBody(tag) {
-//   return { ...tag };
-// }
+function ingredientToBody(ingredient) {
+  return { ...ingredient };
+}

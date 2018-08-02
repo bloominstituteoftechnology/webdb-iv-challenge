@@ -2,7 +2,7 @@ const db = require("../db");
 const mappers = require("../helpers/mappers");
 
 module.exports = {
-    getDish: function (id) {
+    getDishes: function (id) {
         let query = db("dishes as d");
 
         if (id) {

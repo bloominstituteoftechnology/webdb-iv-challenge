@@ -5,7 +5,7 @@ const dishDb = require('../data/helpers/dishModel');
 // dishes
 router.get('/', async (req, res) => {
     try {
-        const dishes = await dishDb.getDish();
+        const dishes = await dishDb.getDishes();
 
         res.status(200).json(dishes);
     } catch (err) {
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const dish = await dishDb.getDish(id);
+        const dish = await dishDb.getDishes(id);
 
         res.status(200).json(dish);
     } catch (err) {

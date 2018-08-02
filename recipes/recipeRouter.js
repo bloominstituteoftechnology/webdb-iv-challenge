@@ -5,9 +5,9 @@ const recipeDb = require('../data/helpers/recipeModel');
 // dishes
 router.get('/', async (req, res) => {
     try {
-        const dishes = await dishDb.getDish();
+        const recipes = await recipeDb.getRecipes();
 
-        res.status(200).json(dishes);
+        res.status(200).json(recipes);
     } catch (err) {
         res.status(500).json(err);
     }

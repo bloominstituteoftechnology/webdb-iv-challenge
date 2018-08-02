@@ -4,7 +4,7 @@ const helmet = require('helmet');
 
 // routers
 const dishRouter = require('./dishes/dishRouter');
-// const postRouter = require('./posts/postRouter');
+const recipeRouter = require('./recipes/recipeRouter');
 // const tagRouter = require('./tags/tagRouter');
 
 const server = express();
@@ -13,7 +13,7 @@ server.use(express.json());
 server.use(helmet());
 
 server.use('/dishes', dishRouter);
-// server.use('/posts', postRouter);
+server.use('/recipes', recipeRouter);
 // server.use('/tags', tagRouter);
 
 server.get('/', (req, res) => {
