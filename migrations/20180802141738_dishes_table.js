@@ -1,8 +1,8 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('dishes', function(dishes) {
-      projects.increments();
-      projects.string('dish').notNullable();
+      dishes.increments();
+      dishes.string('dish').notNullable();
   });
 };
 

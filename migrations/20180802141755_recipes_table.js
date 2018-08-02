@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
         .inTable('dishes');
 
         recipes.string('recipe').notNullable();
-        actions.text('steps').notNullable();
+        recipes.text('steps').notNullable();
     });
   };
   

@@ -10,6 +10,16 @@ server.get('/', (req, res) => {
   res.send('Hello!')
 })
 
+server.get('/dishes', (req, res) => {
+  db('dishes')
+  .then(response => {
+    res.status(200).json(response);
+  })
+  .catch(err => {
+    res.status(500).json({error: 'The dishes could not be retrieved'})
+   });
+})
+
 server.get('/dishes/:id/recipes', (req, res) => {
   const id = req.params;
   db
