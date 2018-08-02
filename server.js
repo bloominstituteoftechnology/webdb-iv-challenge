@@ -9,7 +9,7 @@ server.use(express.json());
 server.get('/', (req, res) => {
   res.send('Hello!')
 })
-
+//GET endpoints 
 server.get('/dishes', (req, res) => {
   db('dishes')
   .then(response => {
@@ -18,9 +18,30 @@ server.get('/dishes', (req, res) => {
   .catch(err => {
     res.status(500).json({error: 'The dishes could not be retrieved'})
    });
-})
+});
 
-server.get('/dishes/:id/recipes', (req, res) => {
+server.get('/recipes', (req, res) => {
+  db('recipes')
+  .then(response => {
+    res.status(200).json(response);
+  })
+  .catch(err => {
+    res.status(500).json({error: 'The recipes could not be retrieved'})
+   });
+});
+
+server.get('/ingredients', (req, res) => {
+  db('ingredients')
+  .then(response => {
+    res.status(200).json(response);
+  })
+  .catch(err => {
+    res.status(500).json({error: 'The ingredients could not be retrieved'})
+   });
+});
+
+//MVP method:getRecipe(id): should return the recipe with the provided id
+server.get('/recipes/:id/', (req, res) => {
   const id = req.params;
   db
   .getRecipe(id)

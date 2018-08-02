@@ -6,32 +6,32 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('recipes').insert([
         {
-          dish_id: 1, 
+          dish_id: 7, 
           recipe: 'Miso Honey Salmon',
           steps: 'Cook it'
         },
         {
-          dish_id: 1, 
+          dish_id: 7, 
           recipe: 'Mesquite Salmon',
           steps: 'Cook it'
         },
         {
-          dish_id: 2, 
+          dish_id: 8, 
           recipe: 'Lemon Rosemary Whole Chicken',
           steps: 'Cook it'
         },
         {
-          dish_id: 2, 
+          dish_id: 8, 
           recipe: 'Spicy Chicken Wings',
           steps: 'Cook it'
         },
         {
-          dish_id: 3, 
+          dish_id: 9, 
           recipe: 'Maple Sweet Potatoes',
           steps: 'Cook it'
         },
         {
-          dish_id: 3, 
+          dish_id: 9, 
           recipe: 'Sweet Potato Hash',
           steps: 'Cook it'
         }
