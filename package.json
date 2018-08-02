@@ -3,10 +3,10 @@
     "version": "0.0.1",
     "description": "RDBMS Recipe Book",
     "private": true,
-    "main": "index.js",
+    "main": "server.js",
     "scripts": {
         "start": "nodemon server.js"
-      },
+    },
     "license": "ISC",
     "dependencies": {
         "express": "^4.16.3",
