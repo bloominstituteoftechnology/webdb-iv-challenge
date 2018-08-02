@@ -7,6 +7,15 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .unique()
       .defaultTo("NotProvided");
+
+    tbl
+      .integer("dishes_Id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("dishes")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
   });
 };
 

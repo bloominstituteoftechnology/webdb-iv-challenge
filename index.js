@@ -1,5 +1,8 @@
 const express = require("express");
-const db = require("./data/db");
+// const db = require("./data/db");
+const dishesDb = require("./helpers/dishesDb");
+const recipiesDb = require("./helpers/recipiesDb");
+const ingredientsDb = require("./helpers/ingredientsDb");
 const server = express();
 server.use(express.json());
 
@@ -8,8 +11,20 @@ server.get("/", (req, res) => {
 });
 
 server.get("/dishes", (req, res) => {
-  db("dishes").then(dishes => {
+  dishesDb.getDishes().then(dishes => {
     res.status(200).json(dishes);
+  });
+});
+
+server.get("/recipies", (req, res) => {
+  recipiesDb.getRecipies().then(recipies => {
+    res.status(200).json(recipies);
+  });
+});
+
+server.get("/ingredients", (req, res) => {
+  ingredientsDb.getIngredients().then(ingredients => {
+    res.status(200).json(ingredients);
   });
 });
 
