@@ -27,9 +27,9 @@ module.exports = {
             .where("dish_id", dishId)
             .then(recipes => recipes.map(recipe => mappers.recipeToBody(recipe)));
     },
-    insert: function (user) {
-        return db("users")
-            .insert(user)
+    addDish: function (dish) {
+        return db("dishes")
+            .insert(dish)
             .then(([id]) => this.get(id));
     },
     update: function (id, changes) {

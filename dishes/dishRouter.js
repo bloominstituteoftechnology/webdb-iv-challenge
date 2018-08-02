@@ -36,16 +36,16 @@ router.get('/:id', async (req, res) => {
 //     }
 // });
 
-// router.post('/', async (req, res) => {
-//     try {
-//         const newUser = { ...req.body };
-//         const user = await userDb.insert(newUser);
+router.post('/', async (req, res) => {
+    try {
+        const newDish = { ...req.body };
+        const dish = await dishDb.addDish(newDish);
 
-//         res.status(200).json(user);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.status(200).json(newDish);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // router.put('/:id', async (req, res) => {
 //     try {
