@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table
       .integer("dish_id")
       .unsigned()
+      .notNullable()
       .references("id")
       .inTable("dishes")
       .onUpdate("CASCADE")
