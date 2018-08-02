@@ -13,9 +13,18 @@ server.get('/api/dishes/:id', async (req, res) => {
   const payload = await db('dishes').where('id', id);
   res.status(200).json(payload[0]);
 });
-server.post('/api/dishes', async (req, res) => {
-  const payload = await db('dishes').insert(req.body);
-  res.status(201).json(payload);
+server.get('/api/recipes', async (req, res) => {
+  const payload = await db('recipes')
+    .leftJoin('dishes', 'recipes.dishId', '=', 'dishes.id')
+    .select(db.ref('recipes.name').as('Recipe'), db.ref('dishes.name').as('Dish'));
+  res.status(200).json(payload);
 });
 
-server.listen(8000, () => { console.log('Listening on 8000'); });
+server.use((err, req, res, next) => {
+  res.status(500).json(err);
+  next();
+});
+
+server.listen(8000, () => {
+  console.log('Listening on 8000');
+});
