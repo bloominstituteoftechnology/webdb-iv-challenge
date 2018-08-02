@@ -9,11 +9,11 @@ exports.up = function (knex, Promise) {
             table.increments();
             table.text('name').notNullable();
             table.integer('dish_id').notNullable().unsigned().references('id').inTable('dishes');
-            table.integer('ingredients_id').notNullable().unsigned().references('id').inTable('ingredients');
         })
         .createTable('ingredients', table => {
             table.increments();
             table.text('name').notNullable();
+            table.integer('recipe_id').notNullable().unsigned().references('id').inTable('recipes');
         })
 };
 
