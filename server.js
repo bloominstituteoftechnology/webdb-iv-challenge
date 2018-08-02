@@ -29,6 +29,21 @@ server.get('/api/dishes', (req, res)=>{
 });
 
 
+server.get('/api/recipes', (req, res)=>{
+
+        db('recipe')
+        .then(response => {
+                res.status(200).json(response);
+        })
+
+        .catch(err => res.status(500).json({errorMessage: "There was an error while retrieving recipes from the database"}));
+
+});
+
+
+
+
+
 server.get('/api/dishes/:id', (req, res) => {
 
         const id = req.params.id;
