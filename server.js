@@ -1,6 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const db = require('./data/db');
+
 
 const server = express();
 
@@ -15,6 +17,16 @@ server.get('/', (req, res) => {
 });
 
 
+server.get('/api/dishes', (req, res)=>{
+	
+	db('dish')
+	.then(response => {
+                res.status(200).json(response);
+        })
+
+        .catch(err => res.status(500).json({errorMessage: "There was an error whil retrieving dishes from the database"}));
+
+});
 
 
 
