@@ -17,7 +17,24 @@ module.exports = {
     getDish: function(id) {
         return db('dishes')
         .where({ id: Number(id) });
+    },
+
+    getRecipes: function(id) {
+        let query = db('recipes');
+
+        return query;
+    },
+
+    addRecipe: function(recipe) {
+        return db('recipes')
+        .insert(recipe)
+        .then(ids => ({ id: ids[0] }));
     }
+    
+
+
+
+
 
     
 

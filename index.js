@@ -47,6 +47,25 @@ server.get('/dishes/:id', (req, res) => {
     });
 })
 
+server.get('/recipes', (req, res) => {
+    dishDb.getRecipes().then(recipe => {
+      res.status(200).json(recipe);
+    })
+    .catch(err => res.status(500).json(err));
+    
+  });
+
+  server.post('/recipes', (req, res) => {
+    const { name, dish_id, ing_id } = req.body;
+    if (!name || !dish_id || !ing_id )
+    res.status(400).json({ errorMessage: "Give a name, dish id and ingredient id fool"});
+    dishDb.addRecipe({ name, dish_id, ing_id })
+    .then(recipe => res.status(201).json({ name}))
+    .catch(err => res.status(400).json({ error: "Error Saving User"}))
+})
+
+
+
 
 
 
