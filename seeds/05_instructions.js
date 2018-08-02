@@ -5,9 +5,15 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('instructions').insert([
-        {step: 'rowValue1'},
-        {step: 'rowValue2'},
-        {step: 'rowValue3'}
+        {step: 'step 1', recipeId: 1},
+        {step: 'step 2', recipeId: 1},
+        {step: 'step 3', recipeId: 1},
+        {step: 'step 1', recipeId: 2},
+        {step: 'step 2', recipeId: 2},
+        {step: 'step 3', recipeId: 2},
+        {step: 'step 1', recipeId: 3},
+        {step: 'step 2', recipeId: 3},
+        {step: 'step 3', recipeId: 3}
       ]);
     });
 };

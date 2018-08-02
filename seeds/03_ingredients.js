@@ -5,9 +5,13 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('ingredients').insert([
-        {ingredient: 'rowValue1'},
-        {ingredient: 'rowValue2'},
-        {ingredient: 'rowValue3'}
+        {ingredient: 'ingredient 1'},
+        {ingredient: 'ingredient 2'},
+        {ingredient: 'ingredient 3'},
+        {ingredient: 'ingredient 4'},
+        {ingredient: 'ingredient 5'},
+        {ingredient: 'ingredient 6'},
+        {ingredient: 'ingredient 7'}
       ]);
     });
 };
