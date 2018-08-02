@@ -1,0 +1,17 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "server.js",
+  "scripts": {
+    "start": "server.js nodemon"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "morgan": "^1.9.0"
+  }
+}
