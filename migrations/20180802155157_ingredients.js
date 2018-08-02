@@ -5,10 +5,10 @@ exports.up = function(knex, Promise) {
     table.string("name", 256).notNullable();
 
     table
-      .integer("dish_id")
+      .integer("recipe_id")
       .unsigned()
       .notNullable()
-      .refrences("id")
+      .references("id")
       .inTable("recipes")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
