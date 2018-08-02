@@ -28,6 +28,22 @@ server.get('/api/dishes', (req, res)=>{
 
 });
 
+server.get('/api/dishes/:id', (req, res) => {
+
+        const id = req.params.id;
+
+        db('dish')
+        .where('id',id)
+        .then(response => {
+                if(response.length ===0) res.status(404).json({message: "Dish with the specified ID does not exist." })
+                else res.status(200).json(response);
+        })
+
+        .catch(err => res.status(500).json({errorMessage: "The dish with the specified id could not be retrieved from the database"}));
+
+});
+
+
 server.post('/api/dishes', (req, res) => {
 
         const {name} = req.body;
@@ -52,7 +68,9 @@ server.post('/api/dishes', (req, res) => {
 });
 
 
-
+server.use(function(req, res) {
+  res.status(404).send("Wrong path. Please provide a correct url");
+});
 
 
 
