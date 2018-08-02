@@ -37,13 +37,13 @@ server.get('/dishes', (req, res) => {
 server.get('/dishes/:id', (req, res) => {
     dishDb.getDish(req.params.id)
     .then(dish => {
-        if(!dish) {
+        if(dish.length === 0) {
             res.status(404).json({ message: "ID doesn't exist"});
         }
         res.status(200).json(dish);
     })
     .catch(error => {
-        res.status(500).json({ error: "User info could not be got"})
+        res.status(500).json({ error: "dish could not be found"})
     });
 })
 
