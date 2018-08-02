@@ -8,6 +8,11 @@ server.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+server.get('/recipes', (req, res) => {
+	db('recipes').then(recipes=> {
+		res.status(200).json(users);
+	}).catch(err => res.status(500).json(err));
+});
 
 
 const port = 3300;
