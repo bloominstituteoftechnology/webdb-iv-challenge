@@ -1,0 +1,28 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "Recipe Book",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.3",
+    "sqlite3": "^4.0.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tysonism/db-recipe-book.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tysonism/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/tysonism/db-recipe-book#readme"
+}
