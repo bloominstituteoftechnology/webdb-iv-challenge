@@ -1,9 +1,9 @@
 
 exports.up = function(knex, Promise) {
-    // create the zoo table
+    // create the dishes table
     return knex.schema.createTable('dishes', function(table) {
         // primary key
-        table.increments('dish_id');
+        table.increments();
 
         //other fields
         table.string('name', 256)
@@ -14,6 +14,6 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    // drop the zoo table
+    // drop the dishes table
     return knex.schema.dropTableIfExists('dishes');
 };
