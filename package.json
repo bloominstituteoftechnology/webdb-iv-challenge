@@ -1,0 +1,19 @@
+{
+  "name": "recipe-book",
+  "version": "1.0.0",
+  "description": "RDBMS Migrations and Seeding practice",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "m4rkh0ng",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
