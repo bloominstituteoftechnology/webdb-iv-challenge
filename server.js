@@ -28,7 +28,28 @@ server.get('/api/dishes', (req, res)=>{
 
 });
 
+server.post('/api/dishes', (req, res) => {
 
+        const {name} = req.body;
+        console.log(name);
+
+        if(!name) res.status(400).json({errorMessage: "Please provide a name for the dish."});
+
+        else{
+
+        const dish = {name: name};
+        console.log(req.body);
+        
+	db.insert(dish)
+        .into('dish')
+        .then(ids => {
+                const id= ids[0];
+                res.status(200).json({id, ...dish});
+        })
+
+        .catch(err => res.status(500).json(err));
+        }
+});
 
 
 
