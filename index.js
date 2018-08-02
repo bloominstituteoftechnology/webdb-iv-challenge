@@ -1,6 +1,7 @@
 const express = require('express');
 
 const dishesDb = require('./helpers/dishesDb');
+const recipesDb = require('./helpers/recipesDb');
 
 const server = express();
 
@@ -63,6 +64,46 @@ dishesDb
 })
 })
 
+
+
+
+//Get All recipes
+server.get('/recipes', (req, res) => {
+  recipesDb
+  .getRecipes()
+   .then(recipe => {
+     res.status(200).json(recipe);
+   })
+   .catch(err => res.status(500).json(err))
+})
+
+
+server.get('/recipes/:id', (req, res) => {
+  recipesDb
+  .getRecipe(req.params.id)
+  .then(recipe => {
+    res.status(200).json(recipe);
+  })
+  .catch(err => res.status(500).json(err))
+})
+
+
+//Add Recipe
+server.post('/recipes', (req, res) => {
+  const {name, dish_id} = req.body;
+  if (!name || !dish_id) {
+    res.status(400).json({errorMessage: "Please provide name and ID of the dish for the recipe."})
+    return;
+}
+recipesDb
+.addRecipe({name, dish_id})
+.then(response => {
+  res.status(201).json({name, dish_id})
+})
+.catch(error => {
+  res.status(500).json({error: "There was an error while saving the recipe to the database" })
+})
+})
 
 
 

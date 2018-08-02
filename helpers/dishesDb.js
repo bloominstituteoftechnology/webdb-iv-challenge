@@ -13,6 +13,8 @@ module.exports = {
     }
     return query;
     },
+
+    
     addDish: function(dish) {
     return db('dishes')
       .insert(dish)
