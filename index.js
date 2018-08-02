@@ -47,7 +47,16 @@ server.get('/api/recipes/:id', (req, res) => {
     })
 })
 
-
+server.post('/api/dishes', (req, res) => {
+    const dish = req.body;
+    db.addDish(dish)
+    .then(response => {
+        res.status(200).json(response)
+    })
+    .catch(err => {
+        res.status(500).json({error: 'There was an error saving dish to the database.'})
+    })
+})
 
 const port = 8000;
 server.listen(port, () => console.log('API running'));

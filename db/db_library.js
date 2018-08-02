@@ -30,7 +30,9 @@ module.exports = {
     },
 
     addDish: function(dish) {
-
+        return db('dishes')
+        .insert(dish)
+        .then(ids => ({id: ids[0]}));
     },
 
     getRecipes: function() {
