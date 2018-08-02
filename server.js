@@ -28,11 +28,12 @@ server.get('/api/dishes', (req, res)=>{
 
 });
 
+
 server.get('/api/dishes/:id', (req, res) => {
 
         const id = req.params.id;
 
-        db('dish')
+         db('dish')
         .where('id',id)
         .then(response => {
                 if(response.length ===0) res.status(404).json({message: "Dish with the specified ID does not exist." })
