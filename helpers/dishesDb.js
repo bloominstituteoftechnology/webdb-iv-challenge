@@ -1,25 +1,24 @@
-const db = require('../data/db');
+const db = require("../data/db");
 
 module.exports = {
-    getDishes: function()  {
-        let query = db('dishes');
-       return query; 
-    },
+  getDishes: function() {
+    let query = db("dishes");
+    return query;
+  },
 
-    getDish: function(id) {
-        let query = db('dishes');
+  
+  getDish: function(id) {
+    let query = db("dishes");
     if (id) {
-      query.where('id', Number(id)).first();
+      query.where("id", Number(id)).first();
     }
     return query;
-    },
-
-    
-    addDish: function(dish) {
-    return db('dishes')
-      .insert(dish)
-      .then(ids => ({ id: ids[0] }));
   },
 
 
-}
+  addDish: function(dish) {
+    return db("dishes")
+      .insert(dish)
+      .then(ids => ({ id: ids[0] }));
+  }
+};
