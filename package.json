@@ -4,7 +4,7 @@
   "description": "Recipe Book",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cors": "^2.8.4",
@@ -15,9 +15,6 @@
     "sqlite3": "^4.0.2"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tysonism/db-recipe-book.git"
