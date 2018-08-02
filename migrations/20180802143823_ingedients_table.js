@@ -1,14 +1,11 @@
 
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('ingredients', function(tbl){
-        //pk
         tbl.increments();
-        //other tables
-        tbl.string('name', 120)
-          .notNullable()
-          .unique();
+        tbl.string('name', 120).notNullable().unique();
         
-        tbl.text('quantity').notNullable();        
+        tbl.text('quantity').notNullable();     
+        tbl.integer('recipe_id').unsigned().references('id').inTable('recipes')   
           
     })
   };

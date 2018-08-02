@@ -8,8 +8,8 @@ exports.up = function(knex, Promise) {
           .notNullable()
           .unique();
         
-        tbl.text('instructions').notNullable();        
-          
+        tbl.text('instructions');        
+        tbl.integer('dishes_id').unsigned().references('id').inTable('dishes')
     })
   };
   
