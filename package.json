@@ -1,0 +1,17 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "data model for a recipe book app",
+  "main": "index.js",
+  "repository": "https://github.com/blkfltchr/db-recipe-book.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.3",
+    "sqlite3": "^4.0.2"
+  }
+}
