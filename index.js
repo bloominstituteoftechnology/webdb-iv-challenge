@@ -17,19 +17,37 @@ server.get('/dishes', (req, res) => {
     
   });
 
-  server.get('/dishes/:id', (req, res) => {
-    db('dishes')
-    .where("id", req.params.id)
+  server.put('/dishes/:id', (req, res) => {
+    const { name } = req.body;
+    if(!name)
+    res.status(400).json({ errorMessage: "Provide name please"});
+    dishDb
+    .update(req.params.id, {name})
     .then(dish => {
-      if(dish.length === 0) {
-        res.status(404).json({ message: "ID DONT EXIST"});
-      }
-      res.status(200).json(dish);
+        if(!dish) {
+            res.status(404).json({ message: "ID doesn't exist"});
+        }
+        res.status(200).json({name});
     })
     .catch(error => {
-      res.status(500).json({ error: "That did not work haha"})
+        res.status(500).json({error: "Didnt work"})
     });
-  })
+})
+
+server.get('/dishes/:id', (req, res) => {
+    dishDb.getDish(req.params.id)
+    .then(dish => {
+        if(!dish) {
+            res.status(404).json({ message: "ID doesn't exist"});
+        }
+        res.status(200).json(dish);
+    })
+    .catch(error => {
+        res.status(500).json({ error: "User info could not be got"})
+    });
+})
+
+
 
 
 
