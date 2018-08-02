@@ -1,13 +1,10 @@
-
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
-  return knex('dishes').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('dishes').insert([
-        {name: 'pizza'},
-        {name: 'tacos'},
-        {name: 'smoothie'}
-      ]);
-    });
+  return knex('dishes')
+    .del()
+    .then(() => knex('dishes').insert([
+      { id: 1, name: 'pizza' },
+      { id: 2, name: 'tacos' },
+      { id: 3, name: 'smoothie' },
+    ]));
 };

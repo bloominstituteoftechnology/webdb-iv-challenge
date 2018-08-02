@@ -1,12 +1,13 @@
 exports.up = function knexUp(knex, Promise) {
   return knex.schema
     .createTable('dishes', (dishes) => {
-      dishes.text('name').primary();
+      dishes.increments('id').primary();
+      dishes.text('name').unique().notNull();
     })
     .createTable('recipes', (recipes) => {
       recipes.increments('id').primary();
       recipes.text('name').notNull();
-      recipes.text('dish').references('dishes.name');
+      recipes.text('dishId').references('dishes.id');
     })
     .createTable('ingredients', (ingredients) => {
       ingredients.increments('id').primary();
