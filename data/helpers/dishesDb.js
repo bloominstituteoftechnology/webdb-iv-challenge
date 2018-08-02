@@ -18,5 +18,8 @@ module.exports = {
             }
             return results[0];
         })
+    },
+    addDish: dish => {
+        return db('dishes').insert(dish).then(ids => ({ id: ids[0] }));
     }
 }

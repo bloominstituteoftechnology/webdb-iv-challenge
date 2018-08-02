@@ -8,12 +8,13 @@ exports.up = function (knex, Promise) {
         .createTable('recipes', table => {
             table.increments();
             table.text('name').notNullable();
-            table.integer('dish_id').notNullable().unsigned().references('id').inTable('dishes');
+            table.integer('dish_id').notNullable().unsigned().references('id').inTable('dishes').onUpdate('CASCADE').onDelete('CASCADE');;
         })
         .createTable('ingredients', table => {
             table.increments();
             table.text('name').notNullable();
-            table.integer('recipe_id').notNullable().unsigned().references('id').inTable('recipes');
+            table.text('quantity').notNullable();
+            table.integer('recipe_id').notNullable().unsigned().references('id').inTable('recipes').onUpdate('CASCADE').onDelete('CASCADE');;
         })
 };
 

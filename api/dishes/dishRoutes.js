@@ -3,6 +3,17 @@ const dishes = require('../../data/helpers/dishesDb');
 
 const router = express.Router();
 
+router.post('/', async (req, res, next) => {
+    const { name } = req.body;
+    if (!name) return next({ code: 400, errorMessage: 'Please provide a name.' });
+    try {
+        const response = await dishes.addDish({ name });
+        return res.status(201).json(response);
+    } catch (err) {
+        return next({ code: 500, error: 'The dish could not be saved to the database' });
+    }
+})
+
 router.get('/', async (req, res, next) => {
     try {
         const response = await dishes.getDishes();
