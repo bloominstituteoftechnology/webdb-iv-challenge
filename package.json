@@ -1,0 +1,29 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "recipe book sql express lab",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesarnml/db-recipe-book.git"
+  },
+  "author": "Cesar Mejia Leiva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cesarnml/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/cesarnml/db-recipe-book#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "morgan": "^1.9.0",
+    "sqlite3": "^4.0.2"
+  }
+}
