@@ -24,50 +24,39 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// router.get('/:id/posts', async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         let posts = await postDb.get();
-//         posts = posts.filter(post => post.userId == id ? post : null);
-
-//         res.status(200).json(posts);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
 router.post('/', async (req, res) => {
     try {
-        const newDish = { ...req.body };
-        const dish = await dishDb.addDish(newDish);
+        const newRecord = { ...req.body };
+        const record = await db.add(newRecord);
 
-        res.status(200).json(newDish);
+        res.status(200).json(newRecord);
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const changes = { ...req.body };
-//         const user = await userDb.update(id, changes);
+router.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const changes = { ...req.body };
+        const change_record = await db.edit(id, changes);
+        const record = await db.get(id);
+        res.status(200).json(record);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
-//         res.status(200).json(user);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const record = await db.get(id);
+        const drop_record = await db.drop(id);
 
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const user = await userDb.remove(id);
-
-//         res.status(200).json(user);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.status(200).json(record);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
