@@ -2,13 +2,13 @@ exports.up = function (knex, Promise) {
   return knex.schema.createTable("recipes_ingredients", tbl => {
     tbl.increments();
     tbl
-      .integer("recipe_id")
+      .integer("recipes_id")
       .unsigned()
       .notNullable()
       .references("id")
       .inTable("recipes");
     tbl
-      .integer("ingredient_id")
+      .integer("ingredients_id")
       .unsigned()
       .notNullable()
       .references("id")
@@ -18,6 +18,7 @@ exports.up = function (knex, Promise) {
       .unsigned()
       .notNullable();
     tbl.string("measurements", 128);
+    tbl.timestamp("created_at").defaultTo(knex.fn.now());
   });
 };
 

@@ -3,11 +3,12 @@ exports.up = function (knex, Promise) {
         tbl.increments();
         tbl.string("name", 128).notNullable();
         tbl
-            .integer("dish_id")
+            .integer("dishes_id")
             .unsigned()
             .notNullable()
             .references("id")
             .inTable("dishes");
+        tbl.timestamp("created_at").defaultTo(knex.fn.now());
     });
 };
 

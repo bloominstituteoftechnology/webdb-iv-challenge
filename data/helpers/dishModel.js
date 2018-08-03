@@ -22,9 +22,9 @@ module.exports = {
             return dishes.map(dish => mappers.dishToBody(dish));
         });
     },
-    getDishRecipes: function (dishId) {
+    getDishRecipes: function (dishesId) {
         return db("recipes")
-            .where("dish_id", dishId)
+            .where("dishes_id", dishesId)
             .then(recipes => recipes.map(recipe => mappers.recipeToBody(recipe)));
     },
     addDish: function (dish) {

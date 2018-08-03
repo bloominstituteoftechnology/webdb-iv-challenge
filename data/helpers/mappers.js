@@ -30,3 +30,7 @@ function recipeToBody(recipe) {
 function ingredientToBody(ingredient) {
   return { ...ingredient };
 }
+
+function directionToBody(direction) {
+  return { ...direction };
+}

@@ -13,6 +13,7 @@ exports.up = function (knex, Promise) {
             .notNullable()
             .references("id")
             .inTable("directions");
+        tbl.timestamp("created_at").defaultTo(knex.fn.now());
     });
 };
 
