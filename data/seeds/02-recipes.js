@@ -8,6 +8,10 @@ exports.seed = function (knex, Promise) {
         {
           dishes_id: 1,
           name: "Carne Asada Tacos"
+        },
+        {
+          dishes_id: 1,
+          name: "Ranch Chicken Tacos"
         }
       ]);
     });

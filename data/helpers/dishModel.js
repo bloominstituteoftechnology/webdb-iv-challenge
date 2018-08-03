@@ -1,46 +1,47 @@
 const db = require("../db");
 const mappers = require("../helpers/mappers");
+const tbl = 'dishes';
 
 module.exports = {
-    getDishes: function (id) {
-        let query = db("dishes as d");
+    get: function (id) {
+        let query = db(`${tbl} as t`);
 
         if (id) {
-            query.where("d.id", id).first();
+            query.where("t.id", id).first();
 
-            const promises = [query, this.getDishRecipes(id)];
+            const promises = [query, this.getSubRecords(id)];
 
             return Promise.all(promises).then(function (results) {
-                let [dish, recipes] = results;
-                dish.recipes = recipes;
+                let [record, subRecords] = results;
+                record.recipes = subRecords;
 
-                return mappers.dishToBody(dish);
+                return mappers.recordToBody(record);
             });
         }
 
-        return query.then(dishes => {
-            return dishes.map(dish => mappers.dishToBody(dish));
+        return query.then(records => {
+            return records.map(record => mappers.recordToBody(record));
         });
     },
-    getDishRecipes: function (dishesId) {
-        return db("recipes")
-            .where("dishes_id", dishesId)
-            .then(recipes => recipes.map(recipe => mappers.recipeToBody(recipe)));
+    getSubRecords: function (id) {
+        return db('recipes as r')
+            .where('r.dishes_id', id)
+            .then(records => records.map(record => mappers.recordToBody(record)));
     },
-    addDish: function (dish) {
-        return db("dishes")
-            .insert(dish)
+    add: function(record) {
+        return db(tbl)
+            .insert(record)
             .then(([id]) => this.get(id));
     },
-    update: function (id, changes) {
-        return db("users")
-            .where("id", id)
+    edit: function(id, changes) {
+        return db(tbl)
+            .where('id', id)
             .update(changes)
             .then(count => (count > 0 ? this.get(id) : null));
     },
-    remove: function (id) {
-        return db("users")
-            .where("id", id)
+    drop: function(id) {
+        return db(tbl)
+            .where('id', id)
             .del();
     }
 };

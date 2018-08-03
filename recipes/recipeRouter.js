@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const recipeDb = require('../data/helpers/recipeModel');
+const db = require('../data/helpers/recipeModel');
 
 // dishes
 router.get('/', async (req, res) => {
     try {
-        const recipes = await recipeDb.getRecipes();
+        const records = await db.get();
 
-        res.status(200).json(recipes);
+        res.status(200).json(records);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -16,9 +16,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const recipe = await recipeDb.getRecipes(id);
+        const record = await db.get(id);
 
-        res.status(200).json(recipe);
+        res.status(200).json(record);
     } catch (err) {
         res.status(500).json(err);
     }

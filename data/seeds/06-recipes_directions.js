@@ -8,7 +8,10 @@ exports.seed = function (knex, Promise) {
         { recipes_id: 1, directions_id: 1 },
         { recipes_id: 1, directions_id: 2 },
         { recipes_id: 1, directions_id: 3 },
-        { recipes_id: 1, directions_id: 4 }
+        { recipes_id: 1, directions_id: 4 },
+        { recipes_id: 2, directions_id: 5 },
+        { recipes_id: 2, directions_id: 6 },
+        { recipes_id: 2, directions_id: 7 }
       ]);
     });
 };

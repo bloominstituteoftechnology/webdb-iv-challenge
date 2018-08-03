@@ -1,72 +1,59 @@
 const db = require("../db");
 const mappers = require("../helpers/mappers");
+const tbl = 'recipes';
 
 module.exports = {
-    getRecipes: function (id) {
-        let query = db("recipes as r");
+    get: function (id) {
+        let query = db(`${tbl} as t`);
 
         if (id) {
-            query.where("r.id", id).first();
+            query.where("t.id", id).first();
 
             const promises = [
                 query,
-                this.getRecipesIngredients(id),
-                this.getRecipesDirections(id)
+                this.getSubRecords(id),
+                this.getSubRecords2(id)
             ];
 
             return Promise.all(promises).then(function (results) {
-                let [recipe, ingredients, directions] = results;
-                recipe.ingredients = ingredients;
-                recipe.directions = directions;
+                let [record, subRecords, subRecords2] = results;
+                record.ingredients = subRecords;
+                record.directions = subRecords2;
 
-                return mappers.recipeToBody(recipe);
+                return mappers.recordToBody(record);
             });
         }
 
-        return query.then(recipes => {
-            return recipes.map(recipe => mappers.recipeToBody(recipe));
+        return query.then(records => {
+            return records.map(record => mappers.recordToBody(record));
         });
     },
-    getRecipesIngredients: function (recipesId) {
-        // return db("recipes_ingredients")
-        //     .where("recipes_id", recipesId)
-        //     .then(ingredients => ingredients.map(ingredient => mappers.ingredientToBody(ingredient)));
-        // return db
-        //     .select("name")
-        //     .from("ingredients as i")
-        //     .innerJoin('recipes_ingredients as r', 'i.id', '=', 'r.ingredients_id');
-        return db
-            .select("ingredients.name")
-            .from("recipes_ingredients")
-            .innerJoin("recipes", "recipes_ingredients.recipes_id", "=", "recipes.id")
-            .innerJoin("ingredients", "recipes_ingredients.ingredients_id", "=", "ingredients.id")
-            .where("recipes.id", recipesId);    
+    getSubRecords: function(id) {
+        return db('recipes_ingredients as r_i')
+            .innerJoin('ingredients as i', 'r_i.ingredients_id', 'i.id')
+            .where('r_i.recipes_id', id)
+            .then(records => records.map(record => mappers.recordToBody(record)));
     },
-    getRecipesDirections: function (recipesId) {
-        // return db("recipes_directions")
-        //     .where("recipes_id", recipesId)
-        //     .then(directions => directions.map(direction => mappers.directionToBody(direction)));
-        return db
-            .select("directions.description")
-            .from("recipes_directions")
-            .innerJoin("recipes", "recipes_directions.recipes_id", "=", "recipes.id")
-            .innerJoin("directions", "recipes_directions.directions_id", "=", "directions.id")
-            .where("recipes.id", recipesId);
+    getSubRecords2: function(id) {
+        return db('recipes_directions as r_i')
+            .innerJoin('directions as d', 'r_i.directions_id', 'd.id')
+            .where('r_i.recipes_id', id)
+            .then(records => records.map(record => mappers.recordToBody(record)));
     },
-    addDish: function (dish) {
-        return db("dishes")
-            .insert(dish)
+    add: function(record) {
+        return db(tbl)
+            .insert(record)
             .then(([id]) => this.get(id));
     },
-    update: function (id, changes) {
-        return db("users")
-            .where("id", id)
+    edit: function(id, changes) {
+        return db(tbl)
+            .where('id', id)
             .update(changes)
             .then(count => (count > 0 ? this.get(id) : null));
     },
-    remove: function (id) {
-        return db("users")
-            .where("id", id)
+    drop: function(id) {
+        return db(tbl)
+            .where('id', id)
             .del();
     }
 };

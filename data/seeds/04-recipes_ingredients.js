@@ -19,7 +19,19 @@ exports.seed = function (knex, Promise) {
         { recipes_id: 1, ingredients_id: 12, quantity: 2, measurements: "" },
         { recipes_id: 1, ingredients_id: 13, quantity: 1, measurements: "" },
         { recipes_id: 1, ingredients_id: 14, quantity: 1, measurements: "" },
-        { recipes_id: 1, ingredients_id: 15, quantity: 1, measurements: "" }
+        { recipes_id: 1, ingredients_id: 15, quantity: 1, measurements: "" },
+        { recipes_id: 2, ingredients_id: 16, quantity: 0.5, measurements: "cup" },
+        { recipes_id: 2, ingredients_id: 17, quantity: 0.25, measurements: "cup" },
+        { recipes_id: 2, ingredients_id: 18, quantity: 1, measurements: "oz" },
+        { recipes_id: 2, ingredients_id: 19, quantity: 1, measurements: "tbsp" },
+        { recipes_id: 2, ingredients_id: 20, quantity: 2, measurements: "cups" },
+        { recipes_id: 2, ingredients_id: 10, quantity: 8, measurements: "" },
+        { recipes_id: 2, ingredients_id: 21, quantity: 1, measurements: "" },
+        { recipes_id: 2, ingredients_id: 22, quantity: 1, measurements: "" },
+        { recipes_id: 2, ingredients_id: 23, quantity: 4, measurements: "" },
+        { recipes_id: 2, ingredients_id: 24, quantity: 4, measurements: "oz" },
+        { recipes_id: 2, ingredients_id: 13, quantity: 1, measurements: "" },
+        { recipes_id: 2, ingredients_id: 25, quantity: 1, measurements: "cup" }
       ]);
     });
 };

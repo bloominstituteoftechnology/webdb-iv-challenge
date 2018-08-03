@@ -1,36 +1,6 @@
 module.exports = {
-  dishToBody,
-  recipeToBody
+  recordToBody: function(record) {
+    const result = {...record};
+    return result;
+  }
 };
-
-function dishToBody(dish) {
-  const result = { ...dish };
-
-  if (dish.recipes) {
-    result.recipes = dish.recipes.map(recipe => ({
-      ...recipe
-    }));
-  }
-
-  return result;
-}
-
-function recipeToBody(recipe) {
-  const result = { ...recipe };
-
-  if (recipe.ingredients) {
-    result.ingredients = recipe.ingredients.map(ingredient => ({
-      ...ingredient
-    }));
-  }
-
-  return result;
-}
-
-function ingredientToBody(ingredient) {
-  return { ...ingredient };
-}
-
-function directionToBody(direction) {
-  return { ...direction };
-}
