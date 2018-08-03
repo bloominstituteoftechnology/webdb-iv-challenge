@@ -1,3 +1,11 @@
+# How to run this project
+
+- `knex migrate:latest`
+- `knex seed:run`
+- `node server.js`
+
+The data access library functions will display in the terminal
+
 # Recipe Book
 
 ## Topics
