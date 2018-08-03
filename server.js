@@ -2,10 +2,25 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
+const DishRoutes = require('./server_routers/dishRoutes');
+
 const server = express();
 
 //middleware
+server.use(express.json());
 server.use(helmet());
+
+server.get('/', (req, res) => {
+    res.send('Welcome to Lambda Recipes');
+})
+
+// DISHES ENDPOINTS
+server.use('/dishes', DishRoutes);
+
+// ERROR HANDLER
+server.use((err, req, res, next) => {
+    res.status(err.code).send({message: err.message, error: err.error})
+})
 
 const port = 8000;
 server.listen(port, function() {
