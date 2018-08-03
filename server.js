@@ -6,11 +6,13 @@ const express = require('express');
 const server = express();
 
 
-// const userRoutes = require('./api/userRouter');
+const dishRoutes = require('./api/dishRouter');
+const recipeRoutes = require('./api/recipesRouter');
 
 
 server.use(express.json());
-// server.use('/api/users', userRoutes);
+server.use('/api/dishes', dishRoutes);
+server.use('/api/recipes', recipeRoutes);
 
 
 server.use((err, req, res, next) => {
