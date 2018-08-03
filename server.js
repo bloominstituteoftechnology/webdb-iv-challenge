@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const DishRoutes = require('./server_routers/dishRoutes');
+const DishRoutes = require('./server_routers/DishRoutes');
+const RecipeRoutes = require('./server_routers/RecipeRoutes');
 
 const server = express();
 
@@ -16,6 +17,7 @@ server.get('/', (req, res) => {
 
 // DISHES ENDPOINTS
 server.use('/dishes', DishRoutes);
+server.use('/recipes', RecipeRoutes);
 
 // ERROR HANDLER
 server.use((err, req, res, next) => {

@@ -37,7 +37,7 @@ router.get('/:id', async (req, res, next) => {
         }
         res.status(200).json(result);
     } catch (error) {
-        next({ success: false, code: 500, message: 'Users information could not be retrieved.', error: error.message })
+        next(sendError(500, 'Failed to retrieve dish information.', error.message))
     }
 })
 
@@ -65,11 +65,11 @@ router.delete('/:id', async (req, res, next) => {
         const response = await db.deleteDish(id);
 
         if (!response) {
-            return next({ success: false, code: 404, message: "Failed to remove dish.", error: "The dish with this specific id does not exists." })
+            return next(sendError(404, 'Failed to retrieve dish information', 'The dish for this specific id does not exist.'))
         }
         res.status(200).json(dish[0][0]);
     } catch (error) {
-        next({ success: false, code: 500, message: "Failed to remove dish.", error: error.message })
+        next(sendError(500, 'Failed to remove dish.', error.message))
     }
 })
 
