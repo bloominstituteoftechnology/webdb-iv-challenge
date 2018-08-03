@@ -2,11 +2,10 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('dishes', table => {
     table.increments()
-    table.string('name').notNullable()
-    table.timestamps(true, true)
+    table.string('dish_name').notNullable().unique()
   })
 }
 
 exports.down = function (knex, Promise) {
-  return knex.schema.dropTableIfExists('users')
+  return knex.schema.dropTableIfExists('dishes')
 }

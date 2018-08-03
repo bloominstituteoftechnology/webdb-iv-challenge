@@ -1,12 +1,13 @@
 
 exports.up = function (knex, Promise) {
-  return knex.schema.createTable('step_instructions', table => {
-    table.integer('step_number').primary()
+  return knex.schema.createTable('recipe_instructions', table => {
+    table.increments()
     table.integer('recipe_id').unsigned().references('id').inTable('recipes')
-    table.string('quantity')
+    table.integer('step_number')
+    table.string('description').notNullable()
   })
 }
 
 exports.down = function (knex, Promise) {
-  return knex.schema.dropTable('step_instructions')
+  return knex.schema.dropTable('recipe_instructions')
 }
