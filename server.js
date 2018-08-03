@@ -1,5 +1,5 @@
 const express = require('express');
-
+const db = require('./data/db');
 const server = express();
 
 server.use(express.json());
@@ -8,9 +8,9 @@ server.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-server.get('/recipes', (req, res) => {
-	db('recipes').then(recipes=> {
-		res.status(200).json(users);
+server.get('/dishes', (req, res) => {
+	db('dishes').then(dishes=> {
+		res.status(200).json(dishes);
 	}).catch(err => res.status(500).json(err));
 });
 

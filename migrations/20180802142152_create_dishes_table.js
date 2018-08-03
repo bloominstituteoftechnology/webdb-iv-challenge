@@ -9,7 +9,6 @@ exports.up = function(knex, Promise) {
    dishes
      .integer('dishId')
      .unsigned()
-     .notNullable()
      .references('id')
      .inTable('recipes');
 
