@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
     tbl
       .string("Name", 256)
       .notNullable()
-      .unique()
       .defaultTo("NotProvided");
   });
 };

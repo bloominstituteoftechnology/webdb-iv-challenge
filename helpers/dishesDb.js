@@ -8,11 +8,16 @@ module.exports = {
   addDish: function(dish) {
     return db("dishes")
       .insert(dish)
-      .then(ids => ({ ids: ids[0] }));
+      .into("dishes")
+      .then(ids => ({ id: ids[0] }));
   },
   getDish: function(id) {
-    if (id) {
-      query.where("id", id).first();
-    }
+    let query = db("dishes")
+      .join("recipies", "dishes.id", "=", "recipies.dishes_Id")
+      .select("dishes.id", "dishes.Name", "recipies.name")
+      //why doesnt it return name default to not provided
+      .where("dishes.id", id);
+    console.log(query);
+    return query;
   }
 };

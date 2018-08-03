@@ -16,6 +16,19 @@ server.get("/dishes", (req, res) => {
   });
 });
 
+server.get("/dishes/:id", (req, res) => {
+  dishesDb.getDish(req.params.id).then(dish => {
+    console.log(dish);
+    res.status(200).json(dish);
+  });
+});
+
+server.post("/dishes", (req, res) => {
+  const dish = req.body;
+  dishesDb.addDish(dish).then(dish => res.status(201).json(dish));
+});
+//no name, name is deault to not provided
+
 server.get("/recipies", (req, res) => {
   recipiesDb.getRecipies().then(recipies => {
     res.status(200).json(recipies);
