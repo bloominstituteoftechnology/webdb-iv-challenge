@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('recipe_id').notNullable();
     table.integer('ingredient_id').notNullable();
-    table.integer('ingredient_quantity').notNullable();
+    table.string('ingredient_quantity').notNullable();
     table.string('measurement_unit').notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now())
     table.timestamp('updated_at').defaultTo(knex.fn.now())
