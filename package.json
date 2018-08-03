@@ -1,0 +1,22 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "db-recipe-book project",
+  "main": "server.js",
+  "repository": "https://github.com/vcao2279/db-recipe-book",
+  "author": "Vu Cao <cdhvu@yahoo.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.2"
+  }
+}
