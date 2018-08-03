@@ -5,9 +5,11 @@ exports.up = function(knex, Promise) {
    ingredients.increments();
 
    ingredients
-   	 .string('ingredients')
+   	 .string('ingredientName')
 	   .unsigned()
-     .notNullable()
+     .notNullable();
+
+
 
   });
 };

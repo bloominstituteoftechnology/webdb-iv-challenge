@@ -1,13 +1,11 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('recipes', function(recipes) {
-   recipes.increments();
+	recipes.increments();
    recipes
-	   .string('name')
-	   .notNullable()
-	   .unique();
-   recipes.text('text').notNullable();
+    .string('name')
 
+   recipes.text('text').notNullable();
   });
 };
 
