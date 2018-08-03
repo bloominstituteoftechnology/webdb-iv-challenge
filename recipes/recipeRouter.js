@@ -13,16 +13,16 @@ router.get('/', async (req, res) => {
     }
 });
 
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const user = await userDb.get(id);
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const recipe = await recipeDb.getRecipes(id);
 
-//         res.status(200).json(user);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.status(200).json(recipe);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // router.get('/:id/posts', async (req, res) => {
 //     try {

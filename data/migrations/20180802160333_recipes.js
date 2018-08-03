@@ -8,7 +8,6 @@ exports.up = function (knex, Promise) {
             .notNullable()
             .references("id")
             .inTable("dishes");
-        tbl.text("directions");
     });
 };
 

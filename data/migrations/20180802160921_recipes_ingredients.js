@@ -17,7 +17,7 @@ exports.up = function (knex, Promise) {
       .integer("quantity")
       .unsigned()
       .notNullable();
-    tbl.string("measurements", 128)
+    tbl.string("measurements", 128);
   });
 };
 
