@@ -2,13 +2,13 @@ const db = require('../data/db')
 
 module.exports = {
   getDishes: () => {
-    return db('dishes').select('name as dish')
+    return db('dishes').select('dish_name as dish')
   },
 
   getDish: (id) => {
     return db('dishes')
-      .select('dishes.name as dish', 'recipes.name as recipe')
-      .join('recipes', 'recipes.dishId', 'dishes.id')
+      .select('dishes.dish_name as dish', 'recipes.recipe_name as recipe')
+      .join('recipes', 'recipes.dish_id', 'dishes.id')
       .where('dishes.id', id)
   },
 
@@ -38,5 +38,9 @@ module.exports = {
       .where('recipes.id', id)
 
     return Promise.all([query01, query02])
+  },
+  addRecipe: (recipe) => {
+    return db('recipes')
+      .insert(recipe)
   }
 }
