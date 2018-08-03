@@ -31,7 +31,7 @@ module.exports = {
       .where('recipes.id', id)
 
     const query02 = db('recipes')
-      .select('dishes.dish_name as dish', 'recipes.recipe_name as recipe', 'ingredients.ingredient_name', 'recipe_ingredients.quantity')
+      .select('ingredients.ingredient_name as name', 'recipe_ingredients.quantity')
       .join('dishes', 'dishes.id', 'recipes.dish_id')
       .join('recipe_ingredients', 'recipe_ingredients.recipe_id', 'recipes.id')
       .join('ingredients', 'ingredients.id', 'recipe_ingredients.ingredient_id')

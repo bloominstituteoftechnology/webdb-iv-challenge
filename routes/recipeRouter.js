@@ -18,7 +18,10 @@ router.get('/:id', (req, res) => {
   db.getRecipe(id)
     .then(recipe => {
       console.log('RECIPE: ', recipe)
-      res.status(200).json(recipe)
+
+      res.status(200).json({
+        dish: recipe[0][0].dish, recipe: recipe[0][0].recipe, ingredients: recipe[1], instructions: recipe[0].map(step => `Step ${step.step_number}:  ${step.description}`)
+      })
     })
     .catch(err => res.status(500).json(err))
 })
