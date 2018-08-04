@@ -5,7 +5,7 @@ import axios from "axios";
 import { Navigation } from "./Navigation";
 import { NavLink } from "../../node_modules/react-router-dom";
 
-class Dishes extends Component {
+class Dish extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,10 +14,12 @@ class Dishes extends Component {
     }
 
     componentDidMount() {
+        const {id} = this.props.match.params;
         axios
-            .get(`${this.props.api}/dishes`)
+            .get(`${this.props.api}/dishes/${id}`)
             .then(({ data }) => {
-                this.setState({ data });
+                console.log(data);
+                this.setState({ data: data.recipes });
             })
             .catch(err => console.log(err));
     }
@@ -25,14 +27,14 @@ class Dishes extends Component {
     render() {
         return (
             <div className="App">
-                {this.state.data.map(item => {
+                {this.state.data ? this.state.data.map(item => {
                     return (
-                        <NavLink to={`/dishes/${item.id}`}><p>{item.name}</p></NavLink>
+                        <NavLink to={`/recipes/${item.id}`}><p>{item.name}</p></NavLink>
                     );
-                })}
+                }): null}
             </div>
         );
     }
 }
 
-export default Dishes;
+export default Dish;

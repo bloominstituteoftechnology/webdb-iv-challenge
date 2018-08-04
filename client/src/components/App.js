@@ -5,31 +5,44 @@ import axios from "axios";
 import { Route } from 'react-router-dom';
 import Dishes from "./Dishes";
 import Recipes from "./Recipes";
+import Home from "./Home";
+import { Navigation } from "./Navigation";
+import Dish from "./Dish";
+import Recipe from "./Recipe";
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            url: "http://localhost:8000"
+            api: "http://localhost:8000"
         };
     }
 
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to DB-RECIPE-BOOK</h1>
-                </header>
-                
-                {/* <Navigation /> */}
-                {/* <Route exact path="/" component={Home} /> */}
+                <Navigation />
+                <Route exact path="/" component={Home} />
                 <Route path="/dishes"
                     render={props => (
-                        <Dishes {...props} url={this.state.url} />
+                        <Dishes {...props} api={this.state.api} />
                     )}
                 />
-                <Route path="/recipes" component={Recipes} />
+                <Route path="/dishes/:id"
+                    render={props => (
+                        <Dish {...props} api={this.state.api} />
+                    )}
+                />    
+                <Route path="/recipes"
+                    render={props => (
+                        <Recipes {...props} api={this.state.api} />
+                    )}
+                />
+                <Route path="/recipes/:id"
+                    render={props => (
+                        <Recipe {...props} api={this.state.api} />
+                    )}
+                />
             </div>
         );
     }
