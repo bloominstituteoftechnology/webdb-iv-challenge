@@ -5,6 +5,11 @@
   "repository": "https://github.com/NickolausSmith/db-recipe-book.git",
   "author": "nickolaussmith <nickolaussmith721@gmail.com>",
   "license": "MIT",
+
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+
   "dependencies": {
     "express": "^4.16.3",
     "knex": "^0.15.2",
