@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('dishes', (dish) => {
-    dish.increment(); //gives it an id and autoincremnets
+    dish.increments(); //gives it an id and autoincremnets
 
     dish
       .string('name')
@@ -11,4 +11,8 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {};
 
-// knex migrate:make dishes_table
+//makes the table
+// yarn knex migrate:make dishes_table
+
+//creates the table in the database
+// yarn knex migrate:latest
