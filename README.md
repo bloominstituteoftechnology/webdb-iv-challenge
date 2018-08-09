@@ -40,4 +40,4 @@ In addition to the migration and seed scripts write a data access library that p
 - add units of measure support for the ingredients.
 - add a table of unit of measure convertions, so that we can record the quantity for an ingredient using a unit of measure.
 
-Margo
+
