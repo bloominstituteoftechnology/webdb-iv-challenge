@@ -40,6 +40,39 @@ server.post('/dishes', (req, res) => {
     });
 });
 
+server.get('/recipes', (req, res) => {
+  db('recipes')
+    .then((recipes) => {
+      res.status(200).json(recipes);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+server.get('/recipes/:id', (req, res) => {
+  const { id } = req.params;
+  db('recipes as r')
+    .join()
+    .then((recipe) => {
+      res.status(200).json(recipe);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+server.post('/recipes', (req, res) => {
+  const recipe = req.params;
+  db('recipes')
+    .insert((recipe) => {
+      res.status(200).json(recipe);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 const PORT = 3333;
 
 server.listen(PORT, () => {
