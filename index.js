@@ -8,6 +8,18 @@ server.use(express.json());
 
 server.get('/dishes', (req, res) => {
   db('dishes')
+    .then((dishes) => {
+      res.status(200).json(dishes);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
+server.get('/dishes/:id', (req, res) => {
+  const { id } = req.params;
+  db('dishes')
+    .where({ id })
     .then((dish) => {
       res.status(200).json(dish);
     })
