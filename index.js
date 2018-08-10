@@ -30,5 +30,17 @@ server.get('/recipes', (req, res) => {
         })
 })
 
+// ==== INGREDIENTS REQUESTS ====
+
+server.get('/ingredients', (req, res) => {
+    db('ingredients')
+        .then(recipes => {
+            res.status(200).json(recipes)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+})
+
 
 server.listen(3300, () => console.log('\n==== API is running... ====\n'));

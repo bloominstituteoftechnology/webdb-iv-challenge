@@ -4,7 +4,8 @@ exports.up = function(knex, Promise) {
       recipes.increments();
       recipes
         .string('title')
-        .notNullable();
+        .notNullable()
+        .unique();
 
     recipes
         .integer('dishId')
