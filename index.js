@@ -17,6 +17,24 @@ server.get('/dishes', (req, res) => {
         })
 })
 
+server.get('/dishes/:id', (req, res) => {
+    const { id } = req.params;
+
+    db('dishes')
+        .where({ id })
+        .first()
+        .then(dish => {
+            if (dish) {
+                res.status(200).json(dish)
+            } else {
+                res.status(404).json({ message: 'the dish with the specified ID could not be found'})
+            }
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+})
+
 
 // ==== RECIPE REQUESTS ====
 
