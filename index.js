@@ -28,6 +28,18 @@ server.get('/dishes/:id', (req, res) => {
     });
 });
 
+server.post('/dishes', (req, res) => {
+  const dish = req.body;
+  db('dishes')
+    .insert(dish)
+    .then((response) => {
+      res.status(201).json(response);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 const PORT = 3333;
 
 server.listen(PORT, () => {
