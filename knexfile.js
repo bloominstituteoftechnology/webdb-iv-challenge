@@ -6,7 +6,8 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: './data/RecipeDB.sqlite3'
-    }
+    },
+    useNullAsDefault: true
   },
 
   staging: {
