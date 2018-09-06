@@ -6,13 +6,13 @@ exports.up = function(knex, Promise) {
   		.string('name', 128)
   		.notNullable()
   		.unique('recipe_name')
-	table
-		.integer('dish_id')
-		.unsigned()
-		.notNullable()
-		.references('id')
-		.inTable('dishes')
-  })
+  	table
+  		.integer('dish_id')
+  		.unsigned()
+  		.notNullable()
+  		.references('id')
+  		.inTable('dishes')
+    })
 };
 
 exports.down = function(knex, Promise) {

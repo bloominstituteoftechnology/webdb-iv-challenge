@@ -8,17 +8,17 @@ exports.up = function(knex, Promise) {
   	  		.notNullable()
   	  		.references('id')
   	  		.inTable('recipes')
-  		table
-  			.integer('ingredient_id')
-  			.unsigned()
-  			.notNullable()
-  			.references('id')
-  			.inTable('ingredients')
-		table
-			.float('quantity')
-			.notNullable()
-  	    })
-};
+    		table
+    			.integer('ingredient_id')
+    			.unsigned()
+    			.notNullable()
+    			.references('id')
+    			.inTable('ingredients')
+    		table
+    			.float('quantity')
+    			.notNullable()
+      	    })
+  };
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('ingredients_in_recipe')
