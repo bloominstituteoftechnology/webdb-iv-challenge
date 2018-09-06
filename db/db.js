@@ -17,11 +17,14 @@ module.export = {
   },
 
   getDish: (id) => {
-    return db('dishes').where({ id });
+    return db('dishes as d').join('recipes as r', { 'd.id': id });
   },
 
   getRecipes: () => {
-    return db('recipes');
+    return db().select('r.name, d.name as dish')
+      .from('recipes as r')
+      .join('dishes as d', { 'd.id': 'r.dish_id' })
+      .groupBy('r.name, d.name');
   },
 
   addRecipe: (recipe) => {
