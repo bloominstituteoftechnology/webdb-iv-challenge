@@ -1,27 +1,76 @@
-"use strict";
+'use strict'
 
+const Express = require('express')
+const morgan = require('morgan')
+const helmet = require('helmet')
 const recipieDb = require("./db/dbHelper/recpieModel");
 
-// Get Dishes
-recipieDb.getDishes().then(data => {
-  console.log(`Get Dishes`);
-  console.log(data);
-});
+const PORT = 5000
+const server = new Express()
 
-recipieDb.addDish({ name: "Lasange" }).then(added => {
-  console.log(`Added dish id: ${added}`);
-});
+server.use(helmet())
+server.use(Express.json())
+server.use(morgan('dev'))
 
-recipieDb.getDish(1).then(data => {
-  console.log(`Dish 1`);
-  console.log(data);
-});
+server.get('/api/dishes', async (req, res, next) => {
+    try {
+        const data = await recipieDb.getDishes()
+        res.status(200).json({
+            status:true,
+            data: data
+        })
+    } catch (err){
+        next(err)
+    }
+})
 
-recipieDb.getRecipes().then(data => {
-  console.log(`Get Recpies`);
-  console.log(data);
-});
+server.get('/api/dishes/:id', async (req, res, next) => {
+    try {
+        const data = await recipieDb.getDishes(req.params.id)
+        res.status(200).json({
+            status:true,
+            data: data
+        })
+    } catch (err){
+        next(err)
+    }
+})
 
-recipieDb.addRecipe({ name: "Classic Italian lasagne" }).then(added => {
-  console.log(`Added recpie id: ${added}`);
-});
+server.post('/api/dishes', async (req, res, next) => {
+    try {
+        const data = await recipieDb.addDish(req.body)
+        res.status(200).json({
+            status:true,
+            data: data
+        })
+    } catch (err){
+        next(err)
+    }
+})
+
+server.get('/api/recpies', async (req, res, next) => {
+    try {
+        const data = await recipieDb.getRecipes()
+        res.status(200).json({
+            status:true,
+            data: data
+        })
+    } catch (err){
+        next(err)
+    }
+})
+
+
+server.post('/api/recpies', async (req, res, next) => {
+    try {
+        const data = await recipieDb.addRecipe(req.body)
+        res.status(200).json({
+            status:true,
+            data: data
+        })
+    } catch (err){
+        next(err)
+    }
+})
+
+server.listen(PORT, () => console.log(`SERVER is running on PORT ${PORT}`))

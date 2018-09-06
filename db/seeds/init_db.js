@@ -63,3 +63,13 @@ exports.seed = function(knex, Promise) {
       })
   ]);
 };
+
+
+/*
+SELECT d.name as Dish_Name, r.name as Recpie_Name
+	FROM dishes d
+	JOIN DishesToRecipie DtoR on DtoR.dish_id = d.id 
+	JOIN recipie as r on r.id = DtoR.recpie_id
+	JOIN RecpiesToIngredient as RtoI on RtoI.recipie_id
+	WHERE d.id = 2
+*/
