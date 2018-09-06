@@ -42,11 +42,16 @@ async function getRecipe(id){
 	}
 }
 
+function getConversion(){
+	return db('units')
+}
+
 module.exports = {
 	getDishes,
 	addDish,
 	getDish,
 	getRecipes,
 	addRecipe,
-	getRecipe
+	getRecipe,
+	getConversion
 }

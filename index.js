@@ -64,6 +64,20 @@ app.get('/recipes/:id', async (req, res) => {
 	}
 })
 
+app.get('/converttest', async (req, res) => {
+	let { unit1, unit2, amount } = req.query
+	try {
+		const conversion = await helper.getConversion();
+		let u1_conv = conversion.filter(item => item.name === unit1)[0]
+		let u2_conv = conversion.filter(item => item.name === unit2)[0]
+		amount = amount * u2_conv.multiplier/u1_conv.multiplier;
+		res.status(200).json({quantity: amount, unit: unit2})
+	} catch(err) {
+		console.log(err)
+		res.status(500).json({ error: 'The request could not be fulfilled.' });
+	}
+})
+
 app.listen(9000, () => {
   console.log('Server listening on 9000');
 });
