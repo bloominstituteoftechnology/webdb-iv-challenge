@@ -22,10 +22,11 @@ addDish=server.post('/api/dishes',(req,res)=>{
 })
 getDish=server.get('/api/dishes/:id',(req,res)=>{
     db('dishes')
-        .join('recipes',{'recipes.dish_id':'dishes.id'})
-        .where({'id':req.params.id})
+        .join('recipes',{'dishes.id':'recipes.dish_id'})
+        .select('dishes.name as dish','recipes.name as recipe')
+        .where({'recipes.dish_id':req.params.id})
         .then(dish=>res.status(200).json(dish))
-        .catch(err=>res.status(500).json(err))
+        .catch(err=>res.status(500).json(err));
 })
 getRecipes=server.get('/api/recipes',(req,res)=>{
     db('recipes')
