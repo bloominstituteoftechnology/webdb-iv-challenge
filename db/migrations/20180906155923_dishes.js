@@ -9,17 +9,7 @@ exports.up = function(knex, Promise) {
             .notNullable();
 
         tbl 
-            .integer('recipe_1')
-
-        tbl 
-            .integer('recipe_2')
-
-        tbl 
-            .integer('recipe_3')
-
-        tbl 
-            .integer('recipe_4')
-
+            .integer('recipe_id')
       });
 };
 

@@ -8,6 +8,7 @@ module.exports = {
   insert,
   findRecipes,
   insertRecipe,
+  getShoppingList
 };
 
 function find() {
@@ -33,3 +34,9 @@ function insertRecipe(recipie) {
         .insert(recipie)
         .then(ids => ({ id: ids[0] }));
 }
+
+function findById(id, recipie_id) {
+    return db('dishes')
+    .join('recipies', {'recipies.dish_id':'dishes.recipie_id'})
+    .where({ id: Number(id) });
+  }
