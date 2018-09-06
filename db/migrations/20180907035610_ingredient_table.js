@@ -5,8 +5,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     // ingredient name
     table.string('name', 255)
-         .notNullable()
-         .unique('ingredient_name')
+         .defaultTo('ingredient')
     // ingredient quantity
     table.float('quantity')
     // measurement unit
