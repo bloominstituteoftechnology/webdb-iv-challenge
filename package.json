@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.2"
+  },
+  "name": "db-recipe-book",
+  "description": "- database modeling.\r - migration scripts.\r - seeding.\r - knex.",
+  "version": "1.0.0",
+  "main": "knexfile.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skennedy93/db-recipe-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skennedy93/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/skennedy93/db-recipe-book#readme"
+}
