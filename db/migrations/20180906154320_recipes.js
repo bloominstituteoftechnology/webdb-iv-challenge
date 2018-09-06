@@ -5,6 +5,12 @@ exports.up = function(knex, Promise) {
     tbl
       .string("name")
       .notNullable()
+    tbl
+      .integer("dish_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("dishes")
   })
 };
 
