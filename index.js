@@ -35,6 +35,25 @@ app.get('/dishes/:id', async (req, res) => {
 	}
 });
 
+app.get('/recipes', async (req, res) => {
+	try {
+		const recipes = await helper.getRecipes();
+		res.status(200).json(recipes)
+	} catch(err) {
+		res.status(500).json({ error: 'The request could not be fulfilled.' });
+	}
+})
+
+app.post('/recipes', async (req, res) => {
+	const recipe = req.body
+	try {
+		const id = await helper.addRecipe(recipe);
+		res.status(201).json(id)
+	} catch(err) {
+		res.status(500).json({ error: 'The request could not be fulfilled.' });
+	}
+})
+
 app.listen(9000, () => {
   console.log('Server listening on 9000');
 });

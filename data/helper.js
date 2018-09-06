@@ -12,8 +12,18 @@ function getDish(id){
 	return db('dishes').join('recipes', 'recipes.dish_id', 'dishes.id').where({'dishes.id': id})
 }
 
+function getRecipes(){
+	return db('recipes')
+}
+
+function addRecipe(recipe){
+	return db('recipes').insert(recipe)
+}
+
 module.exports = {
 	getDishes,
 	addDish,
-	getDish
+	getDish,
+	getRecipes,
+	addRecipe
 }
