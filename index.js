@@ -14,10 +14,18 @@ server.get('/', (req, res) => {
     res.send('API Running')
 })
   
-  server.get('/api/dishes', (req, res) => {
+server.get('/api/dishes', (req, res) => {
     db('dishes')
       .then(dishes => {
         res.status(200).json(dishes);
+      })
+      .catch(err => res.status(500).json(err));
+  });
+ 
+server.get('/api/recipes', (req, res) => {
+    db('recipes')
+      .then(recipes => {
+        res.status(200).json(recipes);
       })
       .catch(err => res.status(500).json(err));
   });
