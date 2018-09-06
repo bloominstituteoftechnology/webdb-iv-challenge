@@ -34,4 +34,16 @@ server.post("/dishes", async (req, res) => {
     }
 });
 
+server.get("/dishes/:dishes_id", async (req, res) => {
+    const { dishes_id } = req.params;
+    try {
+        const dish = await db('dishes').where({ dishes_id });
+        res.status(200).json( dish );
+    }
+    catch (err) {
+        res.status(500).json(err.message);
+    }
+});
+
+
 server.listen( 8000, () => console.log('===Server running port 8000==='))
