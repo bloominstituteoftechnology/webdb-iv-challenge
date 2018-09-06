@@ -9,14 +9,27 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/dishes', function(req, res, next) {
-  helpers
-    .getDishes()
-    .then(data => {
-      res.status(200).json(data);
-    })
-    .catch(next);
-});
+app
+  .route('/api/dishes')
+  .get(function(req, res, next) {
+    helpers
+      .getDishes()
+      .then(data => {
+        res.status(200).json(data);
+      })
+      .catch(next);
+  })
+  .post(function(req, res, next) {
+    const { name } = req.body;
+
+    if (!name)
+      return res.status(400).json({ message: 'Please provide a name' });
+
+    helpers
+      .addDish({ name })
+      .then(data => res.status(201).json(data))
+      .catch(next);
+  });
 
 app.use(function(err, _, res, _) {
   console.error(err);
