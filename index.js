@@ -35,9 +35,9 @@ server.post("/dishes", async (req, res) => {
 });
 
 server.get("/dishes/:dishes_id", async (req, res) => {
-    const { dishes_id } = req.params;
+    const { dish_id } = req.params;
     try {
-        const dish = await db('dishes').where({ dishes_id });
+        const dish = await db('dishes').where({ dish_id });
         res.status(200).json( dish );
     }
     catch (err) {
@@ -53,7 +53,29 @@ server.get("/recipes", async (req, res) => {
     catch (err) {
         res.status(500).json(err.message);
     }
-})
+});
+
+server.post("/recipes", async (req, res) => {
+    const newRecipe = req.body;
+    try {
+        if ( !newRecipe.recipe || !newRecipe.dish_id ) {
+            res.status(400).json({ 
+                message: "Recipe name and/or Dish_Id is required."
+            })
+        } else {
+            try {
+                const recipe = await db.insert(newRecipe).into('recipes');
+                res.status(201).json(recipe);
+            }
+            catch (err) {
+                res.status(500).json(err.message);
+            }
+        }
+    }
+    catch (err) {
+
+    }
+});
 
 
 server.listen( 8000, () => console.log('===Server running port 8000==='))
