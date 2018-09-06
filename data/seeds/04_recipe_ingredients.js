@@ -1,13 +1,30 @@
-
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
+  return knex('table_name')
+    .del()
+    .then(function() {
       // Inserts seed entries
       return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+        { recipe_id: 1, ingredient_id: 1, amount: 1 },
+        { recipe_id: 1, ingredient_id: 2, amount: 10 },
+        { recipe_id: 1, ingredient_id: 3, amount: 7 },
+        { recipe_id: 1, ingredient_id: 4, amount: 2 },
+        { recipe_id: 1, ingredient_id: 5, amount: 1 },
+        { recipe_id: 2, ingredient_id: 1, amount: 1 },
+        { recipe_id: 2, ingredient_id: 3, amount: 2 },
+        { recipe_id: 2, ingredient_id: 4, amount: 1 },
+        { recipe_id: 2, ingredient_id: 5, amount: 5 },
+        { recipe_id: 2, ingredient_id: 6, amount: 1 },
+        { recipe_id: 2, ingredient_id: 7, amount: 1 },
+        { recipe_id: 3, ingredient_id: 8, amount: 3 },
+        { recipe_id: 3, ingredient_id: 9, amount: 1 },
+        { recipe_id: 3, ingredient_id: 10, amount: 3 },
+        { recipe_id: 3, ingredient_id: 11, amount: 2 },
+        { recipe_id: 4, ingredient_id: 12, amount: 2 },
+        { recipe_id: 4, ingredient_id: 13, amount: 3 },
+        { recipe_id: 4, ingredient_id: 14, amount: 4 },
+        { recipe_id: 4, ingredient_id: 7, amount: 1 },
+        { recipe_id: 4, ingredient_id: 10, amount: 4 },
       ]);
     });
 };
