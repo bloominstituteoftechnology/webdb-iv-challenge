@@ -4,7 +4,8 @@ exports.up = function(knex, Promise) {
       tbl.increments(); 
       tbl
         .string('name')
-        .notNullable(); 
+        .notNullable()
+        .unique('name'); 
   })
 };
 
