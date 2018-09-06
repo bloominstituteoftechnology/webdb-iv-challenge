@@ -25,7 +25,13 @@ getDish=server.get('/api/dishes/:id',(req,res)=>{
         .join('recipes',{'dishes.id':'recipes.dish_id'})
         .select('dishes.name as dish','recipes.name as recipe')
         .where({'recipes.dish_id':req.params.id})
-        .then(dish=>res.status(200).json(dish))
+        .then(dish=>{
+            let recipes='';
+            for (let i=0; i<dish.length; i++) {
+                i===0?recipes+=dish[i].recipe:recipes+=`, ${dish[i].recipe}`
+            }
+            const dishListing={dish:dish[0].dish,recipes:recipes}
+            res.status(200).json(dishListing)})
         .catch(err=>res.status(500).json(err));
 })
 getRecipes=server.get('/api/recipes',(req,res)=>{
