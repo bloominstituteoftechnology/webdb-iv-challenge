@@ -5,6 +5,11 @@ exports.up = function(knex, Promise) {
     tbl
       .string('name')
       .notNullable()
+    tbl
+      .float("quantity")
+    tbl
+      .enu("recipes")
+      
   })
 };
 

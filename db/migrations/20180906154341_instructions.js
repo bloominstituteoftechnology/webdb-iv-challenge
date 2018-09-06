@@ -5,7 +5,14 @@ exports.up = function(knex, Promise) {
     tbl
       .string("name")
       .notNullable()
-
+    tbl
+      .integer("receipe_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("cohorts")
+    tbl
+      .enu("steps")
   })
 };
 
