@@ -5,7 +5,7 @@
 - database modeling.
 - migration scripts.
 - seeding.
-- knex.
+- knex. 
 
 ## Assignment
 
