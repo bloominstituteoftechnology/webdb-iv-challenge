@@ -16,4 +16,8 @@ module.exports = {
   getRecipes() {
     return db('recipes');
   },
+
+  addRecipe(recipe) {
+    return db('recipes').insert(recipe);
+  },
 };

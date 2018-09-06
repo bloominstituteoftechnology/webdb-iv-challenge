@@ -14,3 +14,12 @@ GET http://localhost:5000/api/dishes/1 HTTP/1.1
 
 GET http://localhost:5000/api/recipes HTTP/1.1
 ###
+
+POST http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Some recipe",
+  "dish_id": 4
+}
+###

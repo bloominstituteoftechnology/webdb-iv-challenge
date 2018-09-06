@@ -43,12 +43,27 @@ app.route('/api/dishes/:id').get(function(req, res, next) {
     .catch(next);
 });
 
-app.route('/api/recipes').get(function(req, res, next) {
-  helpers
-    .getRecipes()
-    .then(data => res.status(200).json(data))
-    .catch(next);
-});
+app
+  .route('/api/recipes')
+  .get(function(req, res, next) {
+    helpers
+      .getRecipes()
+      .then(data => res.status(200).json(data))
+      .catch(next);
+  })
+  .post(function(req, res, next) {
+    const { name, dish_id } = req.body;
+
+    if (!name || !dish_id)
+      return res
+        .status(400)
+        .json({ message: 'You need to provide a name and a dish id' });
+
+    helpers
+      .addRecipe({ name, dish_id })
+      .then(data => res.status(201).json(data))
+      .catch(next);
+  });
 
 app.use(function(err, _, res, _) {
   console.error(err);
