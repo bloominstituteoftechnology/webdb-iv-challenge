@@ -10,6 +10,8 @@ module.exports = {
     return query;
   }, //get's all dishes, or dish by id if provided
   insert: function(dish) {
-    return db('dishes').insert(dish).then(ids => ({ id: ids[0] }));
-  },  
+    return db('dishes')
+            .insert(dish)
+            .then(ids => ({ id: ids[0] }));
+  },
 };
