@@ -11,9 +11,19 @@ app.get('/dishes', async (req, res) => {
 		const dishes = await helper.getDishes()
 		res.status(200).json(dishes)
 	} catch(err) {
-		res.status(500).json(err);
+		res.status(500).json({ error: 'The request could not be fulfilled.' });
 	}
 });
+
+app.post('/dishes', async (req, res) => {
+	const dish = req.body;
+	try {
+		const id = await helper.addDish(dish);
+		res.status(201).json(id)
+	} catch(err) {
+		res.status(500).json({ error: 'The request could not be fulfilled.' });
+	}
+})
 
 app.get('/dishes/:id', async (req, res) => {
 	const { id } = req.params;
@@ -21,7 +31,7 @@ app.get('/dishes/:id', async (req, res) => {
 		const dish = await helper.getDish(id)
 		res.status(200).json(dish)
 	} catch(err) {
-		res.status(500).json(err);
+		res.status(500).json({ error: 'The request could not be fulfilled.' });
 	}
 });
 
