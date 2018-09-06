@@ -1,5 +1,7 @@
 
 exports.up = function(knex, Promise) {
+
+//Dish Table
   return knex.schema.createTable('dishes', function(tbl) {
       tbl.increments();
 
