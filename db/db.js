@@ -1,6 +1,6 @@
 const db = require('knex')(require('../knexfile').development);
 
-module.export = {
+module.exports = {
   getShoppingList: (recipeId) => {
     return db().select('i.name', 'ir.quantity')
       .from('ingredients as i')
@@ -17,7 +17,15 @@ module.export = {
   },
 
   getDish: (id) => {
-    return db('dishes as d').join('recipes as r', { 'd.id': id });
+    return db('dishes').where({ id }).then(d => {
+      const name = d[0].name;
+      
+      return db('dishes as d').where({ 'd.id': id })
+        .join('recipes', { 'd.id': 'recipes.dish_id' })
+        .reduce((dish, recipe) => {
+          return Object.assign(dish, { recipes: dish.recipes.concat([recipe]) });
+        }, { id, name, recipes: [] });
+      });
   },
 
   getRecipes: () => {
