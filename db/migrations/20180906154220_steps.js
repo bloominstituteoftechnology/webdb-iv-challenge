@@ -3,7 +3,7 @@ exports.up = (knex, Promise) => {
     t.increments();
     t.string('step').notNullable();
     t.integer('order');
-    t.integer('instruction_id').references('instructions.id').onDelete('cascade');
+    t.integer('recipe_id').references('recipes.id').onDelete('cascade');
   });
 };
 
