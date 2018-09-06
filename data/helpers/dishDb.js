@@ -5,6 +5,8 @@ module.exports = {
     let query = db('dishes as d');
 
     if(id){
+      query.where('id', Number(id));
+
       const promises = [query, this.getDishRecipes(id)];
 
       return Promise.all(promises).then(function(results) {
