@@ -37,6 +37,14 @@ server.get('/api/dishes/:id', (req, res, next) => {
     .catch(err => next(err));
 });
 
+server.post('/api/dishes', (req, res, next) => {
+  let body = req.body;
+  dishdb
+    .addDish(body)
+    .then(data => res.status(200).json(data))
+    .catch(err => next(err));
+});
+
 const port = 3900;
 server.listen(port, function() {
   console.log(`\n=== Web API Listening on http://localhost:${port} mon ===\n`);

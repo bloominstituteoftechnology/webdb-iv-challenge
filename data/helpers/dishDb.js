@@ -23,4 +23,8 @@ module.exports = {
       return dish;
     });
   },
+
+  addDish: function(dish) {
+    return db('dishes').insert(dish);
+  },
 };
