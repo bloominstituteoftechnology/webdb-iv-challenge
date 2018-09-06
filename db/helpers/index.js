@@ -10,7 +10,13 @@ module.exports = {
   },
 
   getDish(id) {
-    return db('dishes').where('id', id);
+    return db('dishes')
+      .select({
+        dish_name: 'dishes.name',
+        recipe_name: 'recipes.name',
+      })
+      .join('recipes', 'recipes.dish_id', 'dishes.id')
+      .where('dishes.id', id);
   },
 
   getRecipes() {
