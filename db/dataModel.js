@@ -63,6 +63,8 @@ module.exports = {
         return query
             .where('id', id)
             .first()
+            .join('ingredients', {[Array.from('recipes.ingredients'.split(' ')).map(ingredient => ingredient)]: 'ingredients.id'})
+            .select('recipes.id', 'recipes.name', 'recipes.dish_id', 'ingredients.id', 'recipes.instructions')
             .then(recipe => recipe);
     },
 
