@@ -8,3 +8,6 @@ Content-Type: application/json
   "name": "some dish"
 }
 ###
+
+GET http://localhost:5000/api/dishes/1 HTTP/1.1
+###

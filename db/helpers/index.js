@@ -8,4 +8,8 @@ module.exports = {
   addDish(dish) {
     return db('dishes').insert(dish);
   },
+
+  getDish(id) {
+    return db('dishes').where('id', id);
+  },
 };

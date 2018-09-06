@@ -31,6 +31,18 @@ app
       .catch(next);
   });
 
+app.route('/api/dishes/:id').get(function(req, res, next) {
+  helpers
+    .getDish(req.params.id)
+    .then(data => {
+      if (!data)
+        return res.status(404).json({ message: 'The dish cannot be found' });
+
+      res.status(200).json(data);
+    })
+    .catch(next);
+});
+
 app.use(function(err, _, res, _) {
   console.error(err);
   res.status(500).json({ message: 'Bad luck mate try again later ' });
