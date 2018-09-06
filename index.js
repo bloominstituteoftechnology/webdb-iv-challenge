@@ -37,5 +37,13 @@ server.get('/api/ingredients', (req, res) => {
       })
       .catch(err => res.status(500).json(err));
   });
+
+server.get('/api/instructions', (req, res) => {
+    db('instructions')
+      .then(instructions => {
+        res.status(200).json(instructions);
+      })
+      .catch(err => res.status(500).json(err));
+  });
     
   server.listen(8000, () => console.log("server running on 8k"));
