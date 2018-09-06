@@ -11,3 +11,6 @@ Content-Type: application/json
 
 GET http://localhost:5000/api/dishes/1 HTTP/1.1
 ###
+
+GET http://localhost:5000/api/recipes HTTP/1.1
+###

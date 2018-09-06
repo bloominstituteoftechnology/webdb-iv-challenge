@@ -43,6 +43,13 @@ app.route('/api/dishes/:id').get(function(req, res, next) {
     .catch(next);
 });
 
+app.route('/api/recipes').get(function(req, res, next) {
+  helpers
+    .getRecipes()
+    .then(data => res.status(200).json(data))
+    .catch(next);
+});
+
 app.use(function(err, _, res, _) {
   console.error(err);
   res.status(500).json({ message: 'Bad luck mate try again later ' });

@@ -12,4 +12,8 @@ module.exports = {
   getDish(id) {
     return db('dishes').where('id', id);
   },
+
+  getRecipes() {
+    return db('recipes');
+  },
 };
