@@ -12,22 +12,11 @@ exports.up = function(knex, Promise) {
         .notNullable();
 
     tbl
-        .integer("ingredient_1");
+        .integer("ingredient_id");
 
     tbl
-        .integer("quantity_1");
-
-    tbl
-        .integer("ingredient_2");
-
-    tbl
-        .integer("quantity_2");
-
-    tbl
-        .integer("ingredient_3");
-
-    tbl
-        .integer("quantity_3");
+        .integer("quantity_id");
+        
   });
 };
 
