@@ -65,6 +65,17 @@ app
       .catch(next);
   });
 
+app.route('/api/recipes/:id').get(function(req, res, next) {
+  helpers
+    .getRecipe(req.params.id)
+    .then(data => {
+      if (!data) return res.status(404).json({ message: 'Recipe ID invalid' });
+
+      res.status(200).json(data);
+    })
+    .catch(next);
+});
+
 app.use(function(err, _, res, _) {
   console.error(err);
   res.status(500).json({ message: 'Bad luck mate try again later ' });
