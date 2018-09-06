@@ -53,7 +53,10 @@ module.exports = {
                 .then(dish => dish);
         }
 
-        return query.then(recipes => {
+        return query
+        .join('dishes', 'recipes.dish_id', 'dishes.id')
+        .select('recipes.id', 'recipes.name', 'dishes.name as dish_type', 'recipes.dish_id', 'recipes.ingredients', 'recipes.instructions')
+        .then(recipes => {
             return recipes;
         });
     },
@@ -63,8 +66,8 @@ module.exports = {
         return query
             .where('id', id)
             .first()
-            .join('ingredients', {[Array.from('recipes.ingredients'.split(' ')).map(ingredient => ingredient)]: 'ingredients.id'})
-            .select('recipes.id', 'recipes.name', 'recipes.dish_id', 'ingredients.id', 'recipes.instructions')
+            // .join('ingredients', {[Array.from('recipes.ingredients'.split(' ')).map(ingredient => ingredient)]: 'ingredients.id'})
+            // .select('recipes.id', 'recipes.name', 'recipes.dish_id', 'ingredients.id', 'recipes.instructions')
             .then(recipe => recipe);
     },
 
