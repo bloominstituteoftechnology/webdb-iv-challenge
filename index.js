@@ -13,4 +13,12 @@ server.get('/', (req, res) => {
     res.send('Hello FSW12');
 });
 
+server.get('/api/recipes', (req, res) => {
+    db('recipes')
+        .select('name')
+        .then(cohorts => {
+            res.status(200).json(cohorts);
+        })
+        .catch(err => res.status(500).json(err));
+} );
 server.listen(8000);
