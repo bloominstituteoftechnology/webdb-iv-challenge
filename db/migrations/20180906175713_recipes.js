@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
             .notNullable()
             .unique('recipe_name')
         tbl
-            .interger('dish_id')
+            .integer('dish_id')
             .unsigned()
             .notNullable()
             .references('id')
