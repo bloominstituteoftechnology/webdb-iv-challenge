@@ -23,6 +23,7 @@ module.exports = {
     },
 
     getDish: function(id) {
+        let query = db('dishes');
         return query
         .where('id', id)
         .first()
@@ -58,6 +59,7 @@ module.exports = {
     },
 
     getRecipe: function(id) {
+        let query = db('recipes');
         return query
             .where('id', id)
             .first()

@@ -36,7 +36,7 @@ server.get('/api/dishes', async (req, res) => {
 server.get('/api/dishes/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const response = await db.getDishes(id);
+        const response = await db.getDish(id);
         res.status(200).json(response);
     } catch (ex) {
         res.status(500).json(ex);
@@ -93,7 +93,7 @@ server.get('/api/recipes', async (req, res) => {
 server.get('/api/recipes/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const response = await db.getRecipes(id);
+        const response = await db.getRecipe(id);
         res.status(200).json(response);
     } catch (ex) {
         res.status(500).json(ex);
