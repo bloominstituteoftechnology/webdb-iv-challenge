@@ -9,7 +9,6 @@ module.exports = {
     },
     useNullAsDefault: true
   },
-
  
 
 };
