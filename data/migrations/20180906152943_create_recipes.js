@@ -12,7 +12,8 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('dishes');
+      .inTable('dishes')
+      .onDelete('CASCADE');
   });
 };
 

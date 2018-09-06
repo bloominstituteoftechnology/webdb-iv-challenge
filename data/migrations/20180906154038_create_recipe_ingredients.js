@@ -8,14 +8,16 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('recipes');
+      .inTable('recipes')
+      .onDelete('CASCADE');
 
     tbl
       .integer('ingredient_id')
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('ingredients');
+      .inTable('ingredients')
+      .onDelete('CASCADE');
 
     tbl
       .float('quantity')
