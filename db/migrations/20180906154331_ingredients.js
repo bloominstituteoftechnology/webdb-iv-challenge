@@ -8,7 +8,8 @@ exports.up = function(knex, Promise) {
     tbl
       .float("quantity")
     tbl
-      .enu("recipes")
+      .string("unit_of_measure")
+      .notNullable()
       
   })
 };

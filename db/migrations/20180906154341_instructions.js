@@ -3,16 +3,14 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("instructions", function(tbl){
     tbl.increments()
     tbl
-      .string("name")
+      .string("step")
       .notNullable()
     tbl
-      .integer("receipe_id")
+      .integer("recipe_id")
       .unsigned()
       .notNullable()
       .references("id")
-      .inTable("cohorts")
-    tbl
-      .enu("steps")
+      .inTable("recipes")
   })
 };
 
