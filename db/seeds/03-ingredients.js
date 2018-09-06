@@ -16,6 +16,8 @@ exports.seed = function(knex, Promise) {
         {name: 'mustard'},
         {name: 'cheese'},
         {name: 'salt'},
+        {name: 'water'},
+        {name: 'tortillas'}
         
       ]);
     });
