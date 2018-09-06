@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .references('id')
       .inTable('ingredients');
-    table.integer('amount').notNullable();
+    table.float('amount').notNullable();
   });
 };
 exports.down = function(knex, Promise) {

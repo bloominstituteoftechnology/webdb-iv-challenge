@@ -5,20 +5,20 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex('table_name').insert([
-        { name: 'pizza dough', price: 10 }, //1
-        { name: 'pepperoni', price: 5 }, //2
-        { name: 'mushrooms', price: 3 }, //3
-        { name: 'mozerella cheese', price: 6 }, //4
-        { name: 'marinara sauce', price: 5 }, //5
-        { name: 'peppers', price: 2 }, //6
-        { name: 'tomatoes', price: 3 }, //7
-        { name: 'corn tortillas', price: 2 }, //8
-        { name: 'pork carnitas', price: 12 }, //9
-        { name: 'limes', price: 2 }, //10
-        { name: 'cilantro', price: 4 }, //11
-        { name: 'chicken', price: 12 }, //12
-        { name: 'avacado', price: 4 }, //13
-        { name: 'taco shells', price: 2 }, //14
+        { name: 'pizza dough', measurement: 'package' }, //1
+        { name: 'pepperoni', measurement: 'cups' }, //2
+        { name: 'mushrooms', measurement: 'cups' }, //3
+        { name: 'mozerella cheese', measurement: 'cups' }, //4
+        { name: 'marinara sauce', measurement: 'cups' }, //5
+        { name: 'peppers', measurement: 'cups' }, //6
+        { name: 'tomatoes', measurement: 'cups' }, //7
+        { name: 'corn tortillas', measurement: 'tortillas' }, //8
+        { name: 'pork carnitas', measurement: 'lbs' }, //9
+        { name: 'limes', measurement: 'limes' }, //10
+        { name: 'cilantro', measurement: 'bunches' }, //11
+        { name: 'chicken', measurement: 'lbs' }, //12
+        { name: 'avacado', measurement: 'avacados' }, //13
+        { name: 'taco shells', measurement: 'shells' }, //14
       ]);
     });
 };
