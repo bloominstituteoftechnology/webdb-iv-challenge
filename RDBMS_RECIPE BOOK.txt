@@ -1,0 +1,64 @@
+-- PostgreSQL
+
+
+CREATE TABLE "Dishes" (
+  "dish_id" integer,
+  "dish_type_id" integer,
+  "dish_name" text,
+  "dish_discription" text,
+  "dish_likes" integer,
+  "dish_image"    text
+);
+
+CREATE TABLE "Ingredient" (
+  "ingredient_id" integer,
+  "ingredient_name"  text,
+  "link_to_more_info"  text
+);
+
+CREATE TABLE "Recipe" (
+  "recipe_id" integer,
+  "recipe_name" text,
+  "recipe_description" text,
+  "  cooking_instruct_id"    integer,
+  "   servings"    integer,
+  "   ingredient_quantity"    integer,
+  "   measurement_unit"    integer
+);
+
+CREATE TABLE "Cooking_Instructtions" (
+  "cooking_instruct_id" integer,
+  "instruct_text" integer,
+  "step_number" integer
+);
+
+CREATE TABLE "Dish_type" (
+  "dish_type_id" integer,
+  "dish_type_name" text
+);
+
+CREATE TABLE "shoping_list" (
+  "list_id" integer,
+  "list_name" integer,
+  "list_date" date/time,
+  "ingredient_id" integer,
+  "total_quantity" integer,
+  "recipe_id"    integer,
+  "dish_likes"  integer
+);
+
+CREATE TABLE "Ingredients" (
+  "ingredients_id" integer,
+  "recipe_id" integer,
+  "ingredient_id" integer,
+  "ingredient_quantity" integer,
+  " measurement_type"    text,
+  "presentation_type"     text
+);
+
+CREATE TABLE "Dish_Recipe" (
+  "dish_recipe_id" integer,
+  "dish_id" integer,
+  "recipe_id" integer
+);
+

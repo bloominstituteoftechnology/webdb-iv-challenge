@@ -1,0 +1,29 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "database modeling with knex for migration and seeding",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AppMkrATL/db-recipe-book.git"
+  },
+  "author": "Sam Khaled",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AppMkrATL/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/AppMkrATL/db-recipe-book#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.3",
+    "sqlite3": "^4.0.2"
+  }
+}
