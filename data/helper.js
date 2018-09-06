@@ -20,10 +20,32 @@ function addRecipe(recipe){
 	return db('recipes').insert(recipe)
 }
 
+async function getRecipe(id){
+	try {
+		let ingredients = await db('ingredients_in_recipe')
+							.where({'ingredients_in_recipe.recipe_id': id})
+							.join('ingredients', 'ingredients_in_recipe.ingredient_id', 'ingredients.id')
+							.select('ingredients.name as Ingredient', 'ingredients_in_recipe.quantity as Quantity')
+		let steps = await db.select('steps.step_number as Step_Number', 'steps.description as Step')
+						.from('recipes')
+						.join('steps', 'recipes.id', 'steps.recipe_id')
+						.where({'recipes.id': id})
+						.orderBy('Step_Number')
+		let info = await db('recipes')
+							.join('dishes', 'dishes.id', 'recipes.dish_id')
+							.where({'recipes.id': id})
+							.select('recipes.name as Name', 'dishes.name as Dish')
+		return { info, ingredients, steps };
+	} catch(err){
+		console.log(err)
+	}
+}
+
 module.exports = {
 	getDishes,
 	addDish,
 	getDish,
 	getRecipes,
-	addRecipe
+	addRecipe,
+	getRecipe
 }

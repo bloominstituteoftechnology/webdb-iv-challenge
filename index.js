@@ -54,6 +54,16 @@ app.post('/recipes', async (req, res) => {
 	}
 })
 
+app.get('/recipes/:id', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const recipe = await helper.getRecipe(id);
+		res.status(200).json(recipe)
+	} catch(err) {
+		res.status(500).json({ error: 'The request could not be fulfilled.' });
+	}
+})
+
 app.listen(9000, () => {
   console.log('Server listening on 9000');
 });
