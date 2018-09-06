@@ -61,6 +61,20 @@ server.post('/api/recipes', (req, res, next) => {
     .then(data => res.status(200).json(data))
     .catch(err => next(err));
 });
+
+server.get('/api/recipes/:id', (req, res, next) => {
+  recipedb
+    .getRecipe(req.params.id)
+    .then(data => {
+      console.log(data);
+      if (!data) {
+        return next({ code: 404 });
+      }
+      res.status(200).json(data);
+    })
+    .catch(err => next(err));
+});
+
 const port = 3900;
 server.listen(port, function() {
   console.log(`\n=== Web API Listening on http://localhost:${port} mon ===\n`);

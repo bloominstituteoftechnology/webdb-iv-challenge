@@ -16,10 +16,10 @@ module.exports = {
     const promises = [dish, recipes];
 
     return Promise.all(promises).then(results => {
-      console.log(results);
       let [dish, recipes] = results;
+      console.log(dish, recipes);
       dish.recipes = recipes.map(recipe => recipe.name);
-      console.log(recipes);
+      console.log(dish);
       return dish;
     });
   },
