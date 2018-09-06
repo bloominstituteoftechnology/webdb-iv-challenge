@@ -4,6 +4,8 @@ exports.up = function(knex, Promise) {
       tbl.increments();
       tbl.float('quantity')
         .notNullable();
+      tbl.string('description')
+        .notNullable();
       tbl.integer('dish_id')
         .unsigned()
         .notNullable()
