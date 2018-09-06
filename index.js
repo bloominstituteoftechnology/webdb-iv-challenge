@@ -15,7 +15,23 @@ server.get("/dishes", async (req, res) => {
     catch (err) {
         res.status(500).json(err);
     }
-})
+});
 
+server.post("/dishes", async (req, res) => {
+    const dish = req.body;
+    if( ! dish.name) {
+        res.status(400).json({
+            message: "A dish name is required."
+        })
+    } else {
+        try {
+            const addDish = await db.insert(dish).into('dishes');
+            res.status(201).json(addDish);
+        }
+        catch (err) {
+            res.status(500).json(err)
+        }
+    }
+});
 
 server.listen( 8000, () => console.log('===Server running port 8000==='))
