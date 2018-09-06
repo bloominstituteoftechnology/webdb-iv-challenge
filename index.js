@@ -21,6 +21,14 @@ server.get("/dishes", (req, res)=>{
     .catch(err => res.status(500).json(err)); 
 })
 
+server.get("/dishes/:id", (req, res)=>{
+    const {id} = req.params; 
+    db("dishes")
+    .where({id})
+    .then(dish => res.status(200).json(dish))
+    .catch(err => res.status(500).json(err))
+})
+
 
 server.listen(5000, function() {
     console.log("//======Server 5k=========//");
