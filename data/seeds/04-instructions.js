@@ -1,10 +1,10 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('instructions').del()
     .then(function () {
       // Inserts seed entries
-      return knex('table_name').insert([
+      return knex('instructions').insert([
         { recipe_id: 2, step_number: 1, step_instruction: 'Add whole-wheat flour, butter, sugar, and eggs into a mixing bowl. Whisk unitl smooth.' },
         { recipe_id: 2, step_number: 2, step_instruction: 'Heat pan over medium-high heat. Spray with non-sitck cooking spray.' },
         { recipe_id: 2, step_number: 3, step_instruction: 'Add half-cup of pancake batter to pan. Flip when pancake starts to bubble on top.' },
