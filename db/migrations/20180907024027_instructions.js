@@ -11,10 +11,8 @@ exports.up = function(knex, Promise) {
       .integer('recipe_id')
       .unsigned()
       .references('recipes.id');
-    table
-      .integer('ingredient_id')
-      .unsigned()
-      .references('ingredients.id');
+
+    table.string('description', 1000).notNullable();
   });
 };
 
