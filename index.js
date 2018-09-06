@@ -11,6 +11,13 @@ server.get('/dishes', (req, res) => {
     }).catch (err => res.status(500).json({ error: "Unable to retrieve."}))
 })
 
+server.post('/dishes', (req, res) => {
+    db.addDish(req.body)
+        .then(dishes => {
+            res.status(201).json(dishes)
+        }).catch(err => res.status(500).json({ error: "Unable to retrieve."}))
+})
+
 server.listen(5000, () =>{
     console.log(`server is listening on port 5000`)
 })
