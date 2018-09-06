@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 const dishdb = require('./data/helpers/dishDb');
+const recipedb = require('./data/helpers/recipeDb');
 const server = express();
 const mw = require('./middleware');
 
@@ -45,6 +46,21 @@ server.post('/api/dishes', (req, res, next) => {
     .catch(err => next(err));
 });
 
+server.get('/api/recipes', (req, res, next) => {
+  recipedb
+    .getRecipes()
+    .then(data => res.status(200).json(data))
+    .catch(err => next(err));
+});
+
+server.post('/api/recipes', (req, res, next) => {
+  let body = req.body;
+
+  recipedb
+    .addRecipe(body)
+    .then(data => res.status(200).json(data))
+    .catch(err => next(err));
+});
 const port = 3900;
 server.listen(port, function() {
   console.log(`\n=== Web API Listening on http://localhost:${port} mon ===\n`);
