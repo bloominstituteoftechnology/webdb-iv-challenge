@@ -28,8 +28,10 @@ module.exports = {
         console.error(error);
       });
   },
-  getDishes: () => {
-    return db("dishes")
+  getRecipes: () => {
+    return db("recipes")
+    .join('dishes','recipes.dish_id','=','dishes.id')
+
       .then(rows => {
         console.log(rows);
         return rows;
@@ -37,6 +39,10 @@ module.exports = {
       .catch(function(error) {
         console.error(error);
       });
+  },
+  addRecipe: (body) => {
+    console.log(body)
+    return db("recipes").insert({ ...body });
   },
   // delete:(id,which)=>{
   //   return db(which)

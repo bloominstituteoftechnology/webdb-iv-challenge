@@ -24,12 +24,35 @@ server.get("/api/dishes/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+server.get("/api/recipes", async (req, res) => {
+  try {
+    const results = await dbhelpers.getRecipes(req.params.id);
+    res.status(200).json(results);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 server.post("/api/dishes", async (req, res) => {
   if (!req.body.dish_name) {
     res.status(400).json({ errorMessage: "Invalid body" });
   }
   try {
     const results = await dbhelpers.addDish(req.body);
+    res.status(200).json({ results });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+server.post("/api/recipes", async (req, res) => {
+  if (!req.body.recipe_name||!req.body.dish_id) {
+    res.status(400).json({ errorMessage: "Invalid body" });
+  }
+  try {
+    const results = await dbhelpers.addRecipe(req.body);
     res.status(200).json({ results });
   } catch (err) {
     res.status(500).json(err);
