@@ -24,3 +24,11 @@ const addRecipe = async (recipe) => {
   await db.insert(recipe).table('recipe')
   return recipe.id
 }
+
+module.exports = {
+  getDishes,
+  getDish,
+  getRecipes,
+  addDish,
+  addRecipe
+}
