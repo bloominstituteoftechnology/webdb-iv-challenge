@@ -17,6 +17,12 @@ exports.up = function(knex, Promise) {
     		table
     			.float('quantity')
     			.notNullable()
+        table
+          .integer('unit_id')
+          .unsigned()
+          .notNullable()
+          .references('id')
+          .inTable('units')
       	    })
   };
 

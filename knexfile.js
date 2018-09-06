@@ -19,5 +19,23 @@ module.exports = {
     //    conn.run('PRAGMA foreign_keys = ON', cb)
     // }
   },
+  production: {
+    client: 'mysql',
+    connection: {
+      host: 'localhost', 
+      user: 'luis', 
+      password: 'pass', 
+      database: 'blogdb', 
+    },
+    pool: {
+      min: 1,
+      max: 10,
+    },
+    migrations: {
+      directory: './database/migrations',
+      tableName: 'dbmigrations',
+    },
+    seeds: { directory: './database/seeds' },
+  },
 
 };
