@@ -10,7 +10,7 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 
-server.get('/', (req, res) => {
+server.get('/api/', (req, res) => {
     res.send('API Running')
 })
   
@@ -26,6 +26,14 @@ server.get('/api/recipes', (req, res) => {
     db('recipes')
       .then(recipes => {
         res.status(200).json(recipes);
+      })
+      .catch(err => res.status(500).json(err));
+  });
+
+server.get('/api/ingredients', (req, res) => {
+    db('ingredients')
+      .then(ingredients => {
+        res.status(200).json(ingredients);
       })
       .catch(err => res.status(500).json(err));
   });
