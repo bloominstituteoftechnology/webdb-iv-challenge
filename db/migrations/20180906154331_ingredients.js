@@ -5,12 +5,7 @@ exports.up = function(knex, Promise) {
     tbl
       .string('name')
       .notNullable()
-    tbl
-      .float("quantity")
-    tbl
-      .string("unit_of_measure")
-      .notNullable()
-      
+          
   })
 };
 
