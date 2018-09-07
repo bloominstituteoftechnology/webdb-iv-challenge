@@ -12,27 +12,30 @@ module.exports = {
     return db('dishes');
   },
 
-  addDish: (dish) => {
-    return db('dishes').insert(dish);
-  },
-
   getDish: (id) => {
     return db('dishes').where({ id }).then(d => {
       const name = d[0].name;
-      
+
       return db('dishes as d').where({ 'd.id': id })
         .join('recipes', { 'd.id': 'recipes.dish_id' })
         .reduce((dish, recipe) => {
-          return Object.assign(dish, { recipes: dish.recipes.concat([recipe]) });
+          return Object.assign(dish, { recipes: [...dish.recipes, recipe] });
         }, { id, name, recipes: [] });
       });
   },
 
+  addDish: (dish) => {
+    return db('dishes').insert(dish);
+  },
+
+  deleteDish: (id) => {
+    return db('dishes').where({ id }).del();
+  },
+
   getRecipes: () => {
-    return db().select('r.name, d.name as dish')
-      .from('recipes as r')
-      .join('dishes as d', { 'd.id': 'r.dish_id' })
-      .groupBy('r.name, d.name');
+    return db('dishes as d')
+      .select('r.name as recipe', 'd.name as dish')
+      .join('recipes as r', { 'd.id': 'r.dish_id' });
   },
 
   addRecipe: (recipe) => {
