@@ -81,4 +81,6 @@ app.use(function(err, _, res, _) {
   res.status(500).json({ message: 'Bad luck mate try again later ' });
 });
 
-app.listen(5000, () => console.log('\n=== Server running on port 5000 ===\n'));
+app.listen(process.env.PORT || 5000, () =>
+  console.log('\n=== Server running on port 5000 ===\n'),
+);

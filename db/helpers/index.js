@@ -20,7 +20,12 @@ module.exports = {
   },
 
   getRecipes() {
-    return db('recipes');
+    return db('recipes')
+      .select({
+        recipe: 'recipes.name',
+        dish: 'dishes.name',
+      })
+      .join('dishes', 'dishes.id', 'recipes.dish_id');
   },
 
   addRecipe(recipe) {
@@ -54,6 +59,8 @@ module.exports = {
       )
       .join('recipes', 'recipes.id', 'recipe_ingredients.recipe_id')
       .where('recipes.id', id);
+
+    return query_1
 
     return Promise.all([query_1, query_2, query_3]).then(
       ([result1, result2, result3]) => {
