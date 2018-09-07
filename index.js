@@ -30,16 +30,24 @@ server.post('/api/dishes/', (req, res) => {
 
 server.get('/api/dishes/:id', (req, res) => {
   db.getDish(req.params.id)
-    .then(dish => {
+    .then((dish, recipes) => {
       res.status(200).json(dish);
     })
     .catch(err => res.status(500).json(err));
 });
  
 server.get('/api/recipes/', (req, res) => {
-    db('recipes')
+    db.getRecipes()
       .then(recipes => {
         res.status(200).json(recipes);
+      })
+      .catch(err => res.status(500).json(err));
+});
+
+server.post('/api/recipes/', (req, res) => {
+    db.addRecipe(req.body)
+      .then(recipeId => {
+        res.status(200).json(recipeId);
       })
       .catch(err => res.status(500).json(err));
 });
