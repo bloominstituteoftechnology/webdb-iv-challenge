@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
+const ingredientdb = require('./data/helpers/ingredientsDb');
 const dishdb = require('./data/helpers/dishDb');
 const recipedb = require('./data/helpers/recipeDb');
 const server = express();
@@ -72,6 +73,13 @@ server.get('/api/recipes/:id', (req, res, next) => {
       }
       res.status(200).json(data);
     })
+    .catch(err => next(err));
+});
+
+server.get('/api/ingredients', (req, res, next) => {
+  ingredientdb
+    .getIngredients()
+    .then(data => res.status(200).json(data))
     .catch(err => next(err));
 });
 

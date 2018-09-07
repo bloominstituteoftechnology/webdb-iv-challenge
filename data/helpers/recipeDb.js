@@ -15,20 +15,27 @@ module.exports = {
     let recipe = this.getRecipes()
       .where('r.id', id)
       .first();
-    // .join('recipe_ingredients as ri', 'ri.recipe_id', 'r.id')
-    // .select('r.id', 'r.name', 'ri.amount', 'ri.ingredient_id');
+
     let ingredients = db('recipe_ingredients as ri')
       .join('ingredients as i', 'i.id', 'ri.ingredient_id')
       .where('ri.recipe_id', id)
-      .select('i.name', db.raw('ri.amount || i.measurement AS amount'));
-    const promises = [recipe, ingredients];
+      .select('i.name', db.raw("ri.amount || ' ' || i.measurement AS amount"));
+
+    let instructions = db('recipe_instructions as ris')
+      .join('recipes as r', 'r.id', 'ris.recipe_id')
+      .where('r.id', id)
+      .select('ris.step', 'ris.description');
+
+    const promises = [recipe, ingredients, instructions];
 
     return Promise.all(promises).then(results => {
-      let [recipe, ingredients] = results;
-      // console.log('recipe', recipe, 'ingredients', ingredients);
-      recipe.ingredients = ingredients.map(ingredient => ingredient);
-      console.log(recipe);
+      let [recipe, ingredients, instructions] = results;
+
+      recipe.ingredients = ingredients;
+      recipe.instructions = instructions;
+
       return recipe;
     });
   },
+  getRecipeIngredients: function(id) {},
 };
