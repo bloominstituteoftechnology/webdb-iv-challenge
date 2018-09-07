@@ -6,8 +6,7 @@ module.exports = {
     let ingredients = db('ingredients');
     let recipes = db('recipe_ingredients as ri')
       .join('recipes as r', 'r.id', 'ri.recipe_id')
-      .select('r.name', 'ri.ingredient_id', 'ri.amount')
-      .orderBy('ri.ingredient_id', 'asc');
+      .select('r.name', 'ri.ingredient_id', 'ri.amount');
 
     const promises = [ingredients, recipes];
 
@@ -25,7 +24,6 @@ module.exports = {
           return acc;
         }, []),
       }));
-      console.log(ingredients);
       return ingredients;
     });
   },

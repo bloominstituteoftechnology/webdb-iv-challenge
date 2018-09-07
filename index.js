@@ -84,6 +84,6 @@ server.get('/api/ingredients', (req, res, next) => {
 });
 
 const port = 3900;
-server.listen(port, function() {
+server.listen(process.env.PORT || port, function() {
   console.log(`\n=== Web API Listening on http://localhost:${port} mon ===\n`);
 });
