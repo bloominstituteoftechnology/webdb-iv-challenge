@@ -1,13 +1,6 @@
 const db = require('knex')(require('../knexfile').development);
 
 module.exports = {
-  getShoppingList: (recipeId) => {
-    return db().select('i.name', 'ir.quantity')
-      .from('ingredients as i')
-      .join('ingredients-for-recipes as ir', { 'ir.recipe_id': recipeId })
-      .groupBy('i.name', 'ir.quantity');
-  },
-
   getDishes: () => {
     return db('dishes');
   },
@@ -69,6 +62,13 @@ module.exports = {
               }
             }, { recipe: '', dish: '', ingredients: [], steps: [] });
         });
+  },
+
+  getShoppingList: (id) => {
+    return db('ingredients as i')
+      .select('name', 'quantity')
+      .join('ingredients-for-recipes', { 'ingredient_id': 'i.id' })
+      .where({ 'recipe_id': id });
   },
 
   addRecipe: (recipe) => {
