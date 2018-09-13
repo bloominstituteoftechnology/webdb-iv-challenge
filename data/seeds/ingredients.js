@@ -1,8 +1,8 @@
 
 exports.seed = function(knex, Promise) {
-  return knex('table_name').del()
+  return knex('ingredients').del()
     .then(function () {
-      return knex('table_name').insert([
+      return knex('ingredients').insert([
         { name: 'unsalted butter'},
         { name: 'milk'},
         { name: 'favorite cereal'},
@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
         { name: 'roma tomatoes'},
         { name: 'ground beef, sirloin'},
         { name: 'romaine lettuce'},
-        { name: 'vegetable or coconut oil'}
+        { name: 'vegetable or coconut oil'},
         { name: 'tortillas'}
       ]);
     });

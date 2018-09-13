@@ -1,8 +1,8 @@
 
 exports.seed = function(knex, Promise) {
-  return knex('table_name').del()
+  return knex('instructions').del()
     .then(function () {
-      return knex('table_name').insert([
+      return knex('instructions').insert([
         { recipe_id: 2, step_number: 1, step_instruction: 'Saute beef' },
         { recipe_id: 2, step_number: 2, step_instruction: 'Chop tomatoes' },
         { recipe_id: 2, step_number: 3, step_instruction: 'Add beef and tomatoes to tortillas' },
