@@ -12,3 +12,9 @@ exports.seed = function(knex, Promise) {
       ]);
     });
 };
+
+// create seed file
+//knex seed:make seed_name
+
+// run seed file
+// knex seed:run 

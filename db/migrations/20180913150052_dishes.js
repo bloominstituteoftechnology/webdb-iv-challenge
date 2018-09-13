@@ -16,3 +16,7 @@ exports.up = function(knex, Promise) {
   exports.down = function(knex, Promise) {
     return knex.schema.dropTable("dishes");
   };
+
+// knex migrate:make table_name
+// knex migrate:latest
+// knex migrate:rollback
