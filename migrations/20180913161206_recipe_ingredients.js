@@ -17,7 +17,7 @@ exports.up = function(knex, Promise) {
 
       tbl
       .float('measurement')
-      notNullable()
+      .notNullable()
   });
 };
 
