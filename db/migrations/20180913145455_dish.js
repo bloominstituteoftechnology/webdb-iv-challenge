@@ -1,16 +1,14 @@
-
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('dishes', (tbl) => {
-      tbl.increments()
+  return knex.schema.createTable("dishes", tbl => {
+    tbl.increments();
 
-      tbl
-      .string('name', 128)
+    tbl
+      .string("name", 128)
       .notNullable()
-      .unique()
-
-  })
+      .unique();
+  });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('dishes')
+  return knex.schema.dropTableIfExists("dishes");
 };

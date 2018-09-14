@@ -32,6 +32,24 @@ module.exports = {
   addDish: function(dish) {
     return db("dishes")
       .insert(dish)
-      .then(id => this.getDishes(id));
+      .then(([id]) => id);
+  },
+
+  addRecipe: function(recipe) {
+    return db("recipes")
+      .insert(recipe)
+      .then(([id]) => id);
+  },
+
+  getRecipes: function() {
+    let query = db("recipes");
+
+    // return db("recipes")
+    query.join("dishes", "recipes.dish_id", "dishes.id").select({
+      recipe: "recipes.name",
+      dish: "dishes.name",
+      dish_id: "recipes.dish_id"
+    });
+    return query;
   }
 };

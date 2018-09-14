@@ -7,10 +7,8 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable();
 
-    tbl
-      .string("discription", 2000)
-      .notNullable();
-     
+    tbl.string("discription", 2000).notNullable();
+
     tbl
       .integer("recipe_id")
       .unsigned()
