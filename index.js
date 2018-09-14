@@ -63,12 +63,14 @@ server.get("/recipes", async (req, res) => {
 });
 
 server.post("/recipes", async (req, res) => {
-  const { name } = req.body;
+  const { name, dish_id } = req.body;
 
-  if (!name.length) res.status(400).json({ err: "please enter a name" });
+  if (!name.length) {
+    res.status(400).json({ err: "please enter a name" });
+  }
 
   try {
-    const newRecipe = await db.addRecipe({ name });
+    const newRecipe = await db.addRecipe({ name, dish_id });
     res.status(200).json(newRecipe);
   } catch (err) {
     res.status(500).json(err);
