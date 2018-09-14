@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     .integer('StepNumber')
     .notNullable();
     t
-    .string('instruction')
+    .string('description')
     .notNullable();
     //foreign key
     t
