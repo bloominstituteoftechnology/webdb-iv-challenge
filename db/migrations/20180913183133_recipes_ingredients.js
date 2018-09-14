@@ -4,13 +4,13 @@ exports.up = function(knex, Promise) {
     tbl
       .integer("recipe_id")
       .unsigned()
-      .notNullabe()
+      .notNullable()
       .reference("id")
       .inTable("recipes");
     tbl
       .integer("ingredient_id")
       .unsigned()
-      .notNullabe()
+      .notNullable()
       .reference("id")
       .inTable("ingredients");
     tbl.integer("quantity");
