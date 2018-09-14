@@ -5,6 +5,32 @@ const knex = require("knex");
 const dataConfig = require("./knexfile");
 const db = knex(dataConfig.development);
 
+const database = require("./db/dbHelpers");
+
+database.getDishes()
+    .then(dishes => {
+        console.log('Dishes:', dishes);
+    });
+
+database.addDish('Cookies')
+    .then(id => {
+        console.log('Id of added dish', id);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+
+database.getDish(1)
+    .then(response => {
+        console.log('getDish response:', response);
+    })
+
+database.getRecipes()
+    .then(response => console.log('getRecipes response:', response));
+
+database.addRecipe('Chocolate-Chip', 2)
+    .then(response => console.log('addRecipe response:', response));
+
 const server = express();
 
 server.use(express.json());
