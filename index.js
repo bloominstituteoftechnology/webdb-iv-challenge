@@ -3,7 +3,7 @@ const helmet = require("helmet");
 const knex = require("knex");
 
 const dataConfig = require("./knexfile");
-const db = knex(dataConfig);
+const db = knex(dataConfig.development);
 
 const server = express();
 
