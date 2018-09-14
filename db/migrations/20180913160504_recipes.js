@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
         .string("name", 50)
         .notNullable()
         .unique("uq_recipe_name");
+    // the foreign key
       table
         .integer("dish_id")
         .unsigned()
