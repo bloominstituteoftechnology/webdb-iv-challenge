@@ -13,7 +13,13 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .references("id")
       .inTable("ingredients");
-    tbl.integer("quantity");
+    tbl.float("quantity").notNullable();
+    tbl
+      .integer("unit_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("units");
   });
 };
 
