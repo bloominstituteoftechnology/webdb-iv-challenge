@@ -37,11 +37,14 @@ function getDish(id){
 }
 
 function getRecipes() {
-    return db('recipes');
+    return db('recipes')
+    .select('dishes')
+    .where('dish_id', 'recipes')
 }
 
 
 function addRecipe(recipe) {
     return db('recipes')
     .insert(recipe)
+    return recipe.id
 }
