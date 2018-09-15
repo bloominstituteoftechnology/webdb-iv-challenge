@@ -5,13 +5,13 @@ exports.up = function(knex, Promise) {
       .integer("recipe_id")
       .unsigned()
       .notNullable()
-      .reference("id")
+      .references("id")
       .inTable("recipes");
     tbl
       .integer("ingredient_id")
       .unsigned()
       .notNullable()
-      .reference("id")
+      .references("id")
       .inTable("ingredients");
     tbl.integer("quantity");
   });

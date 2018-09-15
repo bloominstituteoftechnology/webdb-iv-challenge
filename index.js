@@ -20,7 +20,7 @@ database.addDish('Cookies')
         console.error(err);
     });
 
-database.getDish(1)
+database.getDish()
     .then(response => {
         console.log('getDish response:', response);
     })
