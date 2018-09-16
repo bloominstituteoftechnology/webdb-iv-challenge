@@ -1,5 +1,5 @@
 const knex = require("knex");
-const knexConfig = require("./knexfile");
+const knexConfig = require("../knexfile.js");
 
 const db = knex(knexConfig.development);
 
@@ -15,8 +15,8 @@ function getDishes() {
   return db("dishes");
 }
 
-function addDish(name) {
-  return db("dishes").insert({ name });
+function addDish(dishes) {
+  return db("dishes").insert(dishes);
 }
 
 function getDish(id) {
@@ -47,7 +47,7 @@ function getRecipes() {
   // TODO: Format output better to have both dishes.name and recipes.name in output
 }
 
-function addRecipe(recipe, dish_id) {
+function addRecipe(recipes, dish_id) {
   /*
     INSERT INTO recipes (
         name,
@@ -59,7 +59,7 @@ function addRecipe(recipe, dish_id) {
     */
 
   return db("recipes").insert({
-    name: recipe,
+    name: recipes,
     dish_id: dish_id
   });
   // TODO: Have it create a recipe given a recipe name and a dish name

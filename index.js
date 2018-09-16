@@ -2,7 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const knex = require("knex");
 
-const dataConfig = require("./knexfile");
+const dataConfig = require("./knexfile.js");
 const db = knex(dataConfig.development);
 //==============================================================================//
 const database = require("./db/dbHelpers");
