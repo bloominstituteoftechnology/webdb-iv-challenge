@@ -6,6 +6,7 @@ exports.seed = function(knex, Promise) {
       return knex('dishes').insert([
         {id: 1, name: 'Pizzas'},
         {id: 2, name: 'Burgers'},
+        {id: 3, name: 'Tacos'},
       ]);
     });
 };
