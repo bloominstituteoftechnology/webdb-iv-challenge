@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
       .integer("dish_id")
       .unsigned()
       .notNullable()
-      .reference("id")
+      .references("id")
       .inTable("dishes");
   });
 };
