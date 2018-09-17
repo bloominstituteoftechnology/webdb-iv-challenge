@@ -56,7 +56,7 @@ server.get('/recipes/:id', (req, res) => {
   try {
     const recipe = database.getRecipes(id);
     res.status(200).json(recipe);
-  } catch {
+  } catch (err) {
     res.status(500).json({ Error: "Cannot get recipes with id" });
   }
 });
@@ -64,7 +64,7 @@ server.get('/recipes/:id', (req, res) => {
 server.post("/recipes", (req, res) => {
   const recipe = req.body;
   try {
-    const id = await database.addRecipe(recipe);
+    const id = database.addRecipe(recipe);
     res.status(200).json(id);
   } catch (err) {
     res.status(500).json({ Error: "Cannot post to recipe" });
