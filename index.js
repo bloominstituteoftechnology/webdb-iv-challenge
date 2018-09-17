@@ -7,35 +7,70 @@ const db = knex(dataConfig.development);
 //==============================================================================//
 const database = require("./db/dbHelpers");
 
-database.getDishes()
-    .then(dishes => {
-        console.log('Dishes:', dishes);
-    });
-
-database.addDish('Cookies')
-    .then(id => {
-        console.log('Id of added dish', id);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-
-database.getDish()
-    .then(response => {
-        console.log('getDish response:', response);
-    })
-
-database.getRecipes()
-    .then(response => console.log('getRecipes response:', response));
-
-database.addRecipe('Chocolate-Chip', 2)
-    .then(response => console.log('addRecipe response:', response));
-//==============================================================================//
 const server = express();
 
 server.use(express.json());
 server.use(helmet());
+//======================================Dishes================================================//
+server.get("/dish", (req, res) => {
+  try {
+    const dishes = database.getDishes();
+    res.status(200).json(dishes);
+  } catch (err) {
+    res.status(500).json({ Error: "The request could not be retrieved" });
+  }
+});
 
+server.get("/dish/:id", (req, res) => {
+  const { id } = req.params;
+  try {
+    const dish = database.getDish(id);
+    res.status(200).json(dish);
+  } catch (err) {
+    res.status(500).json({ Error: "Request for id did not work" });
+  }
+});
+
+server.post("/dish", (req, res) => {
+  const dish = req.body;
+  try {
+    const id = database.addDish(dish);
+    res.status(200).json(id);
+  } catch (err) {
+    res.status(500).json({ Error: "The post does not work" });
+  }
+});
+//======================================Dishes================================================//
+//=====================================Recipes===============================================//
+server.get("/recipes", (req, res) => {
+  try {
+    const recipes = database.getRecipes();
+    res.status(200).json(recipes);
+  } catch (err) {
+    res.status(500).json({ Error: "Cannot get recipes" });
+  }
+});
+
+server.get('/recipes/:id', (req, res) => {
+  const { id } = req.params;
+  try {
+    const recipe = database.getRecipes(id);
+    res.status(200).json(recipe);
+  } catch {
+    res.status(500).json({ Error: "Cannot get recipes with id" });
+  }
+});
+
+server.post("/recipes", (req, res) => {
+  const recipe = req.body;
+  try {
+    const id = await database.addRecipe(recipe);
+    res.status(200).json(id);
+  } catch (err) {
+    res.status(500).json({ Error: "Cannot post to recipe" });
+  }
+});
+//=====================================Recipes===============================================//
 server.get("/", (req, res) => {
   res.send("Hello World");
 });
