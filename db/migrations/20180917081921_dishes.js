@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
         tbl
         .string('name', 128)
         .notNullable()
-        .unique('cohort_name')
+        .unique('dish_name')
     });
 };
 

@@ -1,11 +1,11 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('recipes', function(tbl) {
+    return knex.schema.createTable('_recipes', function(tbl) {
         tbl.increments();
         tbl
         .string('name', 128)
         .notNullable()
-        .unique('recipe_name');
+        .unique('recipes_name');
         
         tbl
         .integer('dish_id')
@@ -15,5 +15,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTable('dishes');
+    return knex.schema.dropTable('_recipes');
 };
