@@ -45,4 +45,16 @@ router.post('/', (req, res) => {
 		.catch(err => res.status(500).json(`Server failed to POST new dish: ${ err }`));
 });
 
+// add a recipe to the db and return the id of the new recipe
+router.post('/all/recipes', (req, res) => {
+	const newRecipe = req.body;
+	if (newRecipe.name === '') {
+		return res.status(401).json({ error: 'Name of the new recipe should not be an empty string.' });
+	}
+	recipeDb
+		.addRecipe(newRecipe)
+		.then(id => res.status(201).json(id.id[0]))
+		.catch(err => res.status(500).json({ error: `Server failed to POST new recipe: ${ err }` }));
+});
+
 module.exports = router;

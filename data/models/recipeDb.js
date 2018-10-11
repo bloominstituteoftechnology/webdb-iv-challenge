@@ -55,4 +55,10 @@ module.exports = {
 			.join('dishes_recipes as dr', 'r.id', 'dr.recipe_id')
 			.join('dishes as d', 'dr.dish_id', 'd.id')
 	},
+	addRecipe: function(recipe) {
+		let query = db('recipes')
+		return query
+			.insert(recipe)
+			.then(id => ({ id: id }));
+	},
 };
