@@ -21,3 +21,5 @@ router.get('/', (req, res) => {
 // get all recipes w/ related dishes
 
 // add a recipe
+
+module.exports = router;
