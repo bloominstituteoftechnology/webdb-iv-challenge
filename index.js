@@ -43,9 +43,9 @@ server.get("/api/recipes", (req, res) => {
     .catch(err => res.send(err));
 });
 
-server.post("/api/drecipes", (req, res) => {
+server.post("/api/recipes", (req, res) => {
   const recipe = req.body;
-  console.log(recipe);
+  console.log("recipe : ", recipe);
   db.addRecipe(recipe)
     .then(id => res.status(200).json(id))
     .catch(err => res.status(200).json(err));

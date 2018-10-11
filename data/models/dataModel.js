@@ -21,6 +21,7 @@ const getRecipes = () => {
 };
 
 const addRecipe = recipe => {
+  console.log(recipe);
   return db("recipes").insert(recipe);
 };
 
