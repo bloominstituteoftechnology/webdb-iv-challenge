@@ -33,3 +33,9 @@ function getRecipes() {
         .join('dishes', 'recipes.dish_id', '=', 'dishes.id')
         .select('recipes.name', 'dishes.name as dish')
 }
+
+function addRecipe(recipe) {
+    return db('recipes')
+        .insert(recipe)
+        .into('recipes')
+}
