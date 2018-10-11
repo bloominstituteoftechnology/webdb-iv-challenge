@@ -7,29 +7,29 @@ module.exports = {
 };
 
 function getDishes() {
-  return db('Dishes');
+  return db('dishes');
 }
 
 function addDish(dish) {
-  return db('Dishes')
+  return db('dishes')
     .insert(dish)
-    .into('Dishes');
+    .into('dishes');
 }
 
 function getDish(id) {
-  return db('Dishes')
+  return db('dishes')
     .where({ id })
     .first();
 }
 
 function getRecipies() {
-  return db('Recipies');
+  return db('recipies');
 }
 
 function addRecipe(recipe) {
-  return db('Recipies')
+  return db('recipies')
     .insert(recipe)
-    .into('Recipies');
+    .into('recipies');
 }
 
 // repository pattern for data access
