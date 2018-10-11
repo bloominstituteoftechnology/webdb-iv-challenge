@@ -5,11 +5,6 @@ exports.up = function(knex, Promise) {
 
       tbl.string('name').notNullable();
 
-      tbl
-        .integer('recipe_id')
-        .unsigned()
-        .references('id')
-        .inTable('recipes')
   });
 };
 
