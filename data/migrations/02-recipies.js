@@ -1,22 +1,22 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('Recipies', function(tbl) {
+  return knex.schema.createTable('recipies', function(tbl) {
     // primary key called id
     tbl.increments(); // by default creates and id field
 
-    tbl.string('RecipeName', 128).notNullable();
+    tbl.string('recipeName', 128).notNullable();
 
-    tbl.unique('RecipeName');
+    tbl.unique('recipeName');
 
     tbl
       .integer('dish_id')
       .unsigned()
       .references('id')
-      .inTable('Dishes');
+      .inTable('dishes');
   });
 };
 
 exports.down = function(knex, Promise) {
     // rollback
-    return knex.schema.dropTableIfExists('Recipies');
+    return knex.schema.dropTableIfExists('recipies');
 };
