@@ -8,14 +8,28 @@ router.get('/', (req, res) => {
 	recipeDb
 		.getDishes()
 		.then(dishes => res.status(200).json(dishes))
-		.catch(err => res.status(500).json(`Server failed to GET dishes information: ${ err }`));
+		.catch(err => res.status(500).json({ error: `Server failed to GET dishes information: ${ err }` }));
+});
+
+// get the dish with the given ID and include a list of the related recipes
+router.get('/:id', (req, res) => {
+	const { id } = req.params;
+	recipeDb
+		.getDish(id)
+		.then(dish => {
+			if (dish === 'noDishId') {
+				return res.status(404).json({ error: `Dish with ID ${ id } does not exist.` });
+			}
+			return res.status(200).json(dish);
+		})
+		.catch(err => res.status(500).json({ error: `Server failed to GET dish with ID ${ id }: ${ err }` }));
 });
 
 // add a new dish to the database
 router.post('/', (req, res) => {
 	const newDish = req.body;
 	if (newDish.name === '') {
-		return res.status(403).json({ error: 'Name of the new dish should not be an empty string.' });
+		return res.status(401).json({ error: 'Name of the new dish should not be an empty string.' });
 	}
 	recipeDb
 		.addDish(newDish)
