@@ -15,10 +15,32 @@ router.get('/', (req, res) => {
 });
 
 // get dish by id
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    dishes
+        .getDish(id)
+        .then(dish => {
+            res.status(200).json(dish);
+        })
+        .catch(err => res.status(500).json(err));
+    });
 
 // add dish to database
+router.post('/', (req, res) => {
+    const dish = req.body;
+
+    dishes
+        .addDish(dish)
+        .then(ids => {
+            res.status(201).json(ids[0]);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        });
+});
 
 // get all recipes w/ related dishes
+
 
 // add a recipe
 
