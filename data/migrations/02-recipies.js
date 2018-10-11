@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
 
     tbl.string('recipeName', 128).notNullable();
 
+    tbl.string('instructions').notNullable();
+
     tbl.unique('recipeName');
 
     tbl
