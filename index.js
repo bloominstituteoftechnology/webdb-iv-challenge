@@ -25,6 +25,19 @@ server.get('/api/recipes', (req, res) => {
         })
 });
 
+server.post('/api/recipes', (req, res) => {
+    const recipe = req.body;
+
+    recipes
+        .addRecipe(recipe)
+        .then(ids => {
+            res.status(201).json(ids[0]);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        });
+});
+
 server.use('/api/dishes', dishesRoute);
 
 const port = 7777;
