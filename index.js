@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 
-const Routes = require('./data/helpers/Routes');
+const Routes = require('./Routes');
 
 const server = express();
 
