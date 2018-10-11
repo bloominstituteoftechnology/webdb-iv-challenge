@@ -4,15 +4,20 @@ exports.up = function(knex, Promise) {
 			.increments();
 
 		table
-			.string('step', 255)
-			.notNullable();
-
-		table
 			.integer('recipe_id')
 			.notNullable()
 			.unsigned()
 			.references('id')
 			.inTable('recipes');
+
+		table
+			.integer('step_no')
+			.notNullable()
+			.unsigned();
+
+		table
+			.string('step', 255)
+			.notNullable();
 	});
 };
 
