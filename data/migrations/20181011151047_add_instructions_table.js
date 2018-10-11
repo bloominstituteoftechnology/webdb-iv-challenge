@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('recipeingredients', function(tbl) {
+  return knex.schema.createTable('instructions', function(tbl) {
     tbl.increments();
     tbl
       .integer('recipe_id')
@@ -8,18 +8,15 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .references('id')
       .inTable('recipes')
-      tbl
-      .integer('ingredient_id')
+    tbl
+      .integer('step')
       .unsigned()
       .notNullable()
-      .references('id')
-      .inTable('ingredients')
     tbl
-      .float('quantity')
-      .notNullable()
+      .string('instruction', 3000).notNullable();
   })
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('recipeingredients');
+  return knex.schema.dropTableIfExists('instructions');
 };
