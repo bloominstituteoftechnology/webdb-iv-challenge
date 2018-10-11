@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('RecipieIngredient', function(tbl) {
+  return knex.schema.createTable('RecipeIngredient', function(tbl) {
     // primary key called id
     tbl.increments(); // by default creates and id field
 
@@ -20,5 +20,5 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   // rollback
-  return knex.schema.dropTableIfExists('RecipieIngredient');
+  return knex.schema.dropTableIfExists('RecipeIngredient');
 };
