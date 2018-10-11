@@ -9,11 +9,6 @@ exports.up = function(knex, Promise) {
             .notNullable()
             .references("id")
             .inTable("recipes");
-
-        tbl
-            .integer('step_number')
-            .notNullable()
-    
         
         tbl
             .integer("step")
