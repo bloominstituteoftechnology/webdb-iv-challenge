@@ -9,6 +9,12 @@ exports.up = function(knex, Promise) {
       .string('instructions')
       .notNullable()
       .references('step_number')
+
+      tbl
+      .integer('recipe_id')
+      .unsigned()
+      .references('id')
+      .inTable('recipes')
   });
 };
 
