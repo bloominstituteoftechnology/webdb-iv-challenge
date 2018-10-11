@@ -25,6 +25,14 @@ router.get('/:id', (req, res) => {
 		.catch(err => res.status(500).json({ error: `Server failed to GET dish with ID ${ id }: ${ err }` }));
 });
 
+// get all recipes in the database including the dish they belong to
+router.get('/all/recipes/', (req, res) => {
+	recipeDb
+		.getRecipes()
+		.then(recipes => res.status(200).json(recipes))
+		.catch(err => res.status(500).json({ error: `Server failed to GET all recipes information: ${ err }` }));
+});
+
 // add a new dish to the database
 router.post('/', (req, res) => {
 	const newDish = req.body;

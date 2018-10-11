@@ -48,4 +48,11 @@ module.exports = {
 					return result;
 				});
 	},
+	getRecipes: function() {
+		let query = db('recipes as r')
+		return query
+			.select('r.id', 'r.name', 'd.name as dish_name')
+			.join('dishes_recipes as dr', 'r.id', 'dr.recipe_id')
+			.join('dishes as d', 'dr.dish_id', 'd.id')
+	},
 };
