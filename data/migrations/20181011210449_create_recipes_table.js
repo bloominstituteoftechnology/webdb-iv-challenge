@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .unique("recipe_name");
 
-    table.string("imstructions").notNullable();
+    table.string("instructions").notNullable();
 
     table
       .integer("dish_id")

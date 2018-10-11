@@ -19,13 +19,13 @@ exports.seed = function(knex, Promise) {
         },
         {
           recipe_name: "plain-naan",
-          directions:
+          instructions:
             "take a bowl, add some plain flour, add some oil, add some water, start needing the ingredients untill it forms a dough, slap the dough out in to a flat bread shape, keep foding and flatenning the base, flatten the base thin and 2x the size you want the naan to be, heat in a tandoori oven for 5 ~ 10 mins",
           dish_id: 2
         },
         {
           recipe_name: "keema-naan",
-          directions:
+          instructions:
             "take a bowl, add some plain flour, add some oil, add some water, start needing the ingredients untill it forms a dough, slap the dough out in to a flat bread shape, keep foding and flatenning the base, flatten the base thin and 2x the size you want the naan to be, add keema, fold the naan, flattern it over, heat in a tandoori oven for 10 ~ 15 mins",
           dish_id: 2
         }

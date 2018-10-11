@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex("recipe_ingredients")
+  return knex("recipe_ingredient")
     .del()
     .then(function() {
       // Inserts seed entries
-      return knex("recipe_ingredients").insert([
+      return knex("recipe_ingredient").insert([
         // for checken balti
         { amount: "2 medium", recipes_id: 1, ingredient_id: 1 }, //chicken
         { amount: "100ml", recipes_id: 1, ingredient_id: 2 }, // oil

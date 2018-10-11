@@ -11,7 +11,8 @@ exports.seed = function(knex, Promise) {
         { ingredient_name: "skinless tomato" }, //4
         { ingredient_name: "lamb loin" }, //5
         { ingredient_name: "plain flour" }, //6
-        { ingredient_name: "water" } //7
+        { ingredient_name: "water" }, //7
+        { ingredient_name: "keema" } //8
       ]);
     });
 };
