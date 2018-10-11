@@ -9,9 +9,11 @@
   "author": "Lucas Beemer <you@example.com>",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.4",
     "helmet": "^3.14.0",
     "knex": "^0.15.2",
+    "morgan": "^1.9.1",
     "sqlite3": "^4.0.2"
   },
   "devDependencies": {
