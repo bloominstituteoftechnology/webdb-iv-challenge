@@ -1,24 +1,20 @@
-
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable("instructions", function(tbl) {
+    return knex.schema.createTable('instructions', tbl =>{
         tbl.increments();
+         tbl
+        .integer('step_number')
+        .notNullable()
+         tbl
+        .string('step')
+        .notNullable()
+         tbl
+        .integer('recipe_id')
+        .notNullable()
+        .references('id')
+        .inTable('recipes');
         
-        tbl
-            .integer("recipe_id")
-            .unsigned()
-            .notNullable()
-            .references("id")
-            .inTable("recipes");
-        
-        tbl
-            .integer("step")
-            .unsigned()
-            .notNullable();
-       
-    });
-  
-};
-
-exports.down = function(knex, Promise) {
-  
-};
+    })
+  };
+   exports.down = function(knex, Promise) {
+     return knex.schema.dropTable('instructions');
+  };
