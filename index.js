@@ -47,6 +47,22 @@ server.get('/api/dish/:id',(req,res)=>{
         .catch(err=>res.status(500).json(err));
 })
 
+server.get('/api/shopping-list/:recipeId',(req,res)=>{
+    const recipeId = req.params.recipeId;
+    helperMethods.getShoppingList(recipeId)
+        .then(shoppingList=>{
+            console.log(shoppingList);
+            if (shoppingList && shoppingList != {}){
+                res.status(200).json(shoppingList);
+            } else {
+                res.status(404).json({
+                Error: "ID not found"
+                })
+            }
+            })
+        .catch(err=>res.status(500).json(err));
+})
+
 server.post('/api/dish/', (req, res)=>{
         const dish = req.body;
         helperMethods.addDish(dish)
@@ -56,6 +72,14 @@ server.post('/api/dish/', (req, res)=>{
             .catch(err=>res.status(500).json(err));
 })
 
+server.post('/api/recipe/', (req, res)=>{
+    const recipe = req.body;
+    helperMethods.addRecipe(recipe)
+        .then(id=>{
+            res.status(201).json(id);
+        })
+        .catch(err=>res.status(500).json(err));
+})
 
 server.listen(9000, ()=>console.log('\nAPI running on 9000\n'))
 
