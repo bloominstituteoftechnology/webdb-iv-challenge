@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     tb.integer('recipe_id').notNullable().unsigned().references('id').inTable('recipes');
     tb.integer('ingredient_id').notNullable().unsigned().references('id').inTable('ingredients');
     tb.integer('unit_id').notNullable().unsigned().references('id').inTable('units');
-    tb.integer('quanity').notNullable();
+    tb.float('quantity').notNullable();
   });
 };
 
