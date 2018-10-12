@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 });
 
 // get the dish with the given ID and include a list of the related recipes
-router.get('/:id', (req, res) => {
+router.get('/dish/:id', (req, res) => {
 	const { id } = req.params;
 	recipeDb
 		.getDish(id)
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
 		.catch(err => res.status(500).json(`Server failed to POST new dish: ${ err }`));
 });
 
-// add a recipe to the db and return the id of the new recipe
+// add a recipe to the db and return the ID of the new recipe
 router.post('/all/recipes', (req, res) => {
 	const newRecipe = req.body;
 	if (newRecipe.name === '') {
@@ -53,8 +53,26 @@ router.post('/all/recipes', (req, res) => {
 	}
 	recipeDb
 		.addRecipe(newRecipe)
-		.then(id => res.status(201).json(id.id[0]))
+		.then(id => {
+			if (id === 'noDishId') {
+				return res.status(404).json({ error: `Dish with ID ${ newRecipe.dish_id } does not exist. You cannot add a recipe to a dish that does not exist.` });
+			}
+			return res.status(201).json(id.id[0]);
+		})
 		.catch(err => res.status(500).json({ error: `Server failed to POST new recipe: ${ err }` }));
+});
+
+// get the recipe with the given ID. This should include:
+// name of the dish
+// name of the recipe
+// list of ingredients with the quantity
+// list of steps in the order they need ot be executed
+router.get('/all/recipes/:id', (req, res) => {
+	const { id } = req.params;
+	recipeDb
+		.getRecipe(id)
+		.then(recipe => res.status(200).json(recipe))
+		.catch(err => res.status(500).json({ error: `Server failed to GET recipe with ID ${ id }: ${ err }` }));
 });
 
 module.exports = router;

@@ -8,6 +8,13 @@ exports.up = function(knex, Promise) {
 			.notNullable();
 
 		table
+			.integer('dish_id')
+			.notNullable()
+			.unsigned()
+			.references('id')
+			.inTable('dishes');
+
+		table
 			.unique('name');
 	});
 };
