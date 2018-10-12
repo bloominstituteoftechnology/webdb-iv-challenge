@@ -7,7 +7,12 @@ const router = express.Router();
 router.get('/dishes/', (req, res) => {
 	recipeDb
 		.getDishes()
-		.then(dishes => res.status(200).json(dishes))
+		.then(dishes => {
+			if (!dishes.length) {
+				res.status(404).json({ message: 'There are no dishes in the database. You should add one first.' });
+			}
+			return res.status(200).json(dishes);
+		})
 		.catch(err => res.status(500).json({ error: `Server failed to GET dishes information: ${ err }` }));
 });
 
@@ -29,7 +34,12 @@ router.get('/dish/:id', (req, res) => {
 router.get('/all/recipes/', (req, res) => {
 	recipeDb
 		.getRecipes()
-		.then(recipes => res.status(200).json(recipes))
+		.then(recipes => {
+			if (!recipes.length) {
+				return res.status(404).json({ message: 'There are no recipes in the database. You should add one first.' });
+			}
+			return res.status(200).json(recipes);
+		})
 		.catch(err => res.status(500).json({ error: `Server failed to GET all recipes information: ${ err }` }));
 });
 
@@ -37,7 +47,7 @@ router.get('/all/recipes/', (req, res) => {
 router.post('/dish/', (req, res) => {
 	const newDish = req.body;
 	if (newDish.name === '') {
-		return res.status(401).json({ error: 'Name of the new dish should not be an empty string.' });
+		return res.status(401).json({ error: 'Name of the new dish should not be empty.' });
 	}
 	recipeDb
 		.addDish(newDish)
@@ -49,7 +59,7 @@ router.post('/dish/', (req, res) => {
 router.post('/all/recipes', (req, res) => {
 	const newRecipe = req.body;
 	if (newRecipe.name === '') {
-		return res.status(401).json({ error: 'Name of the new recipe should not be an empty string.' });
+		return res.status(401).json({ error: 'Name of the new recipe should not be empty.' });
 	}
 	recipeDb
 		.addRecipe(newRecipe)
@@ -66,7 +76,7 @@ router.post('/all/recipes', (req, res) => {
 // name of the dish
 // name of the recipe
 // list of ingredients with the quantity
-// list of steps in the order they need ot be executed
+// list of steps in the order they need to be executed
 router.get('/all/recipes/:id', (req, res) => {
 	const { id } = req.params;
 	recipeDb
