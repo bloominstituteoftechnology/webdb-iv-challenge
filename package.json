@@ -9,6 +9,10 @@
     "express": "^4.16.4",
     "helmet": "^3.14.0",
     "knex": "^0.15.2",
+    "nodemon": "^1.18.4",
     "sqlite3": "^4.0.2"
+  },
+  "scripts": {
+    "start": "nodemon"
   }
 }
