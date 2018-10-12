@@ -11,6 +11,9 @@
 		"knex": "^0.15.2",
 		"sqlite3": "^4.0.2"
 	},
+	"scripts": {
+		"start": "nodemon server.js"
+	},
 	"devDependencies": {
 		"nodemon": "^1.18.4"
 	}
