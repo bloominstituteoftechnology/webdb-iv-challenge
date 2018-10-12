@@ -8,7 +8,8 @@ module.exports = {
   addDish,
   getDish,
   getRecipes,
-  addRecipe
+  addRecipe,
+  getShoppingList
 };
 
 function getDishes() {
@@ -35,4 +36,14 @@ function addRecipe(recipe) {
   return db("recipes")
     .insert(recipe)
     .into("recipes");
+}
+
+function getShoppingList(id) {
+  return db("Ingredients in Recipes")
+    .join("recipes", "recipe_id", "Ingredients in Recipes.recipe_id")
+    .select(
+      "Ingredients in Recipes.quantity",
+      "Ingredients in Recipes.ingredient"
+    )
+    .where("Ingredients in Recipes.recipe_id", id);
 }
