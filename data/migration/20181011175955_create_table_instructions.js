@@ -1,12 +1,9 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("instructions", t => {
     t.increments();
-    t.integer("number")
-      .unsigned()
-      .notNullable();
-    t.string("instructions", 33)
+    t.string("instruction_array")
       .notNullable()
-      .unique("instructions");
+      .unique("instruction_array");
     t.integer("recipe_id")
       .unsigned()
       .notNullable()
@@ -16,5 +13,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('instructions');
+  return knex.schema.dropTableIfExists("instructions");
 };

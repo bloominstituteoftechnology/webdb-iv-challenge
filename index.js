@@ -1,16 +1,18 @@
 const express = require("express");
 const helmet = require("helmet");
-const knex = require("knex");
-const knexConfig = require("./knexfile");
+const dishesRouter = require('./routers/dishesRouter');
+const recipesRouter = require('./routers/recipesRouter');
 
 // init server
 const server = express();
 
-// init db
-const db = knex(knexConfig.development);
-
 // middleware
 server.use(express.json(), helmet());
+
+server.get('/', (req, res) => res.status(200).send(`<h1>Client Facing Page</h1>`));
+
+server.use('/api/dishes', dishesRouter);
+server.use('/api/recipes', recipesRouter);
 
 // listener
 server.listen(process.env.PORT, () =>
