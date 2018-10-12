@@ -1,10 +1,10 @@
 dishes (A `dish` is something the client wants to cook like _pizza_ or _tacos_.)
 - id: PK
-- name: string, required
+- name: string, unique, required
 
 recipes (A `dish` can have different recipes for tacos, like _tex-mex_ or _granny's_. A `recipe` belongs only to one `dish`.)
 - id: PK
-- name: string, required
+- name: string, unique, required
 - dish_id: int, FK(dishes.id)
 
 ingredients (have a way to manage ingredients.)
