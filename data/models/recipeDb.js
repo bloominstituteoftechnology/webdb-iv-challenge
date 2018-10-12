@@ -64,7 +64,7 @@ module.exports = {
 			.then(results => {
 				let [ resDishQuery ] = results;
 				if (!resDishQuery.length) {
-					return 'noDishId'; // will be an error that will be handled by the API
+					return 'noDishId'; // will be an error that is be handled by the API
 				}
 				let recipeQuery = db('recipes');
 				return recipeQuery
@@ -75,17 +75,36 @@ module.exports = {
 	getRecipe: function(id) {
 		let recipesQuery = db('recipes as r');
 		recipesQuery
-			.select('r.id as recipe_id', 'd.name as dish_name', 'r.name as recipe_name')
-			.join('dishes_recipes as dr', 'r.id', 'dr.recipe_id')
-			.join('dishes as d', 'dr.dish_id', 'd.id')
+			.select('r.id as recipe_id', 'r.name as recipe_name', 'd.name as dish_name')
+			.join('dishes as d', 'r.dish_id', 'd.id')
+			.where('r.id', id);
 
 		let ingredientsQuery = db('recipes as r');
 		ingredientsQuery
-			.select('r.id as recipe_id', 'i.name as ingredient_name', 'ri.quantity')
+			.select('i.name as ingredient_name', 'ri.quantity')
 			.join('recipes_ingredients as ri', 'r.id', 'ri.recipe_id')
 			.join('ingredients as i', 'ri.ingredient_id', 'i.id')
+			.where('r.id', id);
 
-		// let instructionsQuery = db()
-		return ingredientsQuery;
+		let instructionsQuery = db('recipes as r')
+		instructionsQuery
+			.select('step_no', 'step')
+			.join('instructions as i', 'r.id', 'i.recipe_id')
+			.where('r.id', id);
+
+		const promises = [recipesQuery, ingredientsQuery, instructionsQuery];
+
+		return Promise
+			.all(promises)
+			.then(results => {
+				let [ resRecipesQuery, resIngredientsQuery, resInstructionsQuery ] = results;
+				if (!resRecipesQuery.length) {
+					return 'noRecipeId'; // will be an error that is be handled by the API
+				}
+				let result = resRecipesQuery[0];				
+				result.ingredients = resIngredientsQuery.length ? resIngredientsQuery : [];
+				result.instructions = resInstructionsQuery.length ? resInstructionsQuery : [];
+				return result;
+			});
 	},
 };

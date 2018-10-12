@@ -4,7 +4,7 @@ const recipeDb = require('../data/models/recipeDb.js');
 const router = express.Router();
 
 // get all the dishes from the database
-router.get('/', (req, res) => {
+router.get('/dishes/', (req, res) => {
 	recipeDb
 		.getDishes()
 		.then(dishes => res.status(200).json(dishes))
@@ -34,7 +34,7 @@ router.get('/all/recipes/', (req, res) => {
 });
 
 // add a new dish to the database
-router.post('/', (req, res) => {
+router.post('/dish/', (req, res) => {
 	const newDish = req.body;
 	if (newDish.name === '') {
 		return res.status(401).json({ error: 'Name of the new dish should not be an empty string.' });
@@ -71,7 +71,12 @@ router.get('/all/recipes/:id', (req, res) => {
 	const { id } = req.params;
 	recipeDb
 		.getRecipe(id)
-		.then(recipe => res.status(200).json(recipe))
+		.then(recipe => {
+			if (recipe === 'noRecipeId') {
+				return res.status(404).json({ error: `Recipe with ID ${ id } does not exist.` });
+			}
+			return res.status(200).json(recipe);
+		})
 		.catch(err => res.status(500).json({ error: `Server failed to GET recipe with ID ${ id }: ${ err }` }));
 });
 
