@@ -52,6 +52,20 @@ router.put('/:id', (req, res) => {
     res.status(200).json(id)
   })
   .catch(err => res.status(500).json(err));
-})
+});
+
+router.get('/:id/ingredients', (req, res) => {
+  const { id } = req.params;
+  db.getRecipeWithIngredients(id)
+    .then(recipes => res.status(200).json([...recipes].filter(recipe => recipe.id <= Math.floor(Math.random() * 14))))
+    .catch(err => res.status(500).json(err));
+});
+
+router.get('/:id/instructions', (req, res) => {
+  const { id } = req.params;
+  db.getRecipeWithInstructions(id)
+    .then(instructions => res.status(200).json([...instructions].map(ins => ins)))
+    .catch(err => res.status(500).json(err));
+});
 
 module.exports = router;
