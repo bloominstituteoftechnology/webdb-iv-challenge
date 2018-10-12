@@ -21,21 +21,20 @@ const getDish = (id) =>{
   }
 }
 
-// ****getShoppingList method not working properly
-// comment-out sections are causing problems
-// when un-comment, somehow all the id's suddently shows up, but unit.name does not.  Please help!
+// getShoppingList method working!!!
 const getShoppingList = (recipeId) =>{
   if(recipeId) {
-    return db('recipe')
-        .join('recipe-ingredient','recipe.id','=','recipe-ingredient.recipe_id')
-        .join('ingredient', 'recipe-ingredient.ingredient_id', '=', 'ingredient.id')
-        // join('ingredient-unit','recipe-ingredient.ingredient_id', '=', 'ingredient-unit.ingredient_id')
-        // join('unit', 'ingredient-unit.unit_id', '=', 'unit.id')
+    return db('unit')
+        .join('ingredient-unit', 'ingredient-unit.unit_id', '=', 'unit.id')
+        .join('ingredient','recipe-ingredient.recipe_id', '=', 'ingredient-unit.ingredient_id')
+        .join('recipe-ingredient', 'recipe-ingredient.ingredient_id', '=', 'ingredient.id')
+        .join('recipe','recipe.id','=','recipe-ingredient.recipe_id')
         .where('recipe.id', recipeId)
-        .select('ingredient.name',
-        'ingredient.amount'
-        //'unit.name'
-        );
+        .select(
+          {ingredient: 'ingredient.name'},
+          'ingredient.amount',
+          {unit: 'unit.name'}
+        );    
   } else {
       return db('dish');
   }
