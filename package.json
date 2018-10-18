@@ -1,0 +1,9 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sashat14/db-recipe-book.git",
+  "author": "Sasha <taylork85@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
