@@ -5,10 +5,15 @@
   "repository": "https://github.com/verydecent/db-recipe-book.git",
   "author": "verydecent <wnjhwng@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "helmet": "^3.14.0",
-    "knex": "^0.15.2",
+    "knex": "^0.15.2"
+  },
+  "devDependencies": {
     "nodemon": "^1.18.4"
   }
 }
