@@ -1,0 +1,9 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "Recipe Book",
+  "main": "index.js",
+  "repository": "https://github.com/Xarfo/db-recipe-book.git",
+  "author": "Abdul Ahmad",
+  "license": "MIT"
+}
