@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "https://github.com/Xarfo/db-recipe-book.git",
   "author": "Abdul Ahmad",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
 }
