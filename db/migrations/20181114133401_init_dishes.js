@@ -5,6 +5,10 @@ exports.up = function(knex, Promise) {
       .string('name')
       .unique('dish_name')
       .notNullable();
+    tbl
+      .string('type')
+      .notNullable()
+      .defaultTo('American');
   });
 };
 
