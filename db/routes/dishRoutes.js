@@ -1,15 +1,52 @@
 const express = require('express');
 
+const recipeModel = require('../recipeModel');
+
 const router = express.Router();
 
-router.get('/');
+router.get('/', (req, res) => {
+  recipeModel
+    .get()
+    .then(resp => res.status(200).json(resp))
+    .catch(err => res.status(500).json({ message: 'Bad Request' }));
+});
 
-router.get('/');
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  recipeModel
+    .getById(id)
+    .then(resp => res.status(200).json(resp))
+    .catch(err => res.status(500).json({ message: 'Bad Request' }));
+});
 
-router.post('/');
+router.post('/', (req, res) => {
+  const dish = req.body;
+  recipeModel
+    .addDish(dish)
+    .then(ids => res.status(200).json(ids))
+    .catch(err => res.status(500).json({ message: 'Bad Request' }));
+});
 
-router.put('/:id');
+router.get('/recipes/all', (req, res) => {
+  recipeModel
+    .allRecipes()
+    .then(resp => res.status(200).json(resp))
+    .catch(err => res.status(500).json({ message: 'Bad Request' }));
+});
 
-router.delete('/:id');
+router.get('/recipes/join', (req, res) => {
+  recipeModel
+    .getRecipes()
+    .then(resp => res.status(200).json(resp))
+    .catch(err => res.status(500).json({ message: 'Bad Request' }));
+});
+
+router.post('/recipes', (req, res) => {
+  const recipe = req.body;
+  recipeModel
+    .addRecipe(recipe)
+    .then(ids => res.status(200).json(ids))
+    .catch(err => res.status(500).json({ message: 'Bad Request' }));
+});
 
 module.exports = router;
