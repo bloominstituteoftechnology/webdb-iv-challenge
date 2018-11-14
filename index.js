@@ -14,49 +14,21 @@ server.get('/', (req, res) => {
     res.send("It's Alive!");
 })
 
-// server.get('/api/dishes', (req, res) => {
-//     db('dishes')
-//     .then(names => {
-//       console.log(names)
-//       res.status(200).json(names)
-//     })
-//     .catch(err => {
-//       res.status(500).json(err)
-//     });
-//   });
+getDishes = server.get('/api/dishes', (req,res) => {
+  db('dishes')
+  .then(dishes => {
+    res.status(200).json(dishes)
+  })
+  .catch(err => res.status(500).json({ error: "The dishes information could not be retrieved. "}))
+})
 
+getRecipes = server.get('/api/recipes', (req, res) => {
+  db('recipes')
+  .then(recipes => {
+    res.status(200).json(recipes)
+  })
+  .catch(err => res.status(500).json({ error: "The recipes information could not be retrieved. "}))
+})
 
-// server.get('/api/recipes', (req, res) => {
-//     db('recipes')
-//     .then(names => {
-//       console.log(names)
-//       res.status(200).json(names)
-//     })
-//     .catch(err => {
-//       res.status(500).json(err)
-//     });
-//   });
-
-//   server.get('/api/ingredients', (req, res) => {
-//     db('ingredients')
-//     .then(ingr => {
-//       console.log(ingr)
-//       res.status(200).json(ingr)
-//     })
-//     .catch(err => {
-//       res.status(500).json(err)
-//     });
-//   });
-
-//   server.get('/api/steps', (req, res) => {
-//     db('stepstry')
-//     .then(steps=> {
-//       console.log(steps)
-//       res.status(200).json(steps)
-//     })
-//     .catch(err => {
-//       res.status(500).json(err)
-//     });
-//   });
 
 server.listen(7200, () => console.log('\n Party at port 7200 '))
