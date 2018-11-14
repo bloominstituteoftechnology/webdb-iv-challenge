@@ -37,4 +37,15 @@ server.get('/api/recipes', (req, res) => {
     });
   });
 
+  server.get('/api/ingredients', (req, res) => {
+    db('ingredients')
+    .then(ingr => {
+      console.log(ingr)
+      res.status(200).json(ingr)
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    });
+  });
+
 server.listen(7200, () => console.log('\n Party at port 7200 '))
