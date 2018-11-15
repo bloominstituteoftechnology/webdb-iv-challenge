@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ryanboris/db-recipe-book#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "helmet": "^3.15.0",
     "knex": "^0.14.6",
     "sqlite3": "^4.0.4"
   },
