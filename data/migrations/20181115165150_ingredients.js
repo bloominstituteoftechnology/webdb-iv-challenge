@@ -5,6 +5,10 @@ exports.up = function(knex, Promise) {
         tbl.string('item', 256);
         tbl.string('measurement', 256);
         tbl.float('amount');
+        tbl.integer('recipe_id')
+            .unsigned()
+            .references('id')
+            .inTable('recipes');
     })
   };
   
