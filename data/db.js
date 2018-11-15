@@ -1,6 +1,6 @@
 //import knex and initialize database
 const knex = require("knex");
-const knexConfig = require("./knexfile.js");
+const knexConfig = require("../knexfile.js");
 const db = knex(knexConfig.development);
 
 //export all custom functions on the various tables
