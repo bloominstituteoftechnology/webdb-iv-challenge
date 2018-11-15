@@ -17,7 +17,7 @@ The requirements for the system, as stated by the client are:
 - have a way to manage recipes. A `dish` can have different recipes for tacos, like _tex-mex_ or _granny's_. A `recipe` belongs only to one `dish`.
 - have a way to manage ingredients.
 - a `recipe` could have more than one ingredient and the same ingredient can be used in multiple recipes. Examples are "cup of corn flour" or "gram of butter".
-- when saving the ingredients for a `recipe` capture the quantity required for that ingredient as a floating number.
+- when saving the ingredients for a `recipe` capture the quantity required for that ingredient as a floakneting number.
 - have a way to save instructions for cooking a recipe. Instructions will be a series of `steps` involved in cooking a `recipe`.
 - for some recipes, the order in which the steps are performed matters, please provide a way to specify that order.
 - have a way to pick a `dish` and a `recipe` and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the `dish`.
@@ -44,3 +44,5 @@ Name this file anything you want and place it where it makes the most sense to y
 - add _units of measure_ support for the ingredients.
 - add a table of unit of measure convertions, so that we can record the quantity for an ingredient using a unit of measure and see the values for other units reading the recipe.
 - design and build a front end client for your API.
+
+-read

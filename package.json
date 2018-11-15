@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.4"
+  },
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Edsauril/db-recipe-book.git",
+  "author": "<edwin.torres.jr2@gmail.com>",
+  "license": "MIT"
+}
