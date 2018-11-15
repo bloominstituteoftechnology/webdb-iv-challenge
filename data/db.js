@@ -7,7 +7,8 @@ module.exports = {
     addDish,
     getDish,
     getRecipes,
-    addRecipe
+    addRecipe,
+    getRecipe
 };
 
 function getDishes() {
@@ -37,3 +38,13 @@ function addRecipe(recipe) {
         .insert(recipe)
         .then(ids => ({ id: ids[0] }));
 };
+
+function getRecipe(id) {
+    return db('recipe')
+        .join('dish', 'recipe.dish_id', '=', 'dish.id')
+        .join('ingredient', 'recipe.id', '=', 'ingredient.recipe_id')
+        .join('instruction', 'recipe.id', '=', 'instruction.recipe_id')
+        .select('dish.name', 'recipe.recipe_name', 'ingredient.ingredient', 'ingredient.quantity')
+        //.where({ id: Number(id) })
+};
+

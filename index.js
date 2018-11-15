@@ -57,6 +57,22 @@ server.get('/api/recipe', (req, res) => {
         });
 });
 
+server.get('/api/recipe/:recipeid', (req, res) => {
+    const { recipeid } = req.params;
+
+    db.getRecipe(recipeid)
+        .then(recipe => {
+            if(!recipe) {
+                res.status(404).json({ error: 'Recipe with the specified ID not found' });
+            } else {
+                res.status(200).json(recipe);
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Error fetching recipe.', err });
+        });
+});
+
 server.post('/api/recipe', (req, res) => {
     const recipe = req.body;
 
