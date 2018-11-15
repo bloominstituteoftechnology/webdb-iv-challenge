@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.table('students' , function(tbl){
+    return knex.schema.table('recipes' , function(tbl){
         tbl.dropColumn('dishId');
     });
 };
