@@ -4,9 +4,9 @@ exports.up = function(knex, Promise) {
         tbl.increments();
   
         tbl  
-          .string('dish_name', 255)
+          .string('name', 255)
           .notNullable()
-          .unique('dish_name');
+          .unique('name');
     });
   };
   
