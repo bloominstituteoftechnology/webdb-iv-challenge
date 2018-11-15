@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
       tbl.increments()
       tbl.string('step', 256).notNullable()
       tbl
-        .integer('recipes_id')
+        .integer('recipe_id')
         .notNullable()
         .unsigned()
         .references('id')
