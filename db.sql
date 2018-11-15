@@ -1,0 +1,19 @@
+--
+-- File generated with SQLiteStudio v3.2.1 on Thu Nov 15 17:41:46 2018
+--
+-- Text encoding used: System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: Dishes
+CREATE TABLE Dishes (Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Name VARCHAR (50) UNIQUE NOT NULL);
+
+-- Table: Ingredients
+CREATE TABLE Ingredients (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR (255) UNIQUE NOT NULL, Recipe_ID INTEGER REFERENCES Recipes (ID), Quantity DECIMAL NOT NULL);
+
+-- Table: Recipes
+CREATE TABLE Recipes (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR (250) UNIQUE NOT NULL, Dish_ID INTEGER REFERENCES Dishes (Id) NOT NULL);
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;

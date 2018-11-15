@@ -1,0 +1,12 @@
+{
+  "name": "RecipeBook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Quan Nguyen",
+  "license": "MIT",
+  "dependencies": {
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.6",
+    "sqlite3": "^4.0.4"
+  }
+}
