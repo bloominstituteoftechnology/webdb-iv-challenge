@@ -27,13 +27,13 @@ function getDish(id) {
 };
 
 function getRecipes() {
-    return db('recipe')
-        .join('dish', 'recipe.dish_id', '=', 'dish.id')
-        .select('recipe.id', 'recipe.name', 'dish.name');
+    return db('dish')
+        .join('recipe', 'dish.id', '=', 'recipe.dish_id')
+        .select('recipe.id', 'recipe.recipe_name', 'dish.name');
 };
 
 function addRecipe(recipe) {
     return db('recipe')
         .insert(recipe)
         .then(ids => ({ id: ids[0] }));
-}
+};
