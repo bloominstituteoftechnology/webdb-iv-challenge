@@ -14,5 +14,13 @@ module.exports = {
 
     getRecipes:() => {
         return db('recipes');
+    },
+
+    addDish: dish => {
+        return db('dishes').insert(dish);
+    },
+
+    addRecipe: recipe => {
+        return db('recipes').insert(recipe);
     }
 }
