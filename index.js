@@ -12,4 +12,6 @@ server.get('/', (req, res) => {
     res.send('API Running...');
 });
 
+
+
 server.listen(9000, () => console.log('Server running on port 9000'));
