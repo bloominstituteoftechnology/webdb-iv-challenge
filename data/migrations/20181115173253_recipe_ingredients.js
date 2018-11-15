@@ -1,7 +1,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('recipe_ingredients', table => {
     table.increments()
-    table.string('quantity', 128)
+    table.float('quantity')
+    table.string('measurment', 128)
     table
       .integer('recipe_id')
       .unsigned()
