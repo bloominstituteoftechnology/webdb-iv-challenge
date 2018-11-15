@@ -1,9 +1,9 @@
 const knex = require("knex");
-const knexConfig = require("../knexfile");
+const knexConfig = require("../../knexfile");
 
 const db = knex(knexConfig.development);
 
-module.exports = datahelpers = {
+module.exports = {
   getDishes() {
     return db("dishes");
   },
