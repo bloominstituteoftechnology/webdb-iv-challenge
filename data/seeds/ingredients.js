@@ -1,13 +1,18 @@
-
-exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+exports.seed = knex =>
+  knex("ingredients")
+    .truncate()
+    .then(() =>
+      knex("ingredients").insert([
+        { name: "flour" },
+        { name: "water" },
+        { name: "mozarella cheese" },
+        { name: "yeast" },
+        { name: "tomato sauce" },
+        { name: "pepperoni slices" },
+        { name: "lettuce" },
+        { name: "shredded cheese" },
+        { name: "beans" },
+        { name: "taco sauce" },
+        { name: "beef" }
+      ])
+    );
