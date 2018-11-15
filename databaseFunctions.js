@@ -37,14 +37,19 @@ module.exports = {
        .then(response => console.log(response))
   },
 
-  getDish: function(id) {
-    return db.select('*').from('dishes').where(id === 'dishes.id')
+  getDish: function(dishId) {
+    return db.select('*').from('dishes').where({id: dishId})
       .then(res => console.log(res))
 
   },
 
   addRecipe: function(recipeData) {
-    return db.insert(recipeData).then(res => console.log(res))
+    return db.insert(recipeData).into('recipes').then(res => console.log(res))
+
+  },
+
+  getRecipes: function() {
+    return db.select('recipes.name as name', 'dishes.dish as dish').from('recipes').innerJoin('dishes', 'dishes.id', 'recipes.dish_id').then(res => console.log(res))
 
   },
 
