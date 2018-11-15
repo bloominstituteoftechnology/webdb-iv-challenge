@@ -1,5 +1,5 @@
 const knex = require('knex')
-const knexConfig = require('./knexfile.js')
+const knexConfig = require('../knexfile.js')
 const db = knex(knexConfig.development)
 
 module.exports = {
@@ -17,12 +17,15 @@ module.exports = {
   getDish: id => {
     return db('dishes')
       .join('recipes', { 'dishes.id': 'recipes.dish_id' })
-      .where({ 'dish.id': id })
+      .select('dishes.name as dish', 'recipes.name as recipe')
+      .where({ 'dishes.id': id })
   },
 
   // should return a list of all recipes in the database including the `dish` they belong to.
   getRecipes: () => {
-    return db('recipes').join('dishes', { 'dishes.id': 'recipes.dish_id' })
+    return db('recipes')
+      .join('dishes', { 'dishes.id': 'recipes.dish_id' })
+      .select('recipes.id', 'recipes.name as recipe', 'dishes.name as dish')
   },
 
   // should add a `recipe` to the database and return the `id` of the new `recipe`.
