@@ -1,0 +1,26 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theryanclausen/db-recipe-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theryanclausen/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/theryanclausen/db-recipe-book#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "sqlite": "^3.0.0"
+  }
+}
