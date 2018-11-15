@@ -24,6 +24,17 @@ server.get('/dishes', (req, res) => {
         })
 })
 
+// [GET] /recipes
+server.get('/recipes', (req, res) => {
+    db('recipes')
+        .then(recipes => {
+            res.status(200).json(recipes);
+        })
+        .catch(err => {
+            res.status(500).json({ error: err, errorMessage: 'Error retrieving recipes' });
+        })
+})
+
 const port = 9000;
 server.listen(port, () => {
     console.log(`\nListening on port ${port}\n`);
