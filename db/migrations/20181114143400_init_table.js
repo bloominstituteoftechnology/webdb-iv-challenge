@@ -10,6 +10,10 @@ exports.up = function(knex, Promise) {
         .string('type')
         .notNullable()
         .defaultTo('American');
+      tbl
+        .integer('count')
+        .notNullable()
+        .defaultTo(1);
     })
     .createTable('recipes', tbl => {
       tbl.increments();
@@ -17,7 +21,8 @@ exports.up = function(knex, Promise) {
         .integer('dish_id')
         .references('id')
         .inTable('dishes');
-      tbl.string('ingredients').notNullable();
+      tbl.string('recipe_ins').notNullable();
+      tbl.integer('order_number').notNullable();
     });
 };
 

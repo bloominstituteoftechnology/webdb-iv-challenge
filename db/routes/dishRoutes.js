@@ -27,6 +27,8 @@ router.post('/', (req, res) => {
     .catch(err => res.status(500).json({ message: 'Bad Request' }));
 });
 
+// ============== RECIPES =============  \\
+
 router.get('/recipes/all', (req, res) => {
   recipeModel
     .allRecipes()
@@ -34,9 +36,10 @@ router.get('/recipes/all', (req, res) => {
     .catch(err => res.status(500).json({ message: 'Bad Request' }));
 });
 
-router.get('/recipes/join', (req, res) => {
+router.get('/recipes/:id', (req, res) => {
+  const { id } = req.params;
   recipeModel
-    .getRecipes()
+    .getRecipes(id)
     .then(resp => res.status(200).json(resp))
     .catch(err => res.status(500).json({ message: 'Bad Request' }));
 });
@@ -45,6 +48,23 @@ router.post('/recipes', (req, res) => {
   const recipe = req.body;
   recipeModel
     .addRecipe(recipe)
+    .then(ids => res.status(200).json(ids))
+    .catch(err => res.status(500).json({ message: 'Bad Request' }));
+});
+
+// ========================== Ingredients =================================== \\
+
+router.get('/ingredients/all', (req, res) => {
+  recipeModel
+    .getIngredients()
+    .then(resp => res.status(200).json(resp))
+    .catch(err => res.status(500).json({ message: 'Bad Request ' }));
+});
+
+router.post('/ingredients', (req, res) => {
+  const ingredient = req.body;
+  recipeModel
+    .addIngredients(ingredient)
     .then(ids => res.status(200).json(ids))
     .catch(err => res.status(500).json({ message: 'Bad Request' }));
 });

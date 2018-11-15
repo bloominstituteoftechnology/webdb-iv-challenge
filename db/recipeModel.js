@@ -6,12 +6,15 @@ module.exports = {
   addDish,
   getRecipes,
   addRecipe,
-  allRecipes
+  allRecipes,
+  getIngredients,
+  addIngredients
 };
 
-function getRecipes() {
+function getRecipes(id) {
   return db('dishes')
     .join('recipes', 'dishes.id', '=', 'recipes.dish_id')
+    .where({ 'dishes.id': id })
     .reduce(
       (item, row) => {
         console.log(row, 'row');
@@ -20,7 +23,7 @@ function getRecipes() {
         item.ingredients.push(row.ingredients);
         return item;
       },
-      { ingredients: [], name: '' }
+      { name: '', ingredients: [] }
     );
 }
 
@@ -42,4 +45,16 @@ function addRecipe(recipe) {
 
 function allRecipes() {
   return db('recipes');
+}
+
+function getIngredients(id) {
+  if (id) {
+    return db('ingredients').where({ id: id });
+  } else {
+    return db('ingredients');
+  }
+}
+
+function addIngredients(ing) {
+  return db('ingredients').insert(ing);
 }
