@@ -2,14 +2,15 @@
 
 /*== Create Tables: Dishes, Recipes, Ingredients, Requirements, Instructions ===
 
-have a way to manage dishes. A dish is something the client wants to cook like pizza or tacos.
-have a way to manage recipes. A dish can have different recipes for tacos, like tex-mex or granny's. A recipe belongs only to one dish.
-have a way to manage ingredients.
-a recipe could have more than one ingredient and the same ingredient can be used in multiple recipes. Examples are "cup of corn flour" or "gram of butter".
-when saving the ingredients for a recipe capture the quantity required for that ingredient as a floating number.
-have a way to save instructions for cooking a recipe. Instructions will be a series of steps involved in cooking a recipe.
-for some recipes, the order in which the steps are performed matters, please provide a way to specify that order.
-have a way to pick a dish and a recipe and get a shopping list with all the ingredients, and quantity of each, needed to cook the dish.
+    have a way to manage dishes. A dish is something the client wants to cook like pizza or tacos.
+    have a way to manage recipes. A dish can have different recipes for tacos, like tex-mex or granny's. A recipe belongs only to one dish.
+    have a way to manage ingredients.
+    a recipe could have more than one ingredient and the same ingredient can be used in multiple recipes. Examples are "cup of corn flour" or "gram of butter".
+    when saving the ingredients for a recipe capture the quantity required for that ingredient as a floating number.
+    have a way to save instructions for cooking a recipe. Instructions will be a series of steps involved in cooking a recipe.
+    for some recipes, the order in which the steps are performed matters, please provide a way to specify that order.
+    have a way to pick a dish and a recipe and get a shopping list with all the ingredients, and quantity of each, needed to cook the dish.
+
 */
 
 //-- Dependencies --------------------------------

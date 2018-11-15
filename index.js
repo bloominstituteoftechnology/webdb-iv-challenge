@@ -3,13 +3,8 @@
 //== Database API Server =======================================================
 
 //-- Dependencies --------------------------------
-const express = require('express');
-const knex    = require('knex'   );
-const config     = require('./config.js'  );
-const knexConfig = require('./knexfile.js');
-
-//-- Configure Database --------------------------
-const database = knex(knexConfig.development);
+const express = require('express'          );
+const config  = require('./config.js'      );
 
 //-- Create Server and open Port -----------------
 const server = express();
