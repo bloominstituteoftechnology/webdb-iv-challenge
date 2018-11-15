@@ -21,8 +21,8 @@ server.get('/dishes', (req, res) => {
         })
         .catch(err => {
             res.status(500).json({ error: err, errorMessage: 'Error retrieving dishes' });
-        })
-})
+        });
+});
 
 // [GET] /recipes
 server.get('/recipes', (req, res) => {
@@ -32,6 +32,39 @@ server.get('/recipes', (req, res) => {
         })
         .catch(err => {
             res.status(500).json({ error: err, errorMessage: 'Error retrieving recipes' });
+        });
+});
+
+// [GET] /ingredients
+server.get('/ingredients', (req, res) => {
+    db('ingredients')
+        .then(ingredients => {
+            res.status(200).json(ingredients);
+        })
+        .catch(err => {
+            res.status(500).json({ error: err, errorMessage: 'Error retrieving ingredients' });
+        });
+});
+
+// [GET] /recipe-ingredients
+server.get('/recipe-ingredients', (req, res) => {
+    db('recipe_ingredients')
+        .then(ingredients => {
+            res.status(200).json(ingredients);
+        })
+        .catch(err => {
+            res.status(500).json({ error: err, errorMessage: 'Error retrieving recipe ingredients' });
+        });
+});
+
+// [STEPS] /steps
+server.get('/steps', (req, res) => {
+    db('steps')
+        .then(steps => {
+            res.status(200).json(steps);
+        })
+        .catch(err => {
+            res.status(500).json({ error: err, errorMessage: 'Error retrieving steps' });
         })
 })
 
