@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     tbl.increments();
 
     tbl
-      .string("name", 128)
+      .string("recipe_name", 255)
       .notNullable()
       .unique("recipe_name");
 
