@@ -4,14 +4,11 @@
   "description": "- database modeling.\r - migration scripts.\r - seeding.\r - knex.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MEBonham/db-recipe-book.git"
-  },
+  "repository": "git+https://github.com/MEBonham/db-recipe-book.git",
   "keywords": [],
-  "author": "",
+  "author": "MEBonham <programmer@mckaybonham.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MEBonham/db-recipe-book/issues"
