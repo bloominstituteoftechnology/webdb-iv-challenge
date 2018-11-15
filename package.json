@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.4"
+  },
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lolax/db-recipe-book.git",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
+}
