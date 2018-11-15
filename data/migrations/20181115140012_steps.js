@@ -1,8 +1,7 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('steps', tbl => {
-        tbl
-            .increments();
+    return knex.schema.createTable('steps', function(tbl) {
+        tbl.increments()
         tbl
             .string('step');
         tbl 

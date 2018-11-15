@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
         tbl.increments();
 
         tbl
-        .string('ingredients', 5000)
+        .string('ingredient', 5000)
         .notNullable()
 
         tbl
