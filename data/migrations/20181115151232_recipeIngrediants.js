@@ -3,15 +3,15 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('recipeIngrediants', function(tbl) {
       tbl.increments();
       tbl
-        .interger('recipe_id')
+        .integer('recipe_id')
         .unsigned()
         .references('id')
         .inTable('recipes');
     
       tbl
-        .interger('ingrediant_id')
+        .integer('ingrediant_id')
         .unsigned()
-        .referneces('id')
+        .references('id')
         .inTable('ingrediants');
     
       tbl.float('amount').notNullable()

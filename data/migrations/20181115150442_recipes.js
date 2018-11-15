@@ -5,13 +5,13 @@ exports.up = function(knex, Promise) {
       tbl.string('name', 255).unique().notNullable();
 
       tbl
-        .interger('dish_id')
+        .integer('dish_id')
         .unsigned()
         .references('id')
         .inTable('dish');
 
       tbl
-        .interger('steps_id')
+        .integer('steps_id')
         .unsigned()
         .references('id')
         .inTable('steps');
