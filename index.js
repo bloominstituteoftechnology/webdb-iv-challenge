@@ -3,8 +3,8 @@ const server = express();
 const port = 9000;
 
 const knex = require("knex");
-// const knexConfig = require("./knexfile.js");
-// const db = knex(knexConfig.development);
+const knexConfig = require("./knexfile.js");
+const db = knex(knexConfig.development);
 
 server.use(express.json());
 
