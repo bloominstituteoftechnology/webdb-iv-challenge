@@ -25,6 +25,14 @@ server.get('/api/Recipes', (req, res) => {
         .then(Recipes => res.status(200).json(Recipes))
         .catch(err => res.status(500).json(err))
 })
+
+server.get('/api/Ingrediants', (req, res) => {
+
+    db('Ingrediants')
+        .then(Recipes => res.status(200).json(Recipes))
+        .catch(err => res.status(500).json(err))
+})
+
 const port = 6000
 server.listen(port, function () {
     console.log(`\n=== Web API Listening on http://localhost:${port} ===\n`)
