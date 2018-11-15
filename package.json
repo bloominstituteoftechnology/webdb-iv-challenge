@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ryanboris/db-recipe-book#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "helmet": "^3.15.0",
     "knex": "^0.14.6",
