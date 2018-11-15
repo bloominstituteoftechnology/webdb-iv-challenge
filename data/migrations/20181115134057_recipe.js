@@ -5,6 +5,10 @@ exports.up = function(knex, Promise) {
       tbl
       .string('recipe', 1000)
       .notNullable()
+
+      tbl
+      .integer('dish_id')
+      .unsigned()
       .references('id')
       .inTable('dishes')
   })
