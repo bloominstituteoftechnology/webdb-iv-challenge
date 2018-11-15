@@ -3,9 +3,9 @@ exports.seed = function(knex, Promise) {
 	return knex('ingredients').del().then(function() {
 		// Inserts seed entries
 		return knex('ingredients').insert([
-			{ ingredients_id: 1, name: 'rowValue1' },
-			{ ingredients_id: 2, name: 'rowValue2' },
-			{ ingredients_id: 3, name: 'rowValue3' }
+			{ recipes_id: 1, name: 'Onions', quantity: 2.0 },
+			{ recipes_id: 1, name: 'Bacon', quantity: 4.0 },
+			{ recipes_id: 1, name: 'Peperoni', quantity: 0.5 }
 		]);
 	});
 };
