@@ -1,31 +1,31 @@
 exports.seed = function(knex, Promise) {
-  return knex('students')
+  return knex('recipe_ingredients')
     .truncate()
     .then(function() {
-      return knex('students').insert([
+      return knex('recipe_ingredients').insert([
         {
           quantity: '.5',
-          measurement: 'cup',
+          measurment: 'cup',
           recipe_id: '1',
-          ingedient_id: '1'
+          ingredient_id: '1'
         },
         {
           quantity: '.5',
-          measurement: 'cup',
+          measurment: 'cup',
           recipe_id: '1',
-          ingedient_id: '3'
+          ingredient_id: '3'
         },
         {
           quantity: '.5',
-          measurement: 'can',
+          measurment: 'can',
           recipe_id: '1',
-          ingedient_id: '5'
+          ingredient_id: '5'
         },
         {
           quantity: '.5',
-          measurement: 'heap',
+          measurment: 'heap',
           recipe_id: '1',
-          ingedient_id: '6'
+          ingredient_id: '6'
         }
       ])
     })
