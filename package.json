@@ -5,6 +5,9 @@
   "repository": "https://github.com/bkwillia052/db-recipe-book.git",
   "author": "bkwillia052 <bkwillia052@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "knex": "^0.15.2",
