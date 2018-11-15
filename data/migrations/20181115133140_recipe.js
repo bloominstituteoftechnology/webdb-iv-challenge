@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
       tbl
         .string('recipe', 256)
         .notNullable()
+      tbl
+        .string('dishId')
         .references('id')
         .inTable('dishes')
   })
