@@ -5,8 +5,8 @@ exports.up = function (knex, Promise) {
 
         tbl
             .string('Name', 250)
-            .integer('Dish_id')
-
+            .notNullable()
+            .unique('Name');
     }
     )
 };
