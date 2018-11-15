@@ -4,16 +4,16 @@ exports.up = function (knex, Promise) {
         tbl
             .increments();
         tbl
-            .string('name', 255)
+            .string('recipe', 255)
             .notNullable()
-        tbl 
+        tbl
             .integer('dish_id')
             .unsigned()
             .references('id')
             .inTable('dishes')
-  })
+    });
 };
 
 exports.down = function (knex, Promise) {
-
+    return knex.schema.dropTableIfExists('recipes');
 };

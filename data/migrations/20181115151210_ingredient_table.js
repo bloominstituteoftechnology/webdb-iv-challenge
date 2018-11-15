@@ -7,7 +7,7 @@ exports.up = function (knex, Promise) {
             .string('ingredient', 355)
             .notNullable();
         tbl
-            .float('quanity')
+            .float('quantity')
         tbl
             .integer('recipe_id')
             .unsigned()

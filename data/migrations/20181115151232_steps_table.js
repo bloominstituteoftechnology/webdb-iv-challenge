@@ -5,7 +5,7 @@ exports.up = function (knex, Promise) {
             .increments();
         tbl
             .string('step');
-        tbl 
+        tbl
             .integer('sequence');
         tbl
             .integer('recipe_id')
@@ -21,5 +21,5 @@ exports.up = function (knex, Promise) {
 };
 
 exports.down = function (knex, Promise) {
-
+    return knex.schema.dropTableIfExists('steps');
 };
