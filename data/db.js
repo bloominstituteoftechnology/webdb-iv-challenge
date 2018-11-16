@@ -1,5 +1,5 @@
 const knex = require('knex')
-const knexConfig = require('../knexfile');
+const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development);
 
 module.exports = {
@@ -10,13 +10,13 @@ module.exports = {
     addRecipe,
 }
 
-function getDish() {
+function getDishes() {
     return db('dishes')
 }
 
 function getDish(id) {
-    return db('dishes').where({ id: Number(id) })
-}
+    return db('dishes').where({ id: Number(id) }).first();
+  }
 
 function addDish(dish) {
     return db('dishes')
@@ -25,7 +25,7 @@ function addDish(dish) {
 }
 
 function getRecipes() {
-    return db('recipes')
+    return db('recipes').join('dishes', {'recipes.dish_id': 'dishes.id'});
 }
 
 function addRecipe(recipe) {
