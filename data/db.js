@@ -24,18 +24,16 @@ function addDish(dish) {
 function getDish(id) {
   return db("dishes")
     .join("recipes", "dishes.id", "recipes.dish_id")
-    .select("dishes.name", "recipes.name as recipes")
+    .select("dishes.name as dish", "recipes.name as recipe")
     .where("dishes.id", id);
 }
 
 function getRecipes() {
   return db("recipes")
     .join("dishes", "recipes.dish_id", "dishes.id")
-    .select("recipes.name", "dishes.name as dish");
+    .select("recipes.name as recipe", "dishes.name as dish");
 }
 
 function addRecipe(recipe) {
-  return db("recipes")
-    .insert(recipe)
-    .then(ids => ({ id: ids[0] }));
+  return db("recipes").insert(recipe);
 }
