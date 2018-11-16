@@ -11,12 +11,13 @@ module.exports = dishHelper = {
     addDish(dish) {
         return db('dishes')
             .insert({ dish })
-            .then(([id]) => this.get(id))
+            .returning('dishes.id')
     },
 
     getDish(id) {
-        return db.select('dish')
+        return db.select('dishes.id', 'dishes.dish', 'recipes.recipe')
             .from('dishes')
-            .where('id', id)
+            .join('recipes', 'dishes.id', '=', 'recipes.dishes_id')
+            .where('dishes.id', '=', id)
     }
 };
