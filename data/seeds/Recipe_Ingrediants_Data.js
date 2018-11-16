@@ -48,18 +48,18 @@ exports.seed = function (knex, Promise) {
         { Recipes_id: 7, Ingrediants_id: 3, quantity: 2 },
 
         // Cheese Burger
-        { Recipes_id: 7, Ingrediants_id: 12, quantity: 2 },
-        { Recipes_id: 7, Ingrediants_id: 5, quantity: 4 },
-        { Recipes_id: 7, Ingrediants_id: 14, quantity: 2 },
-        { Recipes_id: 7, Ingrediants_id: 3, quantity: 2 },
-        { Recipes_id: 7, Ingrediants_id: 2, quantity: 1 },
+        { Recipes_id: 8, Ingrediants_id: 12, quantity: 2 },
+        { Recipes_id: 8, Ingrediants_id: 5, quantity: 4 },
+        { Recipes_id: 8, Ingrediants_id: 14, quantity: 2 },
+        { Recipes_id: 8, Ingrediants_id: 3, quantity: 2 },
+        { Recipes_id: 8, Ingrediants_id: 2, quantity: 1 },
 
         // Spicy Burger
-        { Recipes_id: 7, Ingrediants_id: 12, quantity: 2 },
-        { Recipes_id: 7, Ingrediants_id: 5, quantity: 4 },
-        { Recipes_id: 7, Ingrediants_id: 14, quantity: 2 },
-        { Recipes_id: 7, Ingrediants_id: 3, quantity: 2 },
-        { Recipes_id: 7, Ingrediants_id: 11, quantity: 3 },
+        { Recipes_id: 9, Ingrediants_id: 12, quantity: 2 },
+        { Recipes_id: 9, Ingrediants_id: 5, quantity: 4 },
+        { Recipes_id: 9, Ingrediants_id: 14, quantity: 2 },
+        { Recipes_id: 9, Ingrediants_id: 3, quantity: 2 },
+        { Recipes_id: 9, Ingrediants_id: 11, quantity: 3 },
 
       ])
     })
