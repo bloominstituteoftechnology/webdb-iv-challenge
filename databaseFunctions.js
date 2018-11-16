@@ -25,21 +25,38 @@ module.exports = {
     });
   },
 
-  insert: function(dish) {
+  insertDish: function(dish) {
     return db('dishes')
       .insert(dish)
       .then(([id]) => console.log([id]));
   },
 
 
-  getDishes: function() {
-     return db.select('*').from('dishes')
-       .then(response => console.log(response))
-  },
+  // getDishes: function() {
+  //    return db.select('*').from('dishes')
+  //      .then(response => console.log(response))
+  // },
 
   getDish: function(dishId) {
-    return db.select('*').from('dishes').where({id: dishId})
-      .then(res => console.log(res))
+    if(dishId) {
+      db.select('dishes.dish')
+        .from('dishes')
+        .where('dishes.id', dishId)
+        .then(dish => {
+          return db.select('recipes.name')
+            .from('recipes')
+            .where('recipes.dish_id', dishId)
+            .then(res => console.log([dish, res]))
+        })
+      // return db.select('dishes.dish as dish', 'recipes.name as recipe').from('dishes')
+      //   .innerJoin('recipes', 'dishes.id', 'recipes.dish_id')
+      //   .where('dishes.id', dishId)
+      //   .groupBy('dishes.dish')
+        // .then(res => console.log(res))
+    } else {
+       return db.select('*').from('dishes')
+         .then(response => console.log(response))
+    }
 
   },
 
@@ -49,8 +66,10 @@ module.exports = {
   },
 
   getRecipes: function() {
-    return db.select('recipes.name as name', 'dishes.dish as dish').from('recipes').innerJoin('dishes', 'dishes.id', 'recipes.dish_id').then(res => console.log(res))
-
+    return db.select('recipes.name as name', 'dishes.dish as dish')
+      .from('recipes')
+      .innerJoin('dishes', 'dishes.id', 'recipes.dish_id')
+      .then(res => console.log(res))
   },
 
   update: function(id, changes) {
