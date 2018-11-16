@@ -9,7 +9,7 @@ server.use(express.json())
 // verify database methods
 
 // those that are commented out are commented out
-// so that they don't keep adding the same thing 
+// so that they don't keep adding the same thing
 
 db.getDishes()
   .then(res => {
@@ -45,5 +45,12 @@ db.getRecipes()
 //     console.log(res)
 //   })
 //   .catch(err => console.log(err))
+
+db.getRecipe(1)
+  .then(res => {
+    console.log('Get Recipe')
+    console.log(res)
+  })
+  .catch(err => console.log(err))
 
 server.listen(9000, () => console.log('\n== Port 9k ==\n'))

@@ -31,5 +31,31 @@ module.exports = {
   // should add a `recipe` to the database and return the `id` of the new `recipe`.
   addRecipe: recipe => {
     return db('recipes').insert(recipe)
+  },
+
+  getRecipe: async id => {
+    const info = await db('recipes as r')
+      .join('dishes as d', { 'd.id': 'r.dish_id' })
+      .select('d.name as dish', 'r.name as recipe')
+      .where({ 'r.id': id })
+
+    const ingredients = await db('recipes as r')
+      .join('recipe_ingredients as ri', { 'ri.recipe_id': 'r.id' })
+      .join('ingredients as i', { 'ri.ingredient_id': 'i.id' })
+      .select('i.name as ingredient')
+      .where({ 'r.id': id })
+
+    const steps = await db('recipes as r')
+      .join('steps as s', { 's.recipe_id': 'r.id' })
+      .select('s.step', 's.action')
+      .where({ 'r.id': id })
+
+    const formatted = {
+      ...info[0],
+      ingredients: ingredients.map(({ ingredient }) => ingredient),
+      steps: steps.map(({ step, action }) => `${step}. ${action}`)
+    }
+
+    return formatted
   }
 }
