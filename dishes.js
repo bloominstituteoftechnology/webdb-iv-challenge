@@ -16,8 +16,8 @@ function getDishes() {
 
 function getDish(id) {
   return db("dishes")
-    .select("dishes.name", "recipes.name as recipes")
     .join("recipes", "dishes.id", "=", "recipes.dish_id")
+    .select("dishes.name", "recipes.name as recipes")
     .where({ "dishes.id": id });
 }
 
