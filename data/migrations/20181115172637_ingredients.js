@@ -1,13 +1,17 @@
-
 exports.up = function (knex, Promise) {
-    return knex.schema.crateTable("ingredients", function (tbl) {
-        tbl.increments("id").primary();
-        tbl.text("name").notNull();
-        tbl.integer("quantity").notNull();
-        tbl.integer("recipe_id").references("recipes.id");
+    return knex.schema.createTable('ingredients', tbl => {
+        tbl.increments();
+        tbl.string('ingredient', 256);
+        tbl.string('measurement', 256);
+        tbl.float('amount');
+        tbl
+        .integer('recipe_id')
+        .unsigned()
+        .references('id')
+        .inTable('recipes');
     })
 };
 
 exports.down = function (knex, Promise) {
-    return knex.schema.dropTableIfExists("ingredients")
+    return knex.schema.dropTableIfExists('ingredients')
 };
