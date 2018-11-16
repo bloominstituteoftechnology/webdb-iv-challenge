@@ -2,6 +2,7 @@ const express = require("express");
 
 const dishes = require('./dishes.js');
 const recipes = require('./recipes.js');
+const instructions = require('./instructions.js');
 
 const server = express();
 
@@ -72,6 +73,35 @@ server.get("/recipes", (req, res) => {
     }
     recipes
       .addRecipe(recipe)
+      .then(ids => {
+        res.status(201).json(ids);
+      })
+      .catch(error => {
+        res.status(500).json(error);
+      });
+  });
+
+  // instructions
+  server.get("/instructions", (req, res) => {
+    instructions
+      .getInstructions()
+      .then(instruction => {
+        res.status(200).json(instruction);
+      })
+      .catch(error => res.status(500).json(error));
+  });
+
+  server.post("/instructions", (req, res) => {
+    const { step, step_number, recipe_id } = req.body;
+    const instruction = { step, step_number, recipe_id };
+  
+    if (!step || !recipe_id) {
+      return res.status(400).send({
+        errorMessage: "Please provide a step and a step number for the instruction."
+      });
+    }
+    instructions
+      .addInstructions(instruction)
       .then(ids => {
         res.status(201).json(ids);
       })
