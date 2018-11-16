@@ -11,12 +11,16 @@ app.use(express.json())
 app.use(logger('dev'))
 app.use(helmet())
 
-app.use('/dishes', dishRouter)
-app.use('/recipes', recipeRouter)
+app.use('/api/dishes', dishRouter)
+app.use('/api/recipes', recipeRouter)
 
 app.get('/', (req, res) => {
   res.status(200).send('The Server Listens and Obeys')
 })
 
 const PORT = 3035
-app.listen(PORT, () => console.log(`\n === Server Online using PORT ${PORT} --- Keep Coding!!! ===\n`))
+app.listen(PORT, () =>
+  console.log(
+    `\n === Server Online using PORT ${PORT} --- Keep Coding!!! ===\n`
+  )
+)
