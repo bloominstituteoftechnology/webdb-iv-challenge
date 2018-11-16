@@ -36,7 +36,7 @@ server.post('/api/dishes', nameCheck, (req, res) => {
     .insert(dish)
     // .returning('*') // other databases allow other items to be returned
     .then(ids => {
-      res.status(200).send({ id: ids }); //201 or 200
+      res.status(200).json({ id: ids[0] }); //201 or 200
     })
     .catch(err => {
       res.status(500).json({
@@ -132,7 +132,7 @@ server.post('/api/recipes', nameCheck, (req, res) => {
     // .returning('id')
     .then(ids => {
       // res.status(201).json({ id: ids[0] });
-      res.status(201).send(ids)
+      res.status(201).json( { id: ids[0] } )
     })
     .catch(err => {
       res.status(500).json({
