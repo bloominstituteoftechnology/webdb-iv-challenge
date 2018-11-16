@@ -7,9 +7,10 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .references('id')
       .inTable('recipes')
+      .notNullable()
 
-    table.integer('step')
-    table.string('action', 1024)
+    table.integer('step').notNullable()
+    table.string('action', 1024).notNullable()
   })
 }
 
