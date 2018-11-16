@@ -27,5 +27,15 @@ module.exports = {
             });
     },
 
-    
+    getRecipes: function() {
+        return db("recipes as r")
+            .join("dishes as d", "r.dish_id", "d.id")
+            .select("r.name", "d.name");
+    },
+
+    addDish: function(recipe) {
+        return db("recipes")
+            .insert(recipe)
+            .then(returnId => ({ id: returnId }));
+    }
 }
