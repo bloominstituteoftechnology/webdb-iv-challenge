@@ -1,6 +1,6 @@
 const express = require('express');
 const knex = require('knex');
-// const helmet = require('helmet');
+
 
 const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development);
@@ -47,17 +47,28 @@ server.post('/api/dishes', nameCheck, (req, res) => {
 })
 
 // // GET (assumes .select())
-server.get('/api/dishes', (req, res) => {
 
+server.get('/api/dishes', (req, res) => {
   db('dishes')
-    //.select()
-    .then(dishes => res.status(200).json(dishes))
-    .catch(err => res.status(500).json({
-      err
-    }));
-});
+      //.select()
+      .then(dishes => res.status(200).json(dishes))
+      .catch(err => res.status(500).json({
+        err
+      }));
+  });
+// const getDishes = () => {
+  
+// }
+// const getAllDishes = getDishes();
+// console.log(getAllDishes)
+
+// const myModule = require('./dbMethods');
+
+// myModule.getRecipes().then((result) => console.log(result));
+
 
 // GET BY ID
+
 server.get('/api/dishes/:id', (req, res) => {
   const { id } = req.params;
 
@@ -76,51 +87,7 @@ server.get('/api/dishes/:id', (req, res) => {
     }));
 });
 
-// // GET cohort.id matches students.cohort_id
-// server.get('/api/cohorts/:id/students', (req, res) => {
-//   const { id } = req.params;
 
-//   db('cohorts')
-//     .join('students', 'cohorts.id', '=', 'students.cohort_id')
-//     .select('*')
-//     .then(students => res.status(200).json(students.filter(student => student.cohort_id === `${id}` / 1)))
-//     .catch(err => res.status(500).json({
-//       err
-//     }));
-// });
-
-
-// // PUT .where() .update()
-// server.put('/api/cohorts/:id', nameCheck, (req, res) => {
-//   const changes = req.body;
-//   const { id } = req.params;
-
-//   db('cohorts')
-//     .where({ id: id }) // 
-//     .update(changes)
-//     .then(count => {
-//       res.status(200).json({
-//         name: changes.name,
-//         id: changes.id
-//       });
-//     })
-//     .catch(err => res.status(500).json(err));
-// });
-
-// // DELETE .where() .del()
-// // Calling .del() without first filtering the records will result on the removal of all the records in the table, be careful!
-
-// server.delete('/api/cohorts/:id', (req, res) => {
-//   const { id } = req.params;
-
-//   db('cohorts')
-//     .where({ id: id })
-//     .del()
-//     .then(count => {
-//       res.status(200).json({ count });
-//     })
-//     .catch(err => res.status(500).json(err));
-// });
 
 // RECIPES
 // POST: .insert() .into
@@ -131,7 +98,6 @@ server.post('/api/recipes', nameCheck, (req, res) => {
     .insert(recipe)
     // .returning('id')
     .then(ids => {
-      // res.status(201).json({ id: ids[0] });
       res.status(201).json( { id: ids[0] } )
     })
     .catch(err => {
@@ -169,60 +135,5 @@ server.get('/api/recipes/:id', (req, res) => {
     }));
 });
 
-
-// // PUT .where() .update()
-// server.put('/api/students/:id', (req, res) => {
-//   const changes = req.body;
-//   const {
-//     id
-//   } = req.params;
-//   console.log(changes, id)
-//   db('students')
-//     .where({
-//       id: id
-//     }) // 
-//     .update(changes)
-//     .then(count => {
-//       res.status(200).json({
-//         name: changes.name,
-//         cohort: changes.cohort_id,
-//         id: changes.id
-//       });
-//     })
-//     .catch(err => res.status(500).json(err));
-// });
-
-// // DELETE .where() .del()
-// // Calling .del() without first filtering the records will result on the removal of all the records in the table, be careful!
-
-// server.delete('/api/students/:id', (req, res) => {
-//   const { id } = req.params;
-
-//   db('students')
-//     .where({
-//       id: id
-//     })
-//     .del()
-//     .then(count => {
-//       res.status(200).json({
-//         count
-//       });
-//     })
-//     .catch(err => res.status(500).json(err));
-// });
-
-
-// // JOIN
-// server.get('/api/cohorts-join-students', (req, res) => {
-//   return db('cohorts')
-//     // .join('students', 'cohorts.id', '=', 'students.cohort_id')
-//     .join('students', 'students.cohort_id', '=', 'cohorts.id')
-//     // .select('students.name')
-//     .select('*')
-//     .then(response => {
-//       res.status(200).json(response)
-//     })
-//     .catch(err => res.status(500).json(err));
-// })
 
 module.exports = server;
