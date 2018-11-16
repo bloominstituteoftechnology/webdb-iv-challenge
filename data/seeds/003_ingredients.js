@@ -1,13 +1,28 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('ingredients').truncate()
     .then(function () {
       // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+      return knex('ingredients').insert([
+        { name: 'panko breadcrumbs'},
+        { name: 'oil'},
+        { name: 'chicken breasts'},
+        { name: 'salt'},
+        { name: 'pepper'},
+        { name: 'swiss cheese'},
+        { name: 'mayonaise'},
+        { name: 'egg'},
+        { name: 'butter'},
+        { name: 'flour'},
+        { name: 'milk'},
+        { name: 'oregano'},
+        { name: 'pepper flakes'},
+        { name: 'tomatoes'},
+        { name: 'mozzarella cheese'},
+        { name: 'parmesan cheese'},
+        { name: 'red pepper'},
+        { name: 'basil'}
       ]);
     });
 };

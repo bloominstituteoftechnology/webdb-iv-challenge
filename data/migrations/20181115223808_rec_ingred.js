@@ -3,16 +3,16 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('rec_ingred', function(tbl){
     tbl.increments();
     tbl.integer('recipe_id')
-        .notnullable()
+        .notNullable()
         .unsigned()
         .references('id')
-        .intable('recipes')
+        .inTable('recipes')
     tbl.integer('ingredient_id')
-        .notnullable()
+        .notNullable()
         .unsigned()
         .references('id')
-        .intable('ingredients')
-    table.float('quantity')
+        .inTable('ingredients')
+    tbl.float('quantity')
         .notNullable()
 
   })

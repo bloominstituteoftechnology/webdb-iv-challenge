@@ -19,8 +19,8 @@ x- have a way to manage ingredients.
 x- a `recipe` could have more than one ingredient and the same ingredient can be used in multiple recipes. Examples are "cup of corn flour" or "gram of butter".
 x- when saving the ingredients for a `recipe` capture the quantity required for that ingredient as a floating number.
 x- have a way to save instructions for cooking a recipe. Instructions will be a series of `steps` involved in cooking a `recipe`.
-- for some recipes, the order in which the steps are performed matters, please provide a way to specify that order.
-- have a way to pick a `dish` and a `recipe` and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the `dish`.
+x- for some recipes, the order in which the steps are performed matters, please provide a way to specify that order.
+x- have a way to pick a `dish` and a `recipe` and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the `dish`.
 
 In addition to the `migration` and `seed` scripts write a data access file that **exports** an object with the following functions:
 
