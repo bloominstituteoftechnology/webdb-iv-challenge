@@ -33,7 +33,7 @@ exports.up = function(knex, Promise) {
                 .references(`${config.TABLE_DISHES}.${config.FIELD_ID}`);
         }),
         // Table Ingredients
-        knex.schema.createTable(config.TABLE_Ingredients, table => {
+        knex.schema.createTable(config.TABLE_INGREDIENTS, table => {
             table.increments(config.FIELD_ID).primary();
             table.string(config.FIELD_NAME).notNullable();
         }),
