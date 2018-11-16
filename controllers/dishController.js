@@ -10,7 +10,7 @@ const controllersDish = {
       next(new Error('EMPTY BODY'))
     }
     const dishName = req.body
-    db('dish')
+    db('dishes')
       .insert(dishName)
       .then((id) => res.status(201).json(id))
       .catch(next)
@@ -28,10 +28,10 @@ const controllersDish = {
   //     .catch(next)
   // },
   getAllDish (req, res, next) {
-    db('dish').then((dish) => res.status(200).json(dish)).catch(next)
+    db('dishes').then((dish) => res.status(200).json(dish)).catch(next)
   },
   getSingleDish (req, res, next) {
-    db('dish')
+    db('dishes')
       .where('id', req.params.id)
       .then((dish) => {
         if (!dish.length) {
@@ -45,7 +45,7 @@ const controllersDish = {
     if (req.body.name.length <= 0) {
       next(new Error('needs update content'))
     }
-    db('dish')
+    db('dishes')
       .where('id', req.params.id)
       .update(req.body)
       .then((count) => {
@@ -58,7 +58,7 @@ const controllersDish = {
       .catch(next)
   },
   deleteDish (req, res, next) {
-    db('dish')
+    db('dishes')
       .where('id', req.params.id)
       .del()
       .then((count) => {
