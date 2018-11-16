@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('shopping-list', table => {
+  return knex.schema.createTable('shopping', table => {
 
     // primary key
     // by default it generates an id field and make it autoincrement and the primary key. Default tbl.increments('id');
@@ -12,16 +12,16 @@ exports.up = function(knex, Promise) {
       .integer('ingredient_id')
       .unsigned()
       .references('id')
-      .inTable('ingredient');
+      .inTable('ingredients');
     table
       .integer('recipe_id')
       .unsigned()
       .references('id')
-      .inTable('recipe');
+      .inTable('recipes');
   })
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('shopping-list');
+  return knex.schema.dropTableIfExists('shopping');
 
 };

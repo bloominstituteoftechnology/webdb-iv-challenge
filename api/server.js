@@ -122,51 +122,52 @@ server.get('/api/dishes/:id', (req, res) => {
 //     .catch(err => res.status(500).json(err));
 // });
 
-// // STUDENTS
-// // POST: .insert() .into
-// server.post('/api/students', nameCheck, (req, res) => {
-//   const student = req.body;
-//   console.log(student)
-//   db('students')
-//     .insert(student)
-//     // .returning('id')
-//     .then(ids => {
-//       res.status(201).json({ id: ids[0] });
-//     })
-//     .catch(err => {
-//       res.status(500).json({
-//         message: 'Error inserting',
-//         err
-//       })
-//     })
-// })
+// RECIPES
+// POST: .insert() .into
+server.post('/api/recipes', nameCheck, (req, res) => {
+  const recipe = req.body;
+  console.log(recipe)
+  db('recipes')
+    .insert(recipe)
+    // .returning('id')
+    .then(ids => {
+      // res.status(201).json({ id: ids[0] });
+      res.status(201).send(ids)
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'Error inserting',
+        err
+      })
+    })
+})
 
 // // GET 
-// server.get('/api/students', (req, res) => {
+server.get('/api/recipes', (req, res) => {
 
-//   db('students')
-//     .then(students => res.status(200).json(students))
-//     .catch(err => res.status(500).json({ err }));
-// });
+  db('recipes')
+    .then(recipes => res.status(200).json(recipes))
+    .catch(err => res.status(500).json({ err }));
+});
 
 // // GET BY ID
-// server.get('/api/students/:id', (req, res) => {
-//   const { id } = req.params;
-//   console.log( id )
-//   db('students')
-//     .where({ id: id })
-//     .then(students =>
-//       students[0]
-//       ? res.status(200).json(students[0])
-//       : res.status(404).json({
-//           error: "there is no student with that id",
-//           "log": console.log(id)
-//       })
-//     )
-//     .catch(err => res.status(500).json({
-//       err
-//     }));
-// });
+server.get('/api/recipes/:id', (req, res) => {
+  const { id } = req.params;
+  console.log( id )
+  db('recipes')
+    .where({ id: id })
+    .then(recipes =>
+      recipes[0]
+      ? res.status(200).json(recipes[0])
+      : res.status(404).json({
+          error: "there is no recipe with that id",
+          "log": console.log(id)
+      })
+    )
+    .catch(err => res.status(500).json({
+      err
+    }));
+});
 
 
 // // PUT .where() .update()
