@@ -80,4 +80,4 @@ addRecipe = server.post('/api/recipes', (req, res) => {
   });
 })
 
-server.listen(7200, () => console.log('\n Party at port 7200 '))
+server.listen(7100, () => console.log('\n Party at port 7100 '))
