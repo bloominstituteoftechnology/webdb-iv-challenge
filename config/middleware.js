@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 const dishesRouter = require('../routers/dishesRouter.js');
+const recipesRouter = require('../routers/recipesRouter.js');
 
 module.exports = server => {
     server.use(express.json());
@@ -10,4 +11,5 @@ module.exports = server => {
     server.use(morgan('dev'));
 
     server.use('/api/dishes', dishesRouter);
+    server.use('/api/recipes', recipesRouter);
 };
