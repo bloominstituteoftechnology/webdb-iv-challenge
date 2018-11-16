@@ -26,55 +26,55 @@ server.get('/', (req, res) => {
 
 // // endpoints here
 
-// // COHORTS
-// // POST: .insert() .into
-// server.post('/api/cohorts', nameCheck, (req, res) => {
-//   const { name } = req.body;
-//   const cohort = { name };
-
-//   db('cohorts')
-//     .insert(cohort)
-//     // .returning('*') // other databases allow other items to be returned
-//     .then(ids => {
-//       res.status(201).json({ id: ids[0] });
-//     })
-//     .catch(err => {
-//       res.status(500).json({
-//         message: 'Error inserting',
-//         err
-//       })
-//     })
-// })
+// DISHES
+// POST: .insert() .into
+server.post('/api/dishes', nameCheck, (req, res) => {
+  const { name } = req.body;
+  const dish = { name };
+  console.log(name, dish)
+  db('dishes')
+    .insert(dish)
+    // .returning('*') // other databases allow other items to be returned
+    .then(ids => {
+      res.status(200).send({ id: ids }); //201 or 200
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'Error inserting',
+        err
+      })
+    })
+})
 
 // // GET (assumes .select())
-// server.get('/api/cohorts', (req, res) => {
+server.get('/api/dishes', (req, res) => {
 
-//   db('cohorts')
-//     //.select()
-//     .then(cohorts => res.status(200).json(cohorts))
-//     .catch(err => res.status(500).json({
-//       err
-//     }));
-// });
+  db('dishes')
+    //.select()
+    .then(dishes => res.status(200).json(dishes))
+    .catch(err => res.status(500).json({
+      err
+    }));
+});
 
-// // GET BY ID
-// server.get('/api/cohorts/:id', (req, res) => {
-//   const { id } = req.params;
+// GET BY ID
+server.get('/api/dishes/:id', (req, res) => {
+  const { id } = req.params;
 
-//   db('cohorts')
-//     .where({ id: id })
-//     .then(cohorts =>
-//       cohorts[0] ?
-//       res.status(200).json(cohorts[0]) :
-//       res.status(404).json({
-//         error: "there is no cohort with that id",
-//         "log": console.log(id)
-//       })
-//     )
-//     .catch(err => res.status(500).json({
-//       err
-//     }));
-// });
+  db('dishes')
+    .where({ id: id })
+    .then(dishes =>
+      dishes[0] ?
+      res.status(200).json(dishes[0]) :
+      res.status(404).json({
+        error: "there is no dish with that id",
+        "log": console.log(id)
+      })
+    )
+    .catch(err => res.status(500).json({
+      err
+    }));
+});
 
 // // GET cohort.id matches students.cohort_id
 // server.get('/api/cohorts/:id/students', (req, res) => {
