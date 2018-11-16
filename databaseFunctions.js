@@ -46,7 +46,7 @@ module.exports = {
           return db.select('recipes.name')
             .from('recipes')
             .where('recipes.dish_id', dishId)
-            .then(res => console.log([dish, res]))
+            .then(res => console.log(dish, res))
         })
       // return db.select('dishes.dish as dish', 'recipes.name as recipe').from('dishes')
       //   .innerJoin('recipes', 'dishes.id', 'recipes.dish_id')
