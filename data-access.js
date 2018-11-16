@@ -16,16 +16,20 @@ const knexConfig = require('./knexfile.js'  );
 const config     = require('./config.js');
 const crudHelper = require('./crud-helper'  );
 
-//-- Create Crud Helpers -------------------------
+//-- Configure Knex Database ---------------------
 const knexDB = knex(knexConfig.development);
-const dishCrud   = crudHelper(knexDB, config.TABLE_DISHES );
-const recipeCrud = crudHelper(knexDB, config.TABLE_RECIPES);
 
 //-- Create and Export Database Accessor ---------
 module.exports = {
-    getDishes (      ){ return dishCrud.get  (      );},
-    getDish   (id    ){ return dishCrud.get  (id    );},
-    addDish   (dish  ){ return dishCrud.add  (dish  );},
-    getRecipes(      ){ return recipeCrud.get(      );},
-    addRecipe (recipe){ return recipeCrud.add(recipe);},
+    dishes      : crudHelper(knexDB, config.TABLE_DISHES      ),
+    recipes     : crudHelper(knexDB, config.TABLE_RECIPES     ),
+    ingredients : crudHelper(knexDB, config.TABLE_INGREDIENTS ),
+    requirements: crudHelper(knexDB, config.TABLE_REQUIREMENTS),
+    instructions: crudHelper(knexDB, config.TABLE_INSTRUCTIONS),
+    //
+    getDishes (      ){ return this.dishes.get (      );},
+    getDish   (id    ){ return this.dishes.get (id    );},
+    addDish   (dish  ){ return this.dishes.add (dish  );},
+    getRecipes(      ){ return this.recipes.get(      );},
+    addRecipe (recipe){ return this.recipes.add(recipe);},
 };

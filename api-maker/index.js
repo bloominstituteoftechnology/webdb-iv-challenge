@@ -105,7 +105,6 @@ async function create(request, response, next) {
     let itemData = request.body.entryData;
     // Insert new item into database
     try{
-        console.log(itemData)
         const result = await this.insert(itemData);
         const newItemId = result[0];
         response.status(201);

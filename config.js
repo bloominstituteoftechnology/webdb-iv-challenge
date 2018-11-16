@@ -7,7 +7,12 @@ module.exports = {
     // Server Configuration
     PORT: PORT,
     MESSAGE_SERVER_START: `\nServer started on port ${PORT}\n`,
-    // Route Paths
+    // URL Paths for Routing
+    PATH_DISHES      : '/dishes'      ,
+    PATH_RECIPES     : '/recipes'     ,
+    PATH_INGREDIENTS : '/ingredients' ,
+    PATH_REQUIREMENTS: '/requirements',
+    PATH_INSTRUCTIONS: '/instructions',
     // Database Strings
     TABLE_DISHES      : 'dishes'      ,
     TABLE_RECIPES     : 'recipes'     ,
