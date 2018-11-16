@@ -5,7 +5,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('recipes').insert([
-        {id: 1, recipe_name: 'pepperoni pizza', dish_id: 1}
+        {id: 1, recipe_name: 'pepperoni pizza', dish_id: 1},
+        {id: 2, recipe_name: 'sausage pizza', dish_id: 1}
       ]);
     });
 };
