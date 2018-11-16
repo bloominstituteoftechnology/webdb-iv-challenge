@@ -4,15 +4,17 @@ const db= knex(knexConfig.development);
 
 module.exports={
     getDishes,
-    addDish,
+    // addDish,
     getDish,
-    getRecipes,
-    addRecipe
+    // getRecipes,
+    // addRecipe
 };
 function getDishes(){
-    return db('dishes')
+    return db.select('name')
+            .from('dishes')
 }
 function getDish(id){
-    return db('dishes')
-        .where({id:id})
+    return db.select('name')
+            .from('dishes')
+            .where({id:id})
 }
