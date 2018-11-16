@@ -1,4 +1,14 @@
 {
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "Migrating and Seeding a Database",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Lambda School",
+  "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "helmet": "^3.15.0",
