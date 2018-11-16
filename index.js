@@ -13,11 +13,13 @@ server.use(express.json());
 
 server.get("/api/shoppingList/:id", (req, res) => {
     const recipeId = req.params.id;
+    console.log("This part is working");
     db("recipes")
-        .join("recipe-ingredients", "recipes.id", "=", "recipe-ingredients.recipe_id")
-        .join("ingredients", "recipe-ingredients.ingredient_id", "=", "ingredients.id")
-        .join("dishes", "dishes.id", "=", "recipes.dish_id")
-        .select("dishes.name", "recipes.name", "ingredients.name", "recipe-ingredients.quantity")
+        .join("recipe-ingredients", "recipes.id", "recipe-ingredients.recipe_id")
+        .join("ingredients", "recipe-ingredients.ingredient_id", "ingredients.id")
+        .join("dishes", "dishes.id", "recipes.dish_id")
+        .select("dishes.name as Dish", "recipes.name as Recipe", "ingredients.name as Ingredient", "recipe-ingredients.ingredient_quantity")
+        // .select("dishes.name", "recipe-ingredients.ingredient_quantity")
         .where("recipes.id", recipeId)
         .then(list => {
             if (list.length === 0) {
