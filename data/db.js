@@ -32,3 +32,10 @@ function getRecipes(dish_name) {
 function addRecipe(recipe) {
   return db('recipes').insert(recipe);
 }
+
+// test cases
+getDishes().then(dishes => console.log(dishes));
+getDish(1).then(dish => console.log(dish));
+addDish({ name: 'Asado' }).then(res => console.log(res));
+getRecipes('Sinigang').then(recipes => console.log(recipes))
+addRecipe({ name: 'Asado ni Mang Kepweng', dish_id: 4 }).then(res => console.log(res));
