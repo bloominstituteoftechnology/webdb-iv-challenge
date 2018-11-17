@@ -4,33 +4,25 @@ const knexConfig = require('../../knexfile')
 const db = knex(knexConfig.development)
 const router = express.Router();
 
+// controllers
+const controllers = require('./dishControllers')
 
 /* ----  GET ALL DISHES  ---- */
-router.get('/', (req, res) => {
-  db('dishes')
-    .then(dishes => res.status(200).json(dishes))
-    .catch(err => res.status(500).json(err))
-})
+router.get('/', controllers.getDishes)
 
 /* ----  GET DISHES BY ID  ---- */
-router.get('/:id', (req, res) => {
-  const { id } = req.params
-  db('dishes')
-    .where({ id: id })
-    .then(dishes => res.status(200).json(dishes))
-    .catch(err => res.status(500).json(err))
-})
+router.get('/:id', controllers.getDish)
 
 /* ----  GET DISHES BY RECIPE  ---- */
-router.get('/:id/recipes', (req, res) => {
-  const { id } = req.params
-  db('recipes')
+// router.get('/:id/recipes', (req, res) => {
+//   const { id } = req.params
+//   db('recipes')
 
-    .select()
-    .where('dish_id', id)
-    .then(dishes => res.status(200).json(dishes))
-    .catch(err => res.status(500).json(err))
-})
+//     .select()
+//     .where('dish_id', id)
+//     .then(dishes => res.status(200).json(dishes))
+//     .catch(err => res.status(500).json(err))
+// })
 
 
 /* ----  ADD DISH  ---- */
