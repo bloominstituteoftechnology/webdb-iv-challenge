@@ -1,21 +1,11 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
+    getDish,
     getDishes,
     addDish,
-    getDish
-};
-
-function getDishes() {
-    // should return a list of all dishes in the database.
-    return db('dishes');
-}
-
-function addDish(dish) {
-    // should add the dish to the database and return the id of the new dish.
-    return db('dishes')
-        .insert(dish)
-        .then(id => ({ id: id[0] }));
+    updateDish,
+    removeDish
 };
 
 function getDish(id) {
@@ -44,4 +34,30 @@ function getDish(id) {
                 return toBeFormatted;
             }
         })
+}
+
+function getDishes() {
+    // should return a list of all dishes in the database.
+    return db('dishes');
+}
+
+function addDish(dish) {
+    // should add the dish to the database and return the id of the new dish.
+    return db('dishes')
+        .insert(dish)
+        .then(id => ({ id: id[0] }));
+};
+
+function updateDish(id, dish) {
+    // update the dish at id, return the number of records updated
+    return db('dishes')
+        .where('id', Number(id))
+        .update(dish);
+};
+
+function removeDish(id) {
+    // delete the dish at id, return number of records deleted
+    return db('dishes')
+        .where('id', Number(id))
+        .del();
 }
