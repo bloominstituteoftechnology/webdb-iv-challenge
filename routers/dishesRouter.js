@@ -7,7 +7,11 @@ const router = express.Router();
 router.get('/', (req, res) => {
     dishDb.getDishes()
         .then(dishes => {
-            res.status(200).json(dishes);
+            if (dishes.length) {
+                res.status(200).json(dishes);
+            } else {
+                res.status(200).json({ successMessage: 'Currently no dishes in database'})
+            }
         })
         .catch(err => {
             res.status(500).json({ error: err, errorMessage: 'Error retrieving dishes' });
@@ -65,12 +69,14 @@ router.put('/:id', (req, res) => {
             .then(dish => {
                 if (dish) {
                     res.status(200).json(dish);
+                } else {
+                    res.status(404).json({ error: err, errorMessage: 'Error updating dish, dish id does not exist' })
                 }
             })
             .catch(err => {
                 if (err.errno = 19) {
                     if (err.code) {
-                        res.status(400).json({ error: err, errorMessage: 'Dish name already exists' });
+                        res.status(400).json({ error: err, errorMessage: 'Error updating dish, name already exists' });
                     } else {
                         res.status(404).json({ error: err, errorMessage: 'Dish id does not exist' });
                     }

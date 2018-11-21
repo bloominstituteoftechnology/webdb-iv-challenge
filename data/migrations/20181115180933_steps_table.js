@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
         tbl.increments(); // table id
 
         tbl.integer('recipe_id').unsigned().notNullable();
-        tbl.foreign('recipe_id').references('id').inTable('recipes'); // foreign key - recipe id from 'recipes'
+        tbl.foreign('recipe_id').references('id').inTable('recipes').onDelete('CASCADE'); // foreign key - recipe id from 'recipes'
 
         tbl.integer('order').unsigned().notNullable(); // ingredient quantity as float
         

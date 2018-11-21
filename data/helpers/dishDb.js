@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function getDish(id) {
-    // should return the dish with the provided id and include a list of the related recipes
+    // return the dish with the provided id and include a list of the related recipes
 
     return db('dishes as d')
         .leftJoin('recipes as r', 'r.dish_id', 'd.id')
@@ -37,12 +37,12 @@ function getDish(id) {
 }
 
 function getDishes() {
-    // should return a list of all dishes in the database.
+    // return a list of all dishes in the database.
     return db('dishes');
 }
 
 function addDish(dish) {
-    // should add the dish to the database and return the id of the new dish.
+    // add the dish to the database and return the id of the new dish.
     return db('dishes')
         .insert(dish)
         .then(id => ({ id: id[0] }));
