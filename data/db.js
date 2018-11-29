@@ -20,12 +20,14 @@ function getDishes() {
 }
 
 function getRecipes() {
-    return db('recipes');
+    return db('recipes')
+    .join('dish', 'dish.id', '=', 'recipe.dish_id')
   }
 
 function getDish(id) {
   return db('dish')
-  .where({ id: Number(id) });
+  .join('recipe', 'dish.id', '=', 'recipe.dish_id')
+  .where('dish.id', '=', id);
 }
 
 function getRecipe(id) {
