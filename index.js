@@ -44,3 +44,51 @@ server.get('/api/recipes/:id', async(req, res) => {
   }
   res.status(200).json(payload)
 })
+
+server.post('/api/recipes', async(req, res) => {
+  const {dishId,dishName,ingredients,steps,recipeName} = req.body;
+  let recipeId;
+  const recipe = {name: recipeName, dishId};
+  try {
+    await db.transaction(async(trx) => {
+      recipeId = await trx('recipes').insert(recipe);
+      const stepsPackage = steps.map((step, index) => ({
+        recipeId,
+        description: step,
+        stepNumber: index + 1,
+      }))
+      const steps = trx('steps').insert(stepsPackage);
+      const ingredientsPackage = ingredients.map(ingredient => ({
+        ...ingredient,
+        recipeId,
+      }));
+      const ingredientsPromise = trx('ingredients').insert(ingredientsPackage)
+      return Promise.all([steps, ingredientsPromise])
+    })
+  } catch(err) {
+    res.status(501).json('Unsuccesful adding new recipe');
+  }
+  const ingredientsDone = await db('ingredients')
+  .where('recipeId', '=', recipeId)
+  .select('id', 'name', 'quantity', 'unit')
+
+  const payload = {
+    recipeId, 
+    dishName, 
+    ...recipe, 
+    ingredientsDone, 
+    steps
+  };
+  res.status(201).json(payload)
+  })
+
+  server.use((err, req, res, next) => {
+    res.status(500).json(err);
+    next();
+  })
+
+
+
+
+const port = 3300;
+server.listen(port, () => console.log(`Listening on http://localhost:${port}`));
