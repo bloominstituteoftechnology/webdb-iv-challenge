@@ -44,3 +44,20 @@ Name this file anything you want and place it where it makes the most sense to y
 - add _units of measure_ support for the ingredients.
 - add a table of unit of measure convertions, so that we can record the quantity for an ingredient using a unit of measure and see the values for other units reading the recipe.
 - design and build a front end client for your API.
+
+// npm init -y
+// `knex` in the CLI pulls up the available commands
+
+//yarn add express knex sqlite3 helmet
+// yarn add --dev nodemon
+// create knex file: knex init
+// create index.js
+// package.json {  "scripts": {
+    "server": "nodemon"
+  },}
+// node index.js
+// knex migrate:make cohorts_table
+// knex migrate:make students_table
+// knex migrate:latest // to spit out db.file
+// knex seed:make 01-cohorts
+// knex seed:make 01-students
