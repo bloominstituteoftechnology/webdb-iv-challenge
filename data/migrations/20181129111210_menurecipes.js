@@ -2,32 +2,32 @@
 exports.up = function(knex, Promise) {
   return knex.schema
   //dishes
-    .createTable('dishes', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('name', 128).unique().notNullable();
+    .createTable('dishes', dishes => {
+      dishes.increments('id').primary();
+      dishes.string('name', 128).unique().notNullable();
     })
   
   //recipes
-    .createTable('recipes', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('name', 128).unique().notNullable();
-      tbl.string('dishId', 3).references('dishes.id');
+    .createTable('recipes', recipes => {
+      recipes.increments('id').primary();
+      recipes.string('name', 128).unique().notNullable();
+      recipes.string('dishId', 3).references('dishes.id');
     })
 
   //ingredients
-    .createTable('ingredients', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('name', 128).notNullable();
-      tbl.string('recipeId').references('recipes.id');
-      tbl.float('quantity', 8, 2).notNullable();
-      tbl.string('unit', 16);
+    .createTable('ingredients', ingredients => {
+      ingredients.increments('id').primary();
+      ingredients.string('name', 128).notNullable();
+      ingredients.string('recipeId').references('recipes.id');
+      ingredients.float('quantity', 8, 2).notNullable();
+      ingredients.string('unit', 16);
     })
 
   //instructions
-    .createTable('steps', tbl => {
-      tbl.integer('step');
-      tbl.text('instruction').notNullable();
-      tbl.string('recipeId').references('recipes.id');
+    .createTable('steps', steps => {
+      steps.integer('step');
+      steps.text('instruction').notNullable();
+      steps.string('recipeId').references('recipes.id');
     })
 };
 
