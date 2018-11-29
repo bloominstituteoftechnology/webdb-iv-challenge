@@ -6,6 +6,11 @@ exports.up = function(knex, Promise) {
       .integer("dishes_id")
       .references("id")
       .inTable("dishes")
+      tbl.boolean("completed")
+      tbl
+      .integer("ingredients_id")
+      .references("id")
+      .inTable("ingredients")
     });
   };
   
