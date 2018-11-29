@@ -3,10 +3,6 @@ exports.up = function(knex, Promise) {
       tbl.increments();
       tbl.string("name", 120).notNullable();
       tbl
-        .integer("dishes_id")
-        .references("id")
-        .inTable("dishes");
-      tbl
        .integer("ingredient_id")
        .references("id")
        .inTable("ingredients")
