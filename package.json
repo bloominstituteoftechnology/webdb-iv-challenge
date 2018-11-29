@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MichaelCheco/db-recipe-book.git"
+    "url": "git+https://github.com/VaderSteve76/db-recipe-book.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MichaelCheco/db-recipe-book/issues"
+    "url": "https://github.com/VaderSteve76/db-recipe-book/issues"
   },
-  "homepage": "https://github.com/MichaelCheco/db-recipe-book#readme",
+  "homepage": "https://github.com/VaderSteve76/db-recipe-book#readme",
   "dependencies": {
     "express": "^4.16.4",
     "knex": "^0.15.2",
