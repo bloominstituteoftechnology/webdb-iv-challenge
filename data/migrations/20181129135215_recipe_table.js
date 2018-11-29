@@ -6,11 +6,6 @@ exports.up = function(knex, Promise) {
       .integer("dishes_id")
       .references("id")
       .inTable("dishes")
-      tbl
-      .integer("ingredients_id")
-      .references("id")
-      .inTable("ingredients")
-
     });
   };
   
