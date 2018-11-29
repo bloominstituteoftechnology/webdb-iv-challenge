@@ -38,3 +38,25 @@ server.post('/dishes', async(req, res) => {
         res.status(500).json({ error: 'There was an error adding that dish.' });
     }
 });
+
+server.get('/recipies', async(req, res) => {
+    try {
+        const recipies = await db.getRecipies();
+        res.status(200).json(recipies);
+    } catch (error) {
+        res.status(500).json({ error: 'There was an error getting the recipie.' });
+    }
+});
+
+server.post('/recipies', async(req, res) => {
+    const newRecipieData = req.body;
+
+    try {
+        const recipieId = await db.addRecipe(newRecipieData);
+        res.status(201).json(recipieId);
+    } catch (error) {
+        res.status(500).json({ error: 'There was an error adding that recipie.' });
+    }
+});
+
+server.listen(7000, () => console.log('\n Server started on Port 7000 \n'));
