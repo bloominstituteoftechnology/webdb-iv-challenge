@@ -31,7 +31,6 @@ server.post('/api/dishes', (req, res) => {
   
   db.addDish(dish)
     //.insert(dish)
-    //.returning('id')
     .then(dish => {
       res.status(201).json(dish);
     })
@@ -49,3 +48,5 @@ server.get('/', (req, res) => {
 });
 
 server.listen(8888, () => console.log('\n== Port 8888 ==\n'));
+
+        //.then(ids => ({ id: ids[0] }));

@@ -22,6 +22,7 @@ function getDish(id) {
 function addDish(dish) {
   return db('dishes')
         .insert(dish)
-        .then(ids => ({ id: ids[0] }))
+        //.returning('dish')
+        .then(ids => {id: ids[0]} )
 }
 
