@@ -1,0 +1,9 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JoeBugajski/db-recipe-book.git",
+  "author": "Joe Bugajski",
+  "license": "MIT",
+  "private": false
+}
