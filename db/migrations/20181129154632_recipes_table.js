@@ -1,16 +1,14 @@
 exports.up = function(knex, Promise) {
-    // RECIPES create table function - holds list of recipes for a specific dish
+    
    return knex.schema.createTable('recipes_table', function(tbl) {
-       // make changes to the table using the tbl object passed as a parameter
-     
-       // primary key
-       tbl.increments(); 
-        // other fields
-       tbl.string('name', 255)
+    
+       tbl.increments(); // primary key
+        
+       tbl.string('name', 255) // other fields
           .unique('name');
        
-       //foreign id
-       tbl
+      
+       tbl  //foreign ikey
        .integer('dish_id')
        .unsigned()
        .references('id')
