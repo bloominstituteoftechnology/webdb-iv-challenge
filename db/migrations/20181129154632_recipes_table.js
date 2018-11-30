@@ -12,8 +12,9 @@ exports.up = function(knex, Promise) {
        .integer('dish_id')
        .unsigned()
        .references('id')
-       .inTable('dishes');
+       .inTable('dishes_table');
      });
+
     }
 
 exports.down = function(knex, Promise) {
