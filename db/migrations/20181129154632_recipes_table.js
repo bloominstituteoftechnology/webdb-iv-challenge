@@ -1,5 +1,4 @@
 exports.up = function(knex, Promise) {
-    
    return knex.schema.createTable('recipes_table', function(tbl) {
     
        tbl.increments(); // primary key
@@ -18,6 +17,5 @@ exports.up = function(knex, Promise) {
     }
 
 exports.down = function(knex, Promise) {
-    // undo the changes to the database (it's called rolling back changes)
     return knex.schema.dropTableIfExists('recipes_table');
     };

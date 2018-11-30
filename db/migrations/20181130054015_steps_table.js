@@ -1,5 +1,4 @@
 exports.up = function(knex, Promise) {
- 
     return knex.schema.createTable('steps_table', function(tbl) {
 
         tbl.increments(); 
@@ -14,7 +13,7 @@ exports.up = function(knex, Promise) {
         .integer('recipe_id')
         .unsigned()
         .references('id')
-        .inTable('recipes');
+        .inTable('recipes_table');
         
          });
        }

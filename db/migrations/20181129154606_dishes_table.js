@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-    // makes the changes to the database
+    // function takes table object as parameter and data models the database
  // DISHES create table function - holds list of Dishes 
     return knex.schema.createTable('dishes_table', function(tbl) {
         // makes changes to the table using the tbl object passed as a parameter
