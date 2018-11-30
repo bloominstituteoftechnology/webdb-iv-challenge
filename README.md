@@ -63,5 +63,10 @@ Name this file anything you want and place it where it makes the most sense to y
 // knex migrate:make recipe_ingredients_table
 // knex migrate:make shoppingList_table
 // knex migrate:latest // to spit out db.file
-// knex seed:make 01-cohorts
+// knex seed:make 01-dishes_table
 // knex seed:make 01-students
+// knex seed:make 01-recipes_table
+// knex seed:make 01-steps_table
+// knex seed:make 01-ingredients_table
+// knex seed:make 01-recipe_ingredients_table
+
