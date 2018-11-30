@@ -6,14 +6,14 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('ingredients').insert([
-        {ingredient_name: 'Tomato Paste'}, // spaghetti
-        {ingredient_name: 'Noodles'}, // spaghetti
-        {ingredient_name: 'Rice'}, // soup
-        {ingredient_name: 'Eggs'}, // egg salad
-        {ingredient_name: 'Celery'}, // egg salad
-        {ingredient_name: 'Pickles'}, // dynamic
-        {ingredient_name: 'Garlic'}, // dynamic
-        {ingredient_name: 'Hamburger'}, // spaghetti
+        {ingredient_name: 'Tomato Paste', quantity: '3', measurement: 'Cups'}, // spaghetti
+        {ingredient_name: 'Noodles', quantity: '5', measurement: 'Bundles'}, // spaghetti
+        {ingredient_name: 'Rice', quantity: '3', measurement: 'Cups'}, // soup
+        {ingredient_name: 'Eggs', quantity: '2', measurement: 'lb'}, // egg salad
+        {ingredient_name: 'Celery', quantity: '1', measurement: 'lb'}, // egg salad
+        {ingredient_name: 'Pickles', quantity: '1', measurement: 'lb'}, // dynamic
+        {ingredient_name: 'Garlic', quantity: '5', measurement: 'g'}, // dynamic
+        {ingredient_name: 'Hamburger', quantity: '3', measurement: 'lb'}, // spaghetti
       ]);
     });
 };
