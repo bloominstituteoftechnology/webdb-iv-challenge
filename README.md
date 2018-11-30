@@ -1,4 +1,4 @@
-# Recipe Book
+# Recipe Book //jaklundun//
 
 ## Topics
 
@@ -44,3 +44,29 @@ Name this file anything you want and place it where it makes the most sense to y
 - add _units of measure_ support for the ingredients.
 - add a table of unit of measure convertions, so that we can record the quantity for an ingredient using a unit of measure and see the values for other units reading the recipe.
 - design and build a front end client for your API.
+
+// npm init -y
+// `knex` in the CLI pulls up the available commands
+
+//yarn add express knex sqlite3 helmet
+// yarn add --dev nodemon
+// create knex file: knex init
+// create index.js
+// package.json {  "scripts": {
+    "server": "nodemon"
+  },}
+// node index.js
+// knex migrate:make cohorts_table
+// knex migrate:make students_table
+// knex migrate:make steps_table
+// knex migrate:make ingredients_table
+// knex migrate:make recipe_ingredients_table
+// knex migrate:make shoppingList_table
+// knex migrate:latest // to spit out db.file
+// knex seed:make 01-dishes_table
+// knex seed:make 01-students
+// knex seed:make 01-recipes_table
+// knex seed:make 01-steps_table
+// knex seed:make 01-ingredients_table
+// knex seed:make 01-recipe_ingredients_table
+
