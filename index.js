@@ -13,6 +13,12 @@ server.get('/', (req, res) => {
     res.status(200).json({ api: 'running' });
 });
 
+server.get('/dishes/steps/ingredients', (req, res) => {
+    db.getEverything()
+    .then(everything => res.status(200).json(everything))
+    .catch(error => res.status(500).json({ message: 'Could Not Retrieve Everything', error }))
+})
+
 server.get('/dishes', (req, res) => {
     db.getDishes()
     .then(dishes => res.status(200).json(dishes))

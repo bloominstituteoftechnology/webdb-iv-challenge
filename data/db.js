@@ -3,6 +3,7 @@ const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development);
 
 module.exports = {
+    getEverything,
   getDishes,
   getDish,
   addDish,
@@ -14,6 +15,13 @@ module.exports = {
   removeDish,
   removeRecipe,
 };
+
+function getEverything(){
+    return db('dish')
+    .join('recipe', 'dish.id', '=', 'recipe.dish_id')
+    .join('steps', 'recipe.id', '=', 'steps.recipe_id')
+    .join('ingredients', 'steps.ingredients_id', '=', 'ingredients.id')
+}
 
 function getDishes() {
   return db('dish');
