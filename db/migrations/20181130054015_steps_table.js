@@ -19,6 +19,6 @@ exports.up = function(knex, Promise) {
          });
        }
     
-    exports.down = function(knex, Promise) {
-       return knex.schema.dropTableIfExists('steps_table');
-    };
+exports.down = function(knex, Promise) {
+    return knex.schema.dropTableIfExists('steps_table');
+};
