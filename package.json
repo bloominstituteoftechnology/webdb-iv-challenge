@@ -1,0 +1,29 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "- database modeling.\r - migration scripts.\r - seeding.\r - knex.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "new": "knex migrate:latest && knex seed:run",
+    "old": "knex migrate:rollback"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adamcglee/db-recipe-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adamcglee/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/Adamcglee/db-recipe-book#readme",
+  "devDependencies": {
+    "nodeman": "^1.1.2"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "sqlite3": "^4.0.2"
+  }
+}
