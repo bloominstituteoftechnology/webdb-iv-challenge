@@ -8,10 +8,10 @@ module.exports = {
     return db("dishes");
   },
   getDish: id => {
-    return db("dishes");
+    return db("dishes").where({ "dishes.id": id });
   },
   addDish: dish => {
-    return db("dishes");
+    return db("dishes").insert(dish);
   },
   getRecipes: () => {
     return db("recipes");
@@ -20,12 +20,12 @@ module.exports = {
     return db("recipes");
   },
   addRecipe: recipe => {
-    return db("recipes");
+    return db("recipes").insert(recipe);
   },
   getIngredients: () => {
     return db("ingredients");
   },
   addIngredient: ingredient => {
-    return db("ingredients");
+    return db("ingredients").insert(ingredient);
   }
 };
