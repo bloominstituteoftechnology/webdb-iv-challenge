@@ -5,6 +5,9 @@
   "repository": "https://github.com/atonymartin20/db-recipe-book.git",
   "author": "Alex Martin <atonymartin20@yahoo.com>",
   "license": "MIT",
+  "scripts": {
+    "server": "nodemon"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "helmet": "^3.15.0",
