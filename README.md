@@ -15,18 +15,45 @@ The requirements for the system, as stated by the client are:
 
 recipe to dish is 1:many
 steps to recipe is many:many
-
+ingredients to recipe is many:many
 dish needs unique()
 recipe is unique() but relation to dish is not unique()
+
+Schema outline:
+
+DISH
+Name, nonNullable, unique
+ID, increment
+
+RECIPE
+Name, nonNullable, unique
+ID, increment
+Dish ID
+
+INGREDIENT
+Name, nonNullable
+ID, increment
+Integer('amount'), unsigned, nonNullable, float('amount')
+Measurement, string
+Recipe ID
+
+INSTRUCTIONS
+Step, string, nonNullable
+Order, integer, unsigned
+Recipe ID
 
 
 - have a way to manage dishes. A `dish` is something the client wants to cook like _pizza_ or _tacos_.
 - have a way to manage recipes. A `dish` can have different recipes for tacos, like _tex-mex_ or _granny's_. A `recipe` belongs only to one `dish`.
 - have a way to manage ingredients.
 - a `recipe` could have more than one ingredient and the same ingredient can be used in multiple recipes. Examples are "cup of corn flour" or "gram of butter".
+
 - when saving the ingredients for a `recipe` capture the quantity required for that ingredient as a floating number.
 - have a way to save instructions for cooking a recipe. Instructions will be a series of `steps` involved in cooking a `recipe`.
 - for some recipes, the order in which the steps are performed matters, please provide a way to specify that order.
+
+option step order column?
+
 - have a way to pick a `dish` and a `recipe` and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the `dish`.
 
 In addition to the `migration` and `seed` scripts write a data access file that **exports** an object with the following functions:
