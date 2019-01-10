@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
       table.integer('recipe_id').unsigned().unique();
       table.foreign('recipe_id').references('id').on('recipe');
       table.string('recipe_name').unsigned().unique();
-      table.foreign('recipe_name').refernces('recipe_name').on('recipe');
+      table.foreign('recipe_name').references('recipe_name').on('recipe');
   })
 };
 
