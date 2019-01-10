@@ -8,7 +8,7 @@ exports.seed = function(knex, Promise) {
         { recipe_name: 'Plain Hamburger', dish_id: '1'},
         { recipe_name: 'Cheeseburger', dish_id: '1'},
         { recipe_name: 'Pepperoni Pizza', dish_id: '2'},
-        { recipe_name: 'Hawaiin Pizza', dish_id: '2'}
+        { recipe_name: 'Hawaiian Pizza', dish_id: '2'}
       ]);
     });
 };
