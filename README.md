@@ -34,7 +34,7 @@ INGREDIENT
 Name, nonNullable
 ID, increment
 Integer('amount'), unsigned, nonNullable, float('amount')
-Measurement, string
+Measurement, string, optional (eggs)
 Recipe ID
 
 INSTRUCTIONS

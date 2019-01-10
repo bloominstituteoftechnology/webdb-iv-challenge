@@ -2,6 +2,9 @@
   "name": "db-recipe-book",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "server": "nodemon"
+  },
   "repository": "https://github.com/juliejonak/db-recipe-book.git",
   "author": "Julie Jonak <juliejonak10@gmail.com>",
   "license": "MIT",

@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
       table.increments();
       table.string('ingredient_name').notNullable();
       table.float('amount').unsigned().notNullable();
-      table.string('measurement').notNullable();
+      table.string('measurement');
       table.integer('recipe_id').unsigned();
       table.foreign('recipe_id').references('id').on('recipes');
   })
