@@ -2,6 +2,7 @@
 
 ## Topics
 
+
 - database modeling.
 - migration scripts.
 - seeding.
