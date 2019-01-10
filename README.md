@@ -1,4 +1,4 @@
-# Recipe Book
+# Recipe Book - Joseph Thompson
 
 ## Topics
 
