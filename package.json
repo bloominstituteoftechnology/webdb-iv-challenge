@@ -2,7 +2,9 @@
   "name": "db-recipe-book",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": "server",
+  "scripts": {
+    "server": "nodemon"
+  },
   "repository": "https://github.com/bcabanayan/db-recipe-book.git",
   "license": "MIT",
   "dependencies": {
