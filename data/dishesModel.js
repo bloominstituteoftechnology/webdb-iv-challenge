@@ -17,7 +17,13 @@ function get(id){
         })
 }
 
+function add(dish){
+    return db('dishes').insert(dish)
+        .then( ([id]) => this.get(id) )
+}
 
 module.exports = {
-    get,
+    get, add,
 };
+
+

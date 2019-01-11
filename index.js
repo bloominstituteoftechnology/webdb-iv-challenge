@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 3400;
 
 server.use(express.json());
 
+
+const knex = require('knex');
+const dbConfig = require('./knexfile');
+const db = knex(dbConfig.development);
+
 //GET
 
 // server.use('/cohorts', cohortRouter);
@@ -43,6 +48,20 @@ server.get('/', (req, res) => {
       })
   });
 
+  server.post('/', (req, res) => {
+      const dish = req.body;
+      if(dish.dish_name){
+          dishesDb.add(dish)
+            .then(newDish => {
+                res.status(201).json(newDish)
+            })
+            .catch(err => {
+                res.status(500).json({ message: "Unable to add this new dish." })
+            })
+      } else{
+          res.status(400).json({ message: "New dishes require a name" })
+      }
+  })
 
 //SERVER
 
