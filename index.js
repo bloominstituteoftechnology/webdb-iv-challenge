@@ -14,5 +14,5 @@ server.listen(PORT, function() {
 
 // Main Route
 server.get('/',(req,res) => {
-    res.send("Server is live!!!");
+    res.send("<h1>DB RECIPE BOOK!</h1>");
 });
