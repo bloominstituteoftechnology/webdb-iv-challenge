@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
       .references("id")
       .inTable("dishes");
     table.json("instructions");
+    table.json("ingredients");
   });
 };
 
