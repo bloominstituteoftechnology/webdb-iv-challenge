@@ -39,6 +39,18 @@ server.post('/api/dishes', (req,res) => {
   
 });
 
+// getDish:
+server.get('/api/dishes/:id', (req,res) => {
+  const {id} = req.params;
+  exps.getDish(id)
+    .then( (recs) => {
+      res.json(recs);
+    })
+    .catch( (err) => {
+      res.status(500).json({ error: err});
+    });
+  //end-exps
+});
 
 /* ---------- Listener ---------- */
 const port = 5454;
