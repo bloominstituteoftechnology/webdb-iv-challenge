@@ -2,9 +2,11 @@
   "name": "db-recipe-book",
   "version": "1.0.0",
   "description": "- database modeling.\r - migration scripts.\r - seeding.\r - knex.",
-  "main": "knexfile.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "server.js",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
