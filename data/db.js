@@ -20,6 +20,17 @@ function addDish(dish) {
         .then(ids => ({id: ids[0]}));
 };
 
+function getDish(id) {
+    return db('dishes_table')
+        .where('id', Number(id))
+        .leftJoin('recipes_table', 'dish_id', 'dishes_table.id');     
+};
+
+function getRecipes() {
+    return db('recipes_table')
+        .leftJoin('dishes_table,', 'dish_id', 'recipes_table.id');
+};
+
 function addRecipe(recipe) {
     return db('recipes_table')
         .insert(recipe)
