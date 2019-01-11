@@ -14,4 +14,4 @@ ingredients receipes
 dish: id, dish_name
 recipe: id, recipe_title, dish_id (fk)
 ingredients: id, ingredenient_name, quantity, recipe_id (fk)
-steps: id, step_name, step_position, ingredient_id (fk), recipe_id(fk)
+steps: id, step_name, step_position, recipe_id(fk)
