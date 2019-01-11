@@ -1,6 +1,6 @@
 # Recipe Book
 
-## Topics
+### Topics
 
 - database modeling.
 - migration scripts.
