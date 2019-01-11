@@ -63,6 +63,25 @@ server.get('/api/recipes', (req,res) => {
     })
 });
 
+// addRecipe
+server.post('/api/recipes', (req,res) => {
+  const rec = req.body;
+  if( rec.name && rec.dish_id ){
+    exps.addRecipe(rec)
+      .then( ids => {
+        res.json(ids);
+      })
+      .catch( err => {
+        res.status(500).json({error: err});
+      });
+    // end-exps
+  } else {
+    res.status(400).json({ error: "Please provide a name for the recipe" });
+  }
+  
+});
+
+
 /* ---------- Listener ---------- */
 const port = 5454;
 server.listen(port, function() {

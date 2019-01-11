@@ -2,10 +2,6 @@ const knex = require('knex');
 const dbConfig = require('../../knexfile')
 const db = knex(dbConfig.development);
 
-/*
-    addRecipe(recipe): should add a recipe to the database and return the id of the new recipe.
-*/
-
 module.exports = {
   // getDishes(): should return a list of all dishes in the database.
   getDishes: function() {
@@ -30,7 +26,12 @@ module.exports = {
   getRecipes: function() {
     return db('recipes as r')
       .join('dishes as d', 'd.id', 'r.dish_id')
-      .select('r.id', 'r.name', 'r.description', 'd.dish as type');
-      
+      .select('r.id', 'r.name', 'r.description', 'd.dish as type');  
+  },
+
+  // addRecipe(recipe): should add a recipe to the database and return the id of the new recipe.
+  addRecipe: function(rec) {
+    return db('recipes').insert(rec)
+      .then( (ids) => ({ id: ids[0] }));
   }
 };
