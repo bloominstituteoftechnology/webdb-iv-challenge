@@ -1,0 +1,17 @@
+one to one
+recipe to dish
+
+one to many
+dish recipes
+dish ingredients
+recipe to ingredients
+recipe to steps
+
+many to many
+ingredients to dish
+ingredients receipes
+
+dish: id, dish_name
+recipe: id, recipe_title, dish_id (fk)
+ingredients: id, ingredenient_name, quantity, recipe_id (fk)
+steps: id, step_name, step_position, recipe_id(fk)
