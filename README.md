@@ -22,6 +22,37 @@ The requirements for the system, as stated by the client are:
 - for some recipes, the order in which the steps are performed matters, please provide a way to specify that order.
 - have a way to pick a `dish` and a `recipe` and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the `dish`.
 
+## Schema
+
+dishes
+[{
+    id: number,
+    dish_name: string
+}]
+
+recipes
+[{
+    id: number,
+    recipe_name: string,
+    dish_id: number
+}]
+
+ingredients
+[{
+    id: number,
+    ingredient_name: string,
+    quantity: floating number,
+    recipe_id: number
+}]
+
+steps
+[{
+    id: number,
+    step_name: string,
+    order_no: number,
+    recipe_id: number
+}]
+
 In addition to the `migration` and `seed` scripts write a data access file that **exports** an object with the following functions:
 
 - `getDishes()`: should return a list of all dishes in the database.
