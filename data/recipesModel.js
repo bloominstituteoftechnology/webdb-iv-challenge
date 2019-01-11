@@ -2,6 +2,7 @@ const knex = require('knex');
 const dbConfig = require('../knexfile');
 const db = knex(dbConfig.development);
 
+const dishesDb = require('./dishesModel');
 
 function get(id){
     if(id){
@@ -22,8 +23,26 @@ function add(dish){
         .then( ([id]) => this.get(id) )
 }
 
-module.exports = {
-    get, add,
-};
+function getRecipes(id){
+    if(id){
+        return db('recipes').where('dish_id', id)
+            .then(recipes => {
+                return recipes
+            })
+    }
+}
 
+function getDishRecipes(id){
+    if(id){
+        return dishesDb.get(id).where('id', id)
+            .then(dish => {
+                getRecipes(id);
+                return dish
+            })
+        }
+}
+
+module.exports = {
+    get, add, getDishRecipes, getRecipes
+};
 

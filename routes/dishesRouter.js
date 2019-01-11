@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const dishesDb = require('../data/dishesModel');
+const recipesDb = require('../data/recipesModel');
 
 
 router.get('/', (req, res) => {
@@ -29,6 +30,27 @@ router.get('/', (req, res) => {
         res.status(500).json({ message: "Could not find that Dish" })
       })
   });
+
+  router.get('/:id/recipes', (req, res) => {
+      const {id} = req.params;
+      let dishName = '';
+      dishesDb.get(id)
+      .then(dish => {
+        if(Object.keys(dish).length === 0){
+          res.status(404).json({ message: "Invalid Dish ID" })
+        } else {
+          dishName = dish.dish_name;
+          recipesDb.getRecipes(id)
+            .then(response => {
+                res.json({dish: dishName, recipes: response})
+            })
+            .catch(err => console.log(err))
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: "Could not find that Dish" })
+      })
+  })
 
   router.post('/', (req, res) => {
       const dish = req.body;

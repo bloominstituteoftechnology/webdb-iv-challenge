@@ -59,11 +59,13 @@ option step order column?
 In addition to the `migration` and `seed` scripts write a data access file that **exports** an object with the following functions:
 
 - `getDishes()`: should return a list of all dishes in the database.
+
 - `getDish(id)`: should return the `dish` with the provided `id` and include a list of the related recipes.
 
 - `addDish(dish)`: should add the `dish` to the database and return the `id` of the new `dish`.
 
 - `getRecipes()`: should return a list of all recipes in the database including the `dish` they belong to.
+
 - `addRecipe(recipe)`: should add a `recipe` to the database and return the `id` of the new `recipe`.
 
 Name this file anything you want and place it where it makes the most sense to you.

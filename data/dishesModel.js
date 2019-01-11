@@ -2,7 +2,6 @@ const knex = require('knex');
 const dbConfig = require('../knexfile');
 const db = knex(dbConfig.development);
 
-
 function get(id){
     if(id){
         return db('dishes').where('id', id)
