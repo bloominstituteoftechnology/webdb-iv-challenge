@@ -6,6 +6,7 @@
   "author": "jbrock1981 <jbrock1981@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.5.3",
     "express": "^4.16.4",
     "knex": "^0.16.3",
     "sqlite3": "^4.0.4"
@@ -14,6 +15,6 @@
     "nodemon": "^1.18.9"
   },
   "scripts": {
-	  "server": "nodemon"
-	}
+    "server": "nodemon"
+  }
 }
