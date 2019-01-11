@@ -44,6 +44,41 @@ server.get("/dishes/:id", (req, res) => {
     });
 });
 
+server.get("/recipes", (req, res) => {
+  recipeDb
+    .getRecipes()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "could not get those recipes" });
+    });
+});
+
+server.post("/recipes", (req, res) => {
+  const newRecipe = req.body;
+  recipeDb
+    .addRecipe(newRecipe)
+    .then(recipe => {
+      res.json({ message: `new recipe with id ${recipe.id} has been created` });
+    })
+    .catch(err => {
+      res.status(500).json({ message: "could not create new recipe" });
+    });
+});
+
+server.get("/recipes/:id/shoppinglist", (req, res) => {
+  const { id } = req.params;
+  recipeDb
+    .getList(id)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "could not create shopping list." });
+    });
+});
+
 server.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
