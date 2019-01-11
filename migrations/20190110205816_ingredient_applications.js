@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-    knex.schema.createTable('ingredients', function (table) {
+    knex.schema.createTable('ingredient_applications', function (table) {
         table.increments('id');
         table.float('qty');
         table.enu('uom', ['g', 'tbsp', 'tsp', 'cup', 'oz', 'fl oz', 'gal', 'l', 'lb']);
@@ -9,5 +9,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    knex.schema.dropTable('ingredients');
+    knex.schema.dropTable('ingredients_applications');
 };
