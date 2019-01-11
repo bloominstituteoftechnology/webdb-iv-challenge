@@ -32,17 +32,19 @@ exports.up = function(knex, Promise) {
       recipeToIngredientMap
         .integer("ingredientId")
         .references("ingredients.id");
-      recipeToIngredientMap.integer("quantity").notNullable();
+      recipeToIngredientMap.float("quantity", 2).notNullable();
     });
 };
 
 exports.down = function(knex, Promise) {
   // Rollback
-  return Promise.all([
-    knex.schema.dropTableIfExists("recipes"),
-    knex.schema.dropTableIfExists("dishes"),
-    knex.schema.dropTableIfExists("ingredients"),
-    knex.schema.dropTableIfExists("instructions"),
-    knex.schema.dropTableIfExists("recipeToIngredientMap")
-  ]);
+  return Promise.all(
+    [
+      "recipes",
+      "dishes",
+      "ingredients",
+      "instructions",
+      "recipeToIngredientMap"
+    ].map(table => knex.schema.dropTableIfExists(table))
+  );
 };
