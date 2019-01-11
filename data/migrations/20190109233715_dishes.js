@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('dishes', table => {
       table.increments(); 
-      table.string('name').notNullable().unique('name'); 
+      table.string('name').notNullable().unique(); 
   })
 };
 
