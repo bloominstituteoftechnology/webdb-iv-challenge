@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
         { ingredient_name: 'semi-sweet chocolate chips' },
         { ingredient_name: 'milk chocolate chips' },
         { ingredient_name: 'rolled oats' },
-        { ingredient_name: 'coconut' },
+        { ingredient_name: 'shredded coconut' },
         { ingredient_name: 'yeast' },
         { ingredient_name: 'water' },
         { ingredient_name: 'olive oil' }

@@ -32,16 +32,17 @@ exports.seed = function(knex, Promise) {
         { recipe_id: 2, amount: 1, measurement: 'cup', ingredient_id: 14 },
         { recipe_id: 2, amount: 1, measurement: 'cup', ingredient_id: 15 },
         // Ciabatta Bread
-        { recipe_id: 3, amount: 2.4, measurement: '', ingredient_id: 3 },
-        { recipe_id: 3, amount: 2.4, measurement: '', ingredient_id: 3 },
-        { recipe_id: 3, amount: 2.4, measurement: '', ingredient_id: 3 },
-        { recipe_id: 3, amount: 2.4, measurement: '', ingredient_id: 3 },
-        { recipe_id: 3, amount: 2.4, measurement: '', ingredient_id: 3 },
+        { recipe_id: 3, amount: 4.5, measurement: 'cup', ingredient_id: 8 },
+        { recipe_id: 3, amount: 1.75, measurement: 'tsp', ingredient_id: 9 },
+        { recipe_id: 3, amount: 1.25, measurement: 'tsp', ingredient_id: 16 },
+        { recipe_id: 3, amount: 2, measurement: 'cup', ingredient_id: 17 },
+        { recipe_id: 3, amount: 1, measurement: 'tbsp', ingredient_id: 18 },
         // French Bread
-        { recipe_id: 4, amount: 2.4, measurement: '', ingredient_id: 3 },
-        { recipe_id: 4, amount: 2.4, measurement: '', ingredient_id: 3 },
-        { recipe_id: 4, amount: 2.4, measurement: '', ingredient_id: 3 },
-        { recipe_id: 4, amount: 2.4, measurement: '', ingredient_id: 3 }
+        { recipe_id: 4, amount: 4.75, measurement: 'cup', ingredient_id: 8 },
+        { recipe_id: 4, amount: 1, measurement: 'tbsp', ingredient_id: 17 },
+        { recipe_id: 4, amount: 2, measurement: 'cup', ingredient_id: 17 },
+        { recipe_id: 4, amount: 1.25, measurement: 'tsp', ingredient_id: 16 },
+        { recipe_id: 4, amount: 2.125, measurement: 'tsp', ingredient_id: 9 }
 
       ]);
     });
