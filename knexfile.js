@@ -8,12 +8,12 @@ module.exports = {
       filename: './data/recipe_book.sqlite3'
     },
     useNullAsDefault: true,
-    migration: {
+    migrations: {
       directory: './data/migrations'
     },
     seeds: {
       directory: './data/seeds'
     }
   }
-  
+
 };

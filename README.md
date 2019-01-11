@@ -24,33 +24,70 @@ The requirements for the system, as stated by the client are:
 
 ## Schema
 
+## Current
 dishes
 [{
     id: number,
-    dish_name: string
+    dish_name: string (notNullable, unique)
 }]
 
 recipes
 [{
     id: number,
-    recipe_name: string,
-    dish_id: number
+    recipe_name: string, (notNullable)
+    dish_id: number (notNullable)
 }]
 
 ingredients
 [{
-    id: number,
-    ingredient_name: string,
-    quantity: floating number,
-    recipe_id: number
+    id: number, 
+    ingredient_name: string, (notNullable)
+    quantity: floating number, (notNullable)
+    recipe_id: number (notNullable)
 }]
 
 steps
 [{
     id: number,
-    step_name: string,
-    order_no: number,
-    recipe_id: number
+    step_name: string, (notNullable)
+    order_no: number, 
+    recipe_id: number (notNullable)
+}]
+
+## Possible
+dishes
+[{
+    id: number,
+    dish_name: string (notNullable, unique)
+}]
+
+recipes
+[{
+    id: number,
+    recipe_name: string, (notNullable)
+    dish_id: number (notNullable)
+}]
+
+recipe_ingredient
+[{
+    id: number 
+    ingredient_id: number, (notNullable)
+    recipe_id: number, (notNullable)
+    quantity: floating number (notNullable)
+}]
+
+ingredients
+[{
+    id: number, 
+    ingredient_name: string (notNullable, unique)
+}]
+
+steps
+[{
+    id: number,
+    step_name: string, (notNullable)
+    order_no: number, 
+    recipe_id: number (notNullable)
 }]
 
 In addition to the `migration` and `seed` scripts write a data access file that **exports** an object with the following functions:
