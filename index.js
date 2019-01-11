@@ -52,6 +52,17 @@ server.get('/api/dishes/:id', (req,res) => {
   //end-exps
 });
 
+// getRecipes:
+server.get('/api/recipes', (req,res) => {
+  exps.getRecipes()
+    .then( (recs) => {
+      res.json(recs);
+    })
+    .catch( (err) => {
+      res.status(500).json({ error: err});
+    })
+});
+
 /* ---------- Listener ---------- */
 const port = 5454;
 server.listen(port, function() {

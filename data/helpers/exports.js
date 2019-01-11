@@ -3,7 +3,6 @@ const dbConfig = require('../../knexfile')
 const db = knex(dbConfig.development);
 
 /*
-    getRecipes(): should return a list of all recipes in the database including the dish they belong to.
     addRecipe(recipe): should add a recipe to the database and return the id of the new recipe.
 */
 
@@ -25,5 +24,13 @@ module.exports = {
       .join('dishes as d', 'd.id', 'r.dish_id')
       .select('d.dish', 'r.name as recipe')
       .where('r.dish_id', id);
+  },
+
+  // getRecipes(): should return a list of all recipes in the database including the dish they belong to.
+  getRecipes: function() {
+    return db('recipes as r')
+      .join('dishes as d', 'd.id', 'r.dish_id')
+      .select('r.id', 'r.name', 'r.description', 'd.dish as type');
+      
   }
 };
