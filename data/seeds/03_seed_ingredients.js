@@ -10,8 +10,6 @@ exports.seed = function(knex, Promise) {
         {ingredient_name: 'Refrigerated spinach tortellini', amount: 3.0, recipe_id: 1},
         {ingredient_name: 'Mayonnaise', amount: 1.5, recipe_id: 1},
         {ingredient_name: 'Grated Asiago cheese', amount: 1.5, recipe_id: 1},
-
-
         {ingredient_name: 'Frozen corn thawed and drained', amount: 6.0, recipe_id: 2},
         {ingredient_name: 'Mayonnaise', amount: 1.0, recipe_id: 2},
         {ingredient_name: 'Ground chipotle pepper', amount: 1.0, recipe_id: 2},
@@ -19,17 +17,12 @@ exports.seed = function(knex, Promise) {
         {ingredient_name: 'Pepper', amount: .25, recipe_id: 2},
         {ingredient_name: 'Chopped green onions', amount: 6.0, recipe_id: 2},
         {ingredient_name: 'Grated parmesan cheese', amount: .5, recipe_id: 2},
-
-
         {ingredient_name: 'Lean ground beef', amount: 1.0, recipe_id: 3},
         {ingredient_name: 'Old El Paso Thick n Chunky salsa', amount: 1.0, recipe_id: 3},
         {ingredient_name: 'Old El Paso taco shells', amount: 10.0, recipe_id: 3},
         {ingredient_name: 'Shredded head lettuce', amount: .5, recipe_id: 3},
         {ingredient_name: 'Chopped tomato', amount: 1.0, recipe_id: 3},
         {ingredient_name: 'Shredded cheddar cheese', amount: 1.0, recipe_id: 3},
-
-
-
         {ingredient_name: 'Extra-virgin olive oil', amount: 1.0, recipe_id: 4},
         {ingredient_name: 'Boneless skinless chicken breasts', amount: 4.0, recipe_id: 4},
         {ingredient_name: 'Salt', amount: .1, recipe_id: 4},
