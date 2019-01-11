@@ -6,8 +6,7 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('recipe_instructions').insert([
         {id: 1, instructions: 'Apply cheese to dough', order: 0, dish_id: 1, recipe_id: 1},
-        {id: 1, qty: 2, uom: 'cup', instructions: 'Add sausage on top of cheese', order: 1, dish_id: 1, ingredient_id: 1, recipe_id: 1},
-        {id: 1, qty: 2, uom: 'cup', instructions: 'Add sausage on top of cheese', order: 1, dish_id: 1, ingredient_id: 1, recipe_id: 1},
+        {id: 2, instructions: 'Add all meat on top of cheese', order: 1, dish_id: 1, recipe_id: 1}
       ]);
     });
 };
