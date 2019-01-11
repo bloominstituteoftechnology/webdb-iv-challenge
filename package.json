@@ -1,0 +1,26 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "- database modeling.\r - migration scripts.\r - seeding.\r - knex.",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreeKeyBoy/db-recipe-book.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FreeKeyBoy/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/FreeKeyBoy/db-recipe-book#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "nodemon": "^1.18.9",
+    "npm": "^6.5.0",
+    "sqlite3": "^4.0.4"
+  }
+}
