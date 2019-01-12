@@ -2,15 +2,15 @@
 const express = require('express');
 const server = express();
 
-//create knex/db connection
-const knex = require('knex');
-const dbConfig = require('./knexfile');
-db = knex(dbConfig.development);
 
 //Built-in middleware
 server.use(express.json());
 
+
+
 //Grab route handlers/endpoints
+const dishesRoutes = require('./routers/dishesRouter');
+server.use('/api/dishes', dishesRoutes);
 // const zoosRoutes = require('./routers/zoosRouter')
 // server.use('/api/zoos', zoosRoutes);
 // const bearsRoutes = require('./routers/bearsRouter')
