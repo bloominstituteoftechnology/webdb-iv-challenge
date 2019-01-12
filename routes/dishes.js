@@ -13,4 +13,16 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+
+    getDB.getDishes(id)
+        .then(rows => {
+            res.json(rows);
+        })
+        .catch(err => {
+            res.status(500).json({ errorMessage: 'Failed to get dishes' });
+        });
+});
+
 module.exports = router;
