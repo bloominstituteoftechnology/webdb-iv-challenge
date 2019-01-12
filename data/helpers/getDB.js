@@ -14,7 +14,7 @@ module.exports = {
 
     getRecipes: function() {
         return db('recipe')
-            .join('dish', 'recipe.id', '=', 'dish.id')
+            .join('dish', 'recipe.dish_id', '=', 'dish.id')
             .select('dish.id', 'dish.name as dish_name', 'recipe.name as recipe_name')
     }
 }
