@@ -50,14 +50,13 @@ router.get('/:id', (req, res) => {
         }
         else {
             res.status(404).json({error: "The dish with the specified ID does not exist."});
-            // *This works, but returns the above error if the dish exists but has not recipes as foreign keys.
+            // *This works, but returns the above error if the dish exists but does show up in recipes as foreign keys.
         }
     })
     .catch(err => {
         res.status(500).json({err: "Failed to find dish"});
     })
 });
-  
-  
+
 
 module.exports = router;
