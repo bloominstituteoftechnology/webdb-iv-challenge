@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
     table.text('name').notNullable();
     table.integer('dish_id').unsigned().references('id').inTable('dish');
     table.integer('steps_id').unsigned().references('id').inTable('steps');
-    table.json('ingredients');
   });
 };
 
