@@ -11,7 +11,7 @@ const db = knex(dbConfig.development);
 server.use(express.json());
 
 server.get('/api', (req,res) => {
-    res.json({Message: `This is app up and running now`})
+    res.json({Message: `This is app up and running now`});
 });
 
 server.listen(PORT, () => {
