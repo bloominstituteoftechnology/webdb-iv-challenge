@@ -25,4 +25,20 @@ module.exports = {
             return {id: ids[0]};
         })
     },
+
+    //get all recipes
+    getRecipes: function(){
+        console.log('hello from getrecipes')
+        let query = db('recipes');
+        return query;
+    },
+
+    //add a recipe
+    addRecipe: function(newRecipe){
+        return db('recipes')
+        .insert(newRecipe)
+        .then(ids =>{
+            return {id: ids[0]}
+        })
+    }
 }

@@ -10,7 +10,10 @@ server.use(express.json());
 
 //Grab route handlers/endpoints
 const dishesRoutes = require('./routers/dishesRouter');
+const recipesRoutes = require('./routers/recipesRouter');
+
 server.use('/api/dishes', dishesRoutes);
+server.use('/api/recipes', recipesRoutes);
 // const zoosRoutes = require('./routers/zoosRouter')
 // server.use('/api/zoos', zoosRoutes);
 // const bearsRoutes = require('./routers/bearsRouter')
