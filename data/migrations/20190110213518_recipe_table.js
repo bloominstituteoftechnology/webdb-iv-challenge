@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
       .foreign('dish_id')
       .references('id')
       .inTable('dishes');
-    tbl.json('ingredient_list');
   });
 };
 
