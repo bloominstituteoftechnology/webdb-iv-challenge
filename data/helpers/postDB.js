@@ -9,6 +9,6 @@ module.exports = {
     },
 
     addRecipe: function(recipe) {
-        
+        return db('recipe').insert(recipe);
     }
 }
