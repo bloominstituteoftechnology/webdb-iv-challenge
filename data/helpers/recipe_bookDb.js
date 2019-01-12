@@ -11,6 +11,12 @@ module.exports = {
         return query;
     },
 
+    //get specific dish
+    getDish: function(dish_id){
+        return db('dishes')
+        .where('id', dish_id)
+    },
+
     //add a dish
     addDish: function(dish){
         return db('dishes')
@@ -18,7 +24,5 @@ module.exports = {
         .then(ids => {
             return {id: ids[0]};
         })
-
-        
-    }
+    },
 }

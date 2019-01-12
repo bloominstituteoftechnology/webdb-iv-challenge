@@ -17,6 +17,20 @@ router.get('/', (req, res) =>{
     })
 })
 
+//get specific dish
+router.get('/:id', (req,res) =>{
+    const dish_id = req.params.id;
+
+    dishesDb.getDish(dish_id)
+    .then(dish =>{
+        res.status(200)
+        res.json(dish[0])
+    })
+    .catch(err =>{
+        res.status(500).json({error:"Unable to retrieve dish"})
+    })
+})
+
 //Add a dish
 router.post('/', (req, res) =>{
     const newDish = req.body;
