@@ -45,7 +45,23 @@ server.post('/api/dishes', (req,res) => {
     }
 });
 
-// get recipes
+// get dish and related recipes
+
+server.get('/api/dish/:id', (req, res) => {
+    const { id } = req.params 
+    db.getDish(id)
+        .then(dish => {
+            res
+                .json(dish);
+        })
+        .catch(err => {
+            res
+                .status(500)
+                .json({message: 'The dish could not be retrieved at this time.'})
+        });
+});
+
+// get recipes 
 
 server.get('/api/recipes', (req, res) => {
     db.getRecipes()
@@ -60,7 +76,7 @@ server.get('/api/recipes', (req, res) => {
         });
 });
 
-// add dish and get ID of new dish
+// add recipe and get ID of new recipe
 
 server.post('/api/recipes', (req,res) => {
     const newRecipe = req.body;
@@ -83,6 +99,8 @@ server.post('/api/recipes', (req,res) => {
             .json({message: 'Please provide the name of the new recipe.'})
     }
 });
+
+// INITIATE LISTENING
 
 server.listen(PORT, err => {
     console.log(`Server is running on ${PORT}`);

@@ -23,12 +23,12 @@ function addDish(dish) {
 function getDish(id) {
     return db('dishes_table')
         .where('id', Number(id))
-        .leftJoin('recipes_table', 'dish_id', 'dishes_table.id');     
+        // .leftJoin('recipes_table', id, 'recipes_table.dish_id');     
 };
 
 function getRecipes() {
     return db('recipes_table')
-        // .leftJoin('dishes_table,', 'recipes_table.id', 'dish_id');
+        .leftJoin('dishes_table', 'dish_id', 'dishes_table.id');
 };
 
 function addRecipe(recipe) {
