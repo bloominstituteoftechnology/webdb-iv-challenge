@@ -60,6 +60,30 @@ server.get('/api/recipes', (req, res) => {
         });
 });
 
+// add dish and get ID of new dish
+
+server.post('/api/recipes', (req,res) => {
+    const newRecipe = req.body;
+    if (newRecipe.recipe_name) {
+        db.addRecipe(newRecipe)
+            .then(idInfo => {
+                res
+                    .status(201)
+                    .json(idInfo)
+            })
+            .catch(err => {
+                res
+                    .status(500)
+                    .json({message: 'The was an error saving the new recipe.'})
+            });
+    }
+    else {
+        res
+            .status(400)
+            .json({message: 'Please provide the name of the new recipe.'})
+    }
+});
+
 server.listen(PORT, err => {
     console.log(`Server is running on ${PORT}`);
 });
