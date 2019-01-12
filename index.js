@@ -1,12 +1,9 @@
-// Building server
+// importing required packages and files
 const express = require('express');
+const dishesRouter = require('./dishesRoutes');
+
+//creating server
 const server = express();
-
-//Setting up access to database
-const dbConfig = require('./knexfile');
-const knex = require('knex');
-
-const db = knex(dbConfig.development);
 
 // Middleware
 server.use(express.json());
@@ -16,15 +13,7 @@ server.get('/', (req, res) => {
   res.send('Home');
 });
 
-server.get('/api/dishes', (req, res) => {
-  db('dishes')
-    .then(dishes => {
-      res.json(dishes);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
+server.use('/api/dishes', dishesRouter);
 
 // Listener
 const PORT = 5678;
