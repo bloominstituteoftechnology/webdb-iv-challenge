@@ -1,6 +1,7 @@
 // importing required packages and files
 const express = require('express');
 const dishesRouter = require('./dishesRoutes');
+const recipesRouter = require('./recipesRoutes');
 
 //creating server
 const server = express();
@@ -14,6 +15,7 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/dishes', dishesRouter);
+server.use('/api/recipes', recipesRouter);
 
 // Listener
 const PORT = 5678;
