@@ -13,6 +13,13 @@ Design the data model for a recipe book application, then use `Knex migrations a
 
 The requirements for the system, as stated by the client are:
 
+recipe to dish is 1:many
+steps to recipe is many:many
+
+ dish needs unique()
+recipe is unique() but relation to dish is not unique()
+
+
 - have a way to manage dishes. A `dish` is something the client wants to cook like _pizza_ or _tacos_.
 - have a way to manage recipes. A `dish` can have different recipes for tacos, like _tex-mex_ or _granny's_. A `recipe` belongs only to one `dish`.
 - have a way to manage ingredients.
