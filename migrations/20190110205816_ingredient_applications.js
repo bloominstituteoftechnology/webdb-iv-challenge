@@ -1,13 +1,15 @@
 exports.up = function(knex, Promise) {
-    knex.schema.createTable('ingredient_applications', function (table) {
-        table.increments('id');
+    return knex.schema.createTable('ingredient_applications', function (table) {
+        table.increments();
         table.float('qty');
         table.enu('uom', ['g', 'tbsp', 'tsp', 'cup', 'oz', 'fl oz', 'gal', 'l', 'lb']);
-        table.foreign('ingredient_id').notNullable().references('id').on('ingredients');
-        table.foreign('recipe_instruction_id').notNullable().references('id').on('recipe_instructions');
+        table.integer('ingredient_id').unsigned().notNullable();
+        table.foreign('ingredient_id').references('id').on('ingredients');
+        table.integer('recipe_instruction_id').unsigned().notNullable();
+        table.foreign('recipe_instruction_id').references('id').on('recipe_instructions');
     });
 };
 
 exports.down = function(knex, Promise) {
-    knex.schema.dropTable('ingredients_applications');
+    return knex.schema.dropTableIfExists('ingredient_applications');
 };

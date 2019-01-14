@@ -9,9 +9,9 @@ exports.seed = function(knex, Promise) {
         {id: 2, name: 'veggie', dish_id: 1},
         {id: 3, name: 'mediterranean', dish_id: 1},
         {id: 4, name: 'classic foot long', dish_id: 2},
-        {id: 4, name: 'veggie', dish_id: 2},
-        {id: 5, name: 'bacon blue cheese', dish_id: 3},
-        {id: 6, name: 'cheese burger', dish_id: 3}
+        {id: 5, name: 'veggie', dish_id: 2},
+        {id: 6, name: 'bacon blue cheese', dish_id: 3},
+        {id: 7, name: 'cheese burger', dish_id: 3}
       ]);
     });
 };

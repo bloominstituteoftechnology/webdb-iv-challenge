@@ -1,12 +1,13 @@
 
 exports.up = function(knex, Promise) {
-    knex.schema.createTable('recipes', function (table) {
-        table.increments('id');
+    return knex.schema.createTable('recipes', function (table) {
+        table.increments();
         table.string('name').notNullable();
-        table.foreign('dish_id').notNullable().references('id').on('dishes');
+        table.integer('dish_id').unsigned().notNullable();
+        table.foreign('dish_id').references('id').on('dishes');
     });
 };
 
 exports.down = function(knex, Promise) {
-    knex.schema.dropTable('recipes');
+    return knex.schema.dropTableIfExists('recipes');
 };
