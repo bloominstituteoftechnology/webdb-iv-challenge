@@ -20,17 +20,37 @@ server.get('/api/dishes', (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
-// server.get('/api/dishes/:id', (req, res) => {
-//   db('dishes')
-//     .where({ id: req.params.id })
-//     .then(dish => {
-//       if (dish) {
-//         res.status(200).json(dish);
-//       } else {
-//         res.status(404).json({ message: 'dish not found' });
-//       }
-//     });
-// });
+server.get('/api/dishes/:id', (req, res) => {
+    const id = req.params.id;
+    db.getDish(id)
+        .then(dish => {
+        if (dish) {
+            res.status(200).json(dish);
+        } else {
+            res.status(404).json({ message: 'dish not found' });
+        }
+        });
+});
+
+server.get('/api/dishes/:id/list', (req, res) => {
+    const id = req.params.id;
+    db.getShoppingList(id)
+        .then(dish => {
+        if (dish) {
+            res.status(200).json(dish);
+        } else {
+            res.status(404).json({ message: 'dish not found' });
+        }
+        });
+});
+
+server.get('/api/recipes', (req, res) => {
+    db.getRecipes()
+      .then(recipes => {
+        res.status(200).json(recipes);
+      })
+      .catch(err => res.status(500).json(err));
+  });
 
 // server.get('/api/dishes/:id/students', (req, res) => {
 //     let {id} = req.params;

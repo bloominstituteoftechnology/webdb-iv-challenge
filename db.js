@@ -35,6 +35,10 @@ function addRecipe(recipe){
     .then(ids => ({ id: ids[0] }));
 }
 
-function getShoppingList(dish,recipe){
-
+function getShoppingList(id){
+    return db('recipes as r').where('r.id', id)
+    .join('dishes as d', 'r.dish_id', '=', 'd.id')
+    .join('recipeIngredients as ri', 'r.id', '=', 'ri.recipe_id')
+    .join('ingredients as i', 'ri.ingredient_id', '=', 'i.id')
+    .select('d.name as dish', 'r.name', 'i.name as ingredient', 'ri.ingredient_quantity')
 }
