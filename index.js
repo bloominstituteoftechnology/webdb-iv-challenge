@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const knex = require('knex');
 const knexConfig = require('./knexfile');
+const dishesRoutes = require('./api/dishes/dishesRouter');
 
 //connection to the data base
 const db = knex(knexConfig.development);
@@ -19,7 +20,9 @@ server.get(`/api/:table`, async (req, res) => {
     catch (err) {
       res.status(500).json({message: "There was an error while trying to connect to the data base"});
     }
-  });
+});
+
+server.use('/api/dishes', dishesRoutes);
 
 
 
