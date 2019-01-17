@@ -1,0 +1,28 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jm020801/db-recipe-book.git"
+  },
+  "author": "Jarrad Miller <jm020801@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "nodemon": "^1.18.9",
+    "sqlite3": "^4.0.6"
+  },
+  "description": "## Topics",
+  "bugs": {
+    "url": "https://github.com/jm020801/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/jm020801/db-recipe-book#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon"
+  },
+  "keywords": []
+}
