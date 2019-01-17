@@ -44,6 +44,19 @@ server.get('/api/dishes/:id/list', (req, res) => {
         });
 });
 
+server.post('/api/dishes', (req, res) => {
+  
+  db.addDish(req.body)
+    .then(result => {
+      db.getDish(result.id)
+        .then(dish => {
+          res.status(201).json(dish);
+        });
+    })
+    .catch(err => res.status(500).json(err));
+});
+
+
 server.get('/api/recipes', (req, res) => {
     db.getRecipes()
       .then(recipes => {
@@ -52,60 +65,17 @@ server.get('/api/recipes', (req, res) => {
       .catch(err => res.status(500).json(err));
   });
 
-// server.get('/api/dishes/:id/students', (req, res) => {
-//     let {id} = req.params;
-
-//     db('students')
-//       .where({ dish_id: id })
-//       .then(student => {
-//         if (student) {
-//           res.status(200).json(student);
-//         } else {
-//           res.status(404).json({ message: 'students not found' });
-//         }
-//     });
-// });
-
-// server.post('/api/dishes', (req, res) => {
+  server.post('/api/recipes', (req, res) => {
   
-//   db('dishes')
-//     .insert(req.body)
-//     .then(ids => {
-//       db('dishes')
-//         .where({ id: ids[0] })
-//         .then(dish => {
-//           res.status(201).json(dish);
-//         });
-//     })
-//     .catch(err => res.status(500).json(err));
-// });
-
-// server.delete('/api/dishes/:id', (req, res) => {
-//   db('dishes')
-//     .where({ id: req.params.id })
-//     .del()
-//     .then(count => {
-//       res.status(200).json(count);
-//     })
-//     .catch(err => res.status(500).json(err));
-// });
-
-// server.put('/api/dishes/:id', (req, res) => {
-//   const changes = req.body;
-
-//   db('dishes')
-//     .where({ id: req.params.id })
-//     .update(changes)
-//     .then(count => {
-//       if (count) {
-//         res.status(200).json(count);
-//       } else {
-//         res.status(404).json({ message: 'dish not found' });
-//       }
-//     })
-//     .catch(err => res.status(500).json(err));
-// });
-
+    db.addRecipe(req.body)
+      .then(result => {
+        db.getRecipe(result.id)
+          .then(recipe => {
+            res.status(201).json(recipe);
+          });
+      })
+      .catch(err => res.status(500).json(err));
+  });
 
 
 server.listen(6000, () => console.log('server up on 6000'));

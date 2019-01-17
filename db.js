@@ -8,6 +8,7 @@ module.exports = {
     getDish,
     getRecipes,
     addRecipe,
+    getRecipe,
     getShoppingList
 };
 
@@ -27,6 +28,12 @@ function addDish(dish) {
 
 function getRecipes(){
     return db('recipes')
+}
+
+function getRecipe(recipe){
+    return db('recipes')
+    .insert(recipe)
+    .then(ids => ({ id: ids[0] }));
 }
 
 function addRecipe(recipe){
