@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const knex = require('knex');
 const knexConfig = require('./knexfile');
 const dishesRoutes = require('./api/dishes/dishesRouter');
+const recepiesRoutes = require('./api/recepies/recepiesRouter');
 
 //connection to the data base
 const db = knex(knexConfig.development);
@@ -23,6 +24,7 @@ server.get(`/api/:table`, async (req, res) => {
 });
 
 server.use('/api/dishes', dishesRoutes);
+server.use('/api/recepies', recepiesRoutes);
 
 
 

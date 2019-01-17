@@ -21,7 +21,7 @@ function findDishById(id) {
 }
 
 
-// endpoints here for the zoo
+// endpoints here for the dishes
 
 //POST /api/dishes
 router.post('/', async (req, res) => {
