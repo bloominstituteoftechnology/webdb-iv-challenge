@@ -1,0 +1,28 @@
+GET http://localhost:5000/api/dishes HTTP/1.1
+###
+
+POST http://localhost:5000/api/dishes HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "some dish"
+}
+###
+
+GET http://localhost:5000/api/dishes/1 HTTP/1.1
+###
+
+GET http://localhost:5000/api/recipes HTTP/1.1
+###
+
+POST http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Taco taco",
+  "dish_id": 1
+}
+###
+
+GET http://localhost:5000/api/recipes/1 HTTP/1.1
+###
