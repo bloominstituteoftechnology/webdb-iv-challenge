@@ -1,0 +1,17 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "collision": "nodemon"
+  },
+  "repository": "https://github.com/tommycollison/db-recipe-book.git",
+  "author": "Tommmy Collison <tommy@collison.ie>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "nodemon": "^1.18.9",
+    "sqlite3": "^4.0.6"
+  }
+}
