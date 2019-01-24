@@ -1,0 +1,19 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Marguelgtz/db-recipe-book.git",
+  "author": "<marguel.gtz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.6"
+  },
+  "script": {
+    "server": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
