@@ -1,13 +1,13 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('recipes').truncate()
     .then(function () {
       // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+      return knex('recipes').insert([
+        {id: 1, dish_id: 1, recipe_name: 'Spaghetti (Bake)'},
+        {id: 2, dish_id: 2, recipe_name: 'Bacon Jalapeno Mac And Cheese'},
+        {id: 3, dish_id: 3, recipe_name: 'Pub Burger'}
       ]);
     });
 };
