@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-
+const ingredientDB = require('../DB_Helpers/ingredientsDB')
 router.get('/', (req, res) => {
 
 })
