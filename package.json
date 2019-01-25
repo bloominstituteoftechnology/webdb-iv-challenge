@@ -10,7 +10,7 @@
     "knex": "^0.16.3",
     "sqlite3": "^4.0.6"
   },
-  "script": {
+  "scripts": {
     "server": "nodemon index.js"
   },
   "devDependencies": {
