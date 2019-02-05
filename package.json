@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon"
+    "server": "nodemon",
+    "start": "node index.js"
   },
   "repository": "https://github.com/meganfontenot/db-recipe-book.git",
   "author": "Megan Fontenot",
@@ -11,11 +12,9 @@
   "dependencies": {
     "express": "^4.16.4",
     "knex": "^0.16.3",
-    "sqlite3": "^4.0.4"
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
   }
 }
-
-
