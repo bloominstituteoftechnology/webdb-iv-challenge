@@ -13,6 +13,31 @@ Design the **data model** for a _recipe book_ application, then use `Knex migrat
 
 The requirements for the system, as stated by the client are:
 
+
+
+Schema outline:
+
+DISH
+Name, nonNullable, unique
+ID, increment
+
+RECIPE
+Name, nonNullable, unique
+ID, increment
+Dish ID
+
+INGREDIENT
+Name, nonNullable
+ID, increment
+Integer('amount'), unsigned, nonNullable, float('amount')
+Measurement, string
+Recipe ID
+
+INSTRUCTIONS
+Step, string, nonNullable
+Order, integer, unsigned
+Recipe ID
+
 - have a way to manage dishes. A **dish** is something the client wants to cook like _pizza_ or _tacos_.
 - have a way to manage recipes. A **dish** can have different recipes for tacos, like _tex-mex_ or _granny's_. A **recipe** belongs only to one **dish**.
 - have a way to manage ingredients.
