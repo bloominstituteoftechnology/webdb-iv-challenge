@@ -7,6 +7,16 @@
 - seeding.
 - knex.
 
+## notes for myself
+
+1. yarn init
+2. yarn add knex sqlite3 express helmet path cors
+3. knex init (to make knexfile)
+4. point the knexfile to the database directory, and add useNullAsDefault: true, for the sqlite3 dev environment
+5. Set up migrations by means of the following: knex migrate:make add_dishes_table, knex migrate:make add_recipes_table, knex migrate:make add_ingredients_table
+6. 
+
+
 ## Assignment
 
 Design the **data model** for a _recipe book_ application, then use `Knex migrations and seeding` functionality to build a `SQLite3` database based on the model and seed it with test data.
