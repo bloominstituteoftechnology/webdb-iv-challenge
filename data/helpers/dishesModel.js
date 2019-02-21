@@ -3,9 +3,12 @@ const knexConfig = require('../../knexfile');
 const db = knex(knexConfig.development);
 
 module.exports = {
-    find
+    getDishes
 }
 
-function find(id) {
+function getDishes(id) {
+    if(id) {
+       return db('dishes').where({dish_id: id}).first()
+    }
     return db('dishes')
 }
