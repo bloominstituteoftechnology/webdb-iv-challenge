@@ -4,6 +4,10 @@ exports.up = function(knex, Promise) {
     tbl.increments();
 
     tbl.string('name', 255)
+    tbl.string('ingredient', 255)
+    tbl.string('ingredient', 255)
+    tbl.string('ingredient', 255)
+
   })
 };
 
