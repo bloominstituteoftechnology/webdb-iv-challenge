@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
       tbl.foreign('ingredient_id').references('ingredients.ingredient_id')
       tbl.int('recipe_id').unsigned();
       tbl.foreign('recipe_id').references('recipes.recipe_id')
+      tbl.int('quantity');
       tbl.timestamps(true, true);
   })
 };
