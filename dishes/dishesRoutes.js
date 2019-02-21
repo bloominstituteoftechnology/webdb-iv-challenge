@@ -31,4 +31,19 @@ router.get("/:id", (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
+//add a new dish
+router.post("/", (req, res) => {
+  const { name } = req.body;
+  const dish = { name };
+
+  if (!name) {
+    return res
+      .status(400)
+      .json({ message: "Please provide a name for the dish." });
+  }
+  dishes.addDish(dish).then(id => {
+    res.status(201).json(id);
+  });
+});
+
 module.exports = router;
