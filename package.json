@@ -1,0 +1,16 @@
+{
+  "name": "webdb-iv-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/knbrlo/webdb-iv-challenge.git",
+  "author": "Ken Barlow <kenbrlow@gmail.com>",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.6"
+  }
+}
