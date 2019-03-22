@@ -27,6 +27,20 @@ server.post('/api/dishes', async (req, res) => {
   .catch(err => res.status(500).json(err));
 });
 
+//GET Dish By ID 
+server.get('/api/dishes/:id', async (req, res) => {
+  const id = req.params.id;
+db.getDish(id)
+  .then(dish => {
+    if (dish) {
+      res.status(200).json(dish);
+    }else{
+      res.status(404).json({ message: 'dish is not found' });
+    }
+    })
+  .catch(err => console.log('error', err));
+});
+
 
 
 const port = process.env.PORT || 9090;

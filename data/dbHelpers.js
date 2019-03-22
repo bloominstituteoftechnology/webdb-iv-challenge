@@ -17,9 +17,12 @@ module.exports = {
     .insert(dish)
   },
 
-  // getDish: (id) =>{
-   
-  // },
+  getDish: (id) =>{
+    return db('dishes')
+    .join("recipes", "dishes.id", "=", "recipes.dish_id")
+    .select("dishes.id", "dishes.dish_name", { recipe: "recipes.recipe_name" })
+    .where({ "dishes.id": id })
+  },
   // getRecipes: () =>{
     
   // },
