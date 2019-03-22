@@ -42,7 +42,7 @@ db.getDish(id)
 });
 
 // GET recipes including the dish they belong to
- 
+
 server.get('/api/recipes', (req, res) => {
   db.getRecipes()
   .then(recipe =>{
@@ -51,6 +51,15 @@ server.get('/api/recipes', (req, res) => {
     .catch(err => res.status(500).json(err));
   });
 
+  //POST recipe and return the id of the new recipe.
+
+  server.post('/api/recipe', async (req, res) => {
+    db.addRecipe(req.body)
+        .then(recipe => {
+          res.status(201).json(recipe);
+        })
+    .catch(err => res.status(500).json(err));
+  });
 
 const port = process.env.PORT || 9090;
 server.listen(port, () => console.log(`\nrunning on ${port}\n`));

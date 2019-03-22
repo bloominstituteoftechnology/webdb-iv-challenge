@@ -29,8 +29,8 @@ module.exports = {
   .select("recipes.id", "recipes.recipe_name", { dish: "dishes.dish_name" })
   
   },
-  // addRecipe: (recipe) =>{
-  //   return db("recipes")
-  //   .insert(recipe)
-  // }
+  addRecipe: (recipe) =>{
+    return db("recipes")
+    .insert(recipe)
+  }
 }
