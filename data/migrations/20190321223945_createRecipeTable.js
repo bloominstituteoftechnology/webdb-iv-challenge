@@ -4,7 +4,6 @@ exports.up = function(knex, Promise) {
     tbl.string('recipe_name').notNullable().unique();
     tbl
     .integer('dish_id')
-    .unique()
     .unsigned()
     .references('id')
     .inTable('dishes')

@@ -3,7 +3,6 @@ exports.up = function(knex, Promise) {
 		tbl.increments();
     tbl
     .integer('recipe_id')
-    .unique()
     .unsigned()
     .references('id')
     .inTable('recipes')
@@ -11,13 +10,13 @@ exports.up = function(knex, Promise) {
     .onUpdate('CASCADE');
     tbl
     .integer('ingredient_id')
-    .unique()
     .unsigned()
     .references('id')
     .inTable('ingredients')
     .onDelete('CASCADE')
     .onUpdate('CASCADE');
     tbl.float('quantity').notNullable();
+
 	});
 };
 
