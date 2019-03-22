@@ -61,5 +61,19 @@ server.get('/api/recipes', (req, res) => {
     .catch(err => res.status(500).json(err));
   });
 
+
+  server.get('/api/shoppinglist/:id', async (req, res) => {
+    const id = req.params.id;
+  db.getRecipe(id)
+    .then(dish => {
+      if (dish) {
+        res.status(200).json(dish);
+      }else{
+        res.status(404).json({ message: 'dish is not found' });
+      }
+      })
+    .catch(err => console.log('error', err));
+  });
+
 const port = process.env.PORT || 9090;
 server.listen(port, () => console.log(`\nrunning on ${port}\n`));
