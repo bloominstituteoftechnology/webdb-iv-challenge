@@ -42,4 +42,5 @@ function getRecipes() {
 function addRecipe(recipe) {
   return db("recipes")
     .insert(recipe)
+    .then(ids => ids[0])
 }
