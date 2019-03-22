@@ -41,6 +41,15 @@ db.getDish(id)
   .catch(err => console.log('error', err));
 });
 
+// GET recipes including the dish they belong to
+ 
+server.get('/api/recipes', (req, res) => {
+  db.getRecipes()
+  .then(recipe =>{
+    res.status(200).json(recipe);
+  })
+    .catch(err => res.status(500).json(err));
+  });
 
 
 const port = process.env.PORT || 9090;

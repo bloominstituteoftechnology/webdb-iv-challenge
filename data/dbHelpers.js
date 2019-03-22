@@ -23,9 +23,12 @@ module.exports = {
     .select("dishes.id", "dishes.dish_name", { recipe: "recipes.recipe_name" })
     .where({ "dishes.id": id })
   },
-  // getRecipes: () =>{
-    
-  // },
+ getRecipes: () =>{
+  return db('recipes')
+  .join('dishes', "recipes.dish_id", '=', "dishes.id")
+  .select("recipes.id", "recipes.recipe_name", { dish: "dishes.dish_name" })
+  
+  },
   // addRecipe: (recipe) =>{
   //   return db("recipes")
   //   .insert(recipe)
