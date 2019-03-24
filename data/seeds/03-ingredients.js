@@ -5,9 +5,16 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('ingredients').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+        {name: 'flour tortilla'},
+        {name: 'pinto beans'},
+        {name: 'chicken'},
+        {name: 'bread'},
+        {name: 'turkey'},
+        {name: 'mayo'},
+        {name: 'pizza dough'},
+        {name: 'red sauce'},
+        {name: 'pepperoni'},
+        {name: 'cheese'},
       ]);
     });
 };
