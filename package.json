@@ -1,0 +1,21 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/henrymoland/db-recipe-book.git",
+  "author": "Henry Moland <henrymoland@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
