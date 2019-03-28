@@ -1,0 +1,25 @@
+{
+    "name": "db-recipe-book",
+    "version": "1.0.0",
+    "description": "## Topics",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RaDeleon/db-recipe-book.git"
+    },
+    "keywords": [],
+    "author": "Angelo Deleon @RaDeleon",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.16.4",
+        "knex": "^0.15.2",
+        "sqlite3": "^4.0.4"
+    },
+    "bugs": {
+        "url": "https://github.com/RaDeleon/db-recipe-book/issues"
+    },
+    "homepage": "https://github.com/RaDeleon/db-recipe-book#readme"
+}
