@@ -22,3 +22,12 @@ const port = 4000;
 server.listen(process.env.PORT || port, function() {
   console.log(`\n=*= API rolling on port http://localhost:${port} mon =*=\n`);
 });
+
+server.get('/api/dishes', (req, res, next) => {
+  dishdb
+    .getDishes()
+    .then(data => {
+      return res.status(200).json(data);
+    })
+    .catch(err => next(err));
+});
