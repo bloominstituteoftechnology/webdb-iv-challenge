@@ -52,3 +52,11 @@ server.post('/api/dishes', (req, res, next) => {
     .then(data => res.status(200).json(data))
     .catch(err => next(err));
 });
+
+
+server.get('/api/recipes', (req, res, next) => {
+  recipedb
+    .getRecipes()
+    .then(data => res.status(200).json(data))
+    .catch(err => next(err));
+});
