@@ -13,6 +13,9 @@ server.use(helmet());
 server.use(morgan('dev'));
 server.use(mw.errorHandler);
 
+server.get('/', (req, res) => {
+  res.send('It works mon');
+});
 
 
 const port = 4000;
