@@ -83,3 +83,10 @@ server.get('/api/recipes/:id', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+server.get('/api/ingredients', (req, res, next) => {
+  ingredientdb
+    .getIngredients()
+    .then(data => res.status(200).json(data))
+    .catch(err => next(err));
+});
