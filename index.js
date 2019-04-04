@@ -44,3 +44,11 @@ server.get('/api/dishes/:id', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+server.post('/api/dishes', (req, res, next) => {
+  let body = req.body;
+  dishdb
+    .addDish(body)
+    .then(data => res.status(200).json(data))
+    .catch(err => next(err));
+});
