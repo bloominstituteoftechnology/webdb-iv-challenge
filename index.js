@@ -31,3 +31,16 @@ server.get('/api/dishes', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+
+server.get('/api/dishes/:id', (req, res, next) => {
+  dishdb
+    .getDish(req.params.id)
+    .then(data => {
+      if (!data) {
+        return next({ code: 404 });
+      }
+      res.status(200).json(data);
+    })
+    .catch(err => next(err));
+});
