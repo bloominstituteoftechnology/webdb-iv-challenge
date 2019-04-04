@@ -11,11 +11,16 @@ const mw = require('./middleware');
 server.use(express.json());
 server.use(helmet());
 server.use(morgan('dev'));
-
 server.use(mw.errorHandler);
 
 server.get('/', (req, res) => {
   res.send('It works mon');
+});
+
+
+const port = 4000;
+server.listen(process.env.PORT || port, function() {
+  console.log(`\n=*= API rolling on port http://localhost:${port} mon =*=\n`);
 });
 
 server.get('/api/dishes', (req, res, next) => {
@@ -26,6 +31,7 @@ server.get('/api/dishes', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
 
 server.get('/api/dishes/:id', (req, res, next) => {
   dishdb
@@ -47,12 +53,14 @@ server.post('/api/dishes', (req, res, next) => {
     .catch(err => next(err));
 });
 
+
 server.get('/api/recipes', (req, res, next) => {
   recipedb
     .getRecipes()
     .then(data => res.status(200).json(data))
     .catch(err => next(err));
 });
+
 
 server.post('/api/recipes', (req, res, next) => {
   let body = req.body;
@@ -61,6 +69,7 @@ server.post('/api/recipes', (req, res, next) => {
     .then(data => res.status(200).json(data))
     .catch(err => next(err));
 });
+
 
 server.get('/api/recipes/:id', (req, res, next) => {
   recipedb
@@ -80,9 +89,4 @@ server.get('/api/ingredients', (req, res, next) => {
     .getIngredients()
     .then(data => res.status(200).json(data))
     .catch(err => next(err));
-});
-
-const port = 8000;
-server.listen(process.env.PORT || port, function() {
-  console.log(`\n=*= API rolling on port http://localhost:${port} mon =*=\n`);
 });
