@@ -60,3 +60,12 @@ server.get('/api/recipes', (req, res, next) => {
     .then(data => res.status(200).json(data))
     .catch(err => next(err));
 });
+
+
+server.post('/api/recipes', (req, res, next) => {
+  let body = req.body;
+  recipedb
+    .addRecipe(body)
+    .then(data => res.status(200).json(data))
+    .catch(err => next(err));
+});
