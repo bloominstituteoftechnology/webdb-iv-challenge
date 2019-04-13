@@ -1,0 +1,30 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "global": "^4.3.2",
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lajawanti/db-recipe-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lajawanti/db-recipe-book/issues"
+  },
+  "homepage": "https://github.com/lajawanti/db-recipe-book#readme"
+}
