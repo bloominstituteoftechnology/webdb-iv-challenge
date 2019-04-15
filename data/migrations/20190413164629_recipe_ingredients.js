@@ -9,10 +9,18 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable() 
       .references('id')
-      .inTable('dishes') 
+      .inTable('recipes') 
       .onDelete('RESTRICT')
       .onUpdate('CASCADE')
 
+    tbl
+      .integer('ingredient_id') 
+      .unsigned()
+      .notNullable() 
+      .references('id')
+      .inTable('ingredients') 
+      .onDelete('RESTRICT')
+      .onUpdate('CASCADE')
     
     tbl.float('quantity').notNullable
     })

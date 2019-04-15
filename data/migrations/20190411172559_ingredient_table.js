@@ -6,17 +6,7 @@ exports.up = function(knex, Promise) {
 
         tbl
           .string('name', 128)
-          .notNullable()
-
-        tbl
-          .integer('recipe_id') 
-          .unsigned()
-          .notNullable() 
-          .references('id')
-          .inTable('dishes') 
-          .onDelete('RESTRICT')
-          .onUpdate('CASCADE')  
-
+          .notNullable()  
     })    
 };
 
