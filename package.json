@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "https://github.com/timothyshores/webdb-iv-challenge.git",
   "author": "Timothy Shores",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
 }
