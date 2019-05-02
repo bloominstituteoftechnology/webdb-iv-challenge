@@ -44,7 +44,7 @@ Organize and name your files anyway you see fit.
 - add a `getShoppingList(recipeId)` that returns a list of all the recipe's ingredients including the quantity of each.
 
 ---
-##Notes
+## Notes
 
 *Below are a list of the client's requests and my notes on the relationships, one to one, one to many or many to many, between tables and required column values - Tim*
 
