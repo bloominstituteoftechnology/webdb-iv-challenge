@@ -43,10 +43,11 @@ Organize and name your files anyway you see fit.
 - design and build a front end client for your API.
 - add a `getShoppingList(recipeId)` that returns a list of all the recipe's ingredients including the quantity of each.
 
----
-## Notes
+## Database Schema
 
-*Below are a list of the client's requests and my notes on the relationships, one to one, one to many or many to many, between tables and required column values - Tim*
+*Below are the client's requests, my schema design and notes on the relationships, one to one, one to many or many to many, between tables and required column values - Tim*
+
+![WEB DB IV Challenge Schema](https://i.ibb.co/2YCRrWs/Screen-Shot-2019-05-02-at-4-04-44-PM.png "WEB DB IV Challenge Schema")
 
 *Client Request 1: have a way to manage dishes. A **dish** is something the client wants to cook, like _pizza_ or _tacos_.*
 
@@ -96,5 +97,3 @@ Organize and name your files anyway you see fit.
 3. Filter the ingredients table using the ingredient_id
    - Return an array of objects containing the ingredient_name 
 4. Return an array of objects containing the ingredient_name and quantity
-
-![WEB DB IV Challenge Schema](https://i.ibb.co/2YCRrWs/Screen-Shot-2019-05-02-at-4-04-44-PM.png "WEB DB IV Challenge Schema")
