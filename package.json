@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/x-zen/webdb-iv-challenge#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "knex": "^0.16.5",
+    "sqlite3": "^4.0.6"
   }
 }
