@@ -42,3 +42,26 @@ Organize and name your files anyway you see fit.
 - add _units of measure_ support for the **ingredient**s.
 - design and build a front end client for your API.
 - add a `getShoppingList(recipeId)` that returns a list of all the recipe's ingredients including the quantity of each.
+
+---
+##Notes
+
+*Below are a list of the client's requests and my notes on the relationships, one to one, one to many or many to many, between tables and required column values - Tim*
+
+*Client Request 1: have a way to manage dishes. A **dish** is something the client wants to cook, like _pizza_ or _tacos_.*
+
+- Create a dishes table with the following columns
+  - An auto incrementing integer as the primary key
+  - A non-empty or not null string for the name of the dish
+
+*Client Request 2: have a way to manage recipes. A **dish** can have different recipes for tacos, like _tex-mex_ or _granny's_. A **recipe** belongs only to one **dish**.*
+
+*Client Request 3: have a way to manage ingredients.*
+
+*Client Request 4: a **recipe** could have more than one **ingredient** and the same **ingredient** can be used in multiple recipes. Examples are _"cup of corn flour"_ or _"gram of butter"_.*
+
+*Client Request 5: when saving the ingredients for a **recipe** capture the quantity required for that **ingredient** as a floating number.*
+
+*Client Request 6: have a way to save instructions for cooking a recipe.*
+
+*Client Request 7: have a way to pick a **dish** and a **recipe** and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the **dish**.*
