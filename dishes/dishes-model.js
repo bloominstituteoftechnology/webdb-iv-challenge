@@ -1,9 +1,9 @@
 const db = require('../data/dbConfig');
 
 module.exports = {
-    find,
+    getDishes,
 };
 
-function find() {
+function getDishes() {
     return db('tracks');
 }

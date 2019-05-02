@@ -4,7 +4,7 @@ const Dishes = require('./dishes-model');
 router.get('/', (req, res) => {
     const message500 = { message: 'Unable to get dishes' };
 
-    Dishes.find()
+    Dishes.getDishes()
         .then(dishes => {
             res.status(200).json(dishes);
         })
