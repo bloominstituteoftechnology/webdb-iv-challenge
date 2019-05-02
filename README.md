@@ -50,18 +50,51 @@ Organize and name your files anyway you see fit.
 
 *Client Request 1: have a way to manage dishes. A **dish** is something the client wants to cook, like _pizza_ or _tacos_.*
 
-- Create a dishes table with the following columns
+- *Create a dishes table that contains*
   - An auto incrementing integer as the primary key
-  - A non-empty or not null string for the name of the dish
+  - A not null string for the name of the dish
 
 *Client Request 2: have a way to manage recipes. A **dish** can have different recipes for tacos, like _tex-mex_ or _granny's_. A **recipe** belongs only to one **dish**.*
 
+- *Relationships*
+  - A recipe has one dish
+  - A dish has many recipes
+- *Create a recipes table that contains*
+  - An auto incrementing primary key called id
+  - A not null string for the name of the dish
+  - A foreign key of dish_id
+
 *Client Request 3: have a way to manage ingredients.*
+
+- *Create an ingredients table that contains*
+  - An auto incrementing primary key called id
+  - A not null string for the name of the ingredient
 
 *Client Request 4: a **recipe** could have more than one **ingredient** and the same **ingredient** can be used in multiple recipes. Examples are _"cup of corn flour"_ or _"gram of butter"_.*
 
+- *Relationships*
+  - Recipes have a one to many relationship to ingredients
+  - Ingredients have a one to many relationship to recipes
+  - Recipes and ingredients have a many to many relationship with each other
+- *Create a third table called recipeIngredients that contains*
+  - An auto incrementing primary key called id
+  - A foreign key of recipe_id
+  - A foreign key of ingredient_id
+
 *Client Request 5: when saving the ingredients for a **recipe** capture the quantity required for that **ingredient** as a floating number.*
+
+- *Add a field called ingredients to recipeIngredients that is a float*
 
 *Client Request 6: have a way to save instructions for cooking a recipe.*
 
+- *Add a field called instructions to recipes that is a string*
+
 *Client Request 7: have a way to pick a **dish** and a **recipe** and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the **dish**.*
+1. Create a GET request to the dishes tables and recipes tables
+2. Filter the recipeIngredients using the recipe_id
+   - Return an array of objects containing the quantity and ingredients_id
+3. Filter the ingredients table using the ingredient_id
+   - Return an array of objects containing the ingredient_name 
+4. Return an array of objects containing the ingredient_name and quantity
+
+![WEB DB IV Challenge Schema](https://i.ibb.co/2YCRrWs/Screen-Shot-2019-05-02-at-4-04-44-PM.png "WEB DB IV Challenge Schema")
