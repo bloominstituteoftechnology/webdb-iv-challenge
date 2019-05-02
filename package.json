@@ -1,0 +1,9 @@
+{
+  "name": "webdb-iv-challenge",
+  "version": "1.0.0",
+  "description": "Challenge project for WEB DB IV Module",
+  "main": "index.js",
+  "repository": "https://github.com/timothyshores/webdb-iv-challenge.git",
+  "author": "Timothy Shores",
+  "license": "ISC"
+}
