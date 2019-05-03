@@ -17,9 +17,9 @@ router.get('/:id', (req, res) => {
 
     Recipes
         .getRecipe(req.params.id)
-        .then(dish => {
-            dish
-                ? res.status(200).json(dish)
+        .then(recipe => {
+            recipe
+                ? res.status(200).json(recipe)
                 : res.status(404).json(message404);
         })
         .catch(err => {
