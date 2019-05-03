@@ -13,18 +13,18 @@ Design the **data model** for a _recipe book_ application, then use `Knex migrat
 
 The requirements for the system, as stated by the client are:
 
-- have a way to manage dishes. A **dish** is something the client wants to cook, like _pizza_ or _tacos_.
-- have a way to manage recipes. A **dish** can have different recipes for tacos, like _tex-mex_ or _granny's_. A **recipe** belongs only to one **dish**.
-- have a way to manage ingredients.
-- a **recipe** could have more than one **ingredient** and the same **ingredient** can be used in multiple recipes. Examples are _"cup of corn flour"_ or _"gram of butter"_.
-- when saving the ingredients for a **recipe** capture the quantity required for that **ingredient** as a floating number.
-- have a way to save instructions for cooking a recipe.
-- have a way to pick a **dish** and a **recipe** and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the **dish**.
+✅ have a way to manage dishes. A **dish** is something the client wants to cook, like _pizza_ or _tacos_.
+✅ have a way to manage recipes. A **dish** can have different recipes for tacos, like _tex-mex_ or _granny's_. A **recipe** belongs only to one **dish**.
+✅ have a way to manage ingredients.
+✅ a **recipe** could have more than one **ingredient** and the same **ingredient** can be used in multiple recipes. Examples are _"cup of corn flour"_ or _"gram of butter"_.
+✅ when saving the ingredients for a **recipe** capture the quantity required for that **ingredient** as a floating number.
+✅ have a way to save instructions for cooking a recipe.
+✅ have a way to pick a **dish** and a **recipe** and get a _shopping list_ with all the ingredients, and quantity of each, needed to cook the **dish**.
 
 In addition to the `migrations` and `seeding` scripts, write a data access file that **exports** an object with the following functions:
 
-- `getDishes()`: should return a list of all dishes in the database.
-- `addDish(dish)`: should add the **dish** to the database and return the `id` of the new **dish**.
+✅ `getDishes()`: should return a list of all dishes in the database.
+✅ `addDish(dish)`: should add the **dish** to the database and return the `id` of the new **dish**.
 - `getDish(id)`: should return the **dish** with the provided `id` and include a list of the related recipes.
 - `getRecipes()`: should return a list of all recipes in the database including the **dish** they belong to.
 - `addRecipe(recipe)`: should add a **recipe** to the database and return the `id` of the new **recipe**.
