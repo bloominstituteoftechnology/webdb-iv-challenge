@@ -15,6 +15,22 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/:id', (req, res) => {
+    const message404 = { error: "The dish with the specified ID does not exist." }
+    const message500 = { error: "The dish information could not be retrieved." }
+
+    Dishes
+        .getDish(req.params.id)
+        .then(dish => {
+            dish
+                ? res.status(200).json(dish)
+                : res.status(404).json(message404);
+        })
+        .catch(err => {
+            res.status(500).json(message500)
+        })
+});
+
 router.post('/', (req, res) => {
     const { dish_name } = req.body;
     const message400 = { error: "Please provide dish_name for the dish" }
