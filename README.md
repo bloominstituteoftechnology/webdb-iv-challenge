@@ -34,9 +34,9 @@ Organize and name your files anyway you see fit.
 ## Stretch Problems
 
 - design and build a RESTful API that makes use of your data access file and publishes endpoints that a client application can use to manage all resources.
-- add a method called `getRecipe(id)` to your data access library that should return the recipe with the provided `id`. The recipe should include:
-  - name of the dish.
-  - name of the recipe.
+✅ add a method called `getRecipe(id)` to your data access library that should return the recipe with the provided `id`. The recipe should include:
+  ✅ name of the dish.
+  ✅ name of the recipe.
   - the list of ingredients with the quantity.
 - follow the same pattern to add the CRUD operations for other entities in the system.
 - add _units of measure_ support for the **ingredient**s.
