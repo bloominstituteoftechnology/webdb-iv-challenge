@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('recipes', function(tbl) {
+    return knex.schema.createTable('ingredient', function(tbl) {
 
         tbl.increments().unique()
 
@@ -27,6 +27,6 @@ exports.up = function(knex, Promise) {
 
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('recipes')
+    return knex.schema.dropTableIfExists('ingredient')
 
 };
