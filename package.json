@@ -1,0 +1,19 @@
+{
+  "name": "db-recipe-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/brad-mortensen/db-recipe-book.git",
+  "author": "Brad Mortensen <b.mort86@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
+}
