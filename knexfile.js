@@ -4,6 +4,18 @@ module.exports = {
 
   development: {
     client: 'sqlite3',
+    
+    connection: {
+      filename: './data/menurecipes.sqlite3'
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './data/migrations',
+    },
+    seeds: {
+      directory: './data/seeds',
+    }
+  },
     useNullAsDefault: true, // needed for sqlite
     connection: {
       filename: './data/schemes.db3',
@@ -22,4 +34,5 @@ module.exports = {
       },
     },
   }, 
+
 };
