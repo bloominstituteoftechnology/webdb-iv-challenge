@@ -1,3 +1,4 @@
+
 const express = require('express');
 
 const server = express();
@@ -57,3 +58,12 @@ server.get('/', (req, res) => {
 server.listen(8888, () => console.log('\n== Port 8888 ==\n'));
 
         //.then(ids => ({ id: ids[0] }));
+
+// const server = require('./server.js');
+
+// const PORT = process.env.PORT || 5000;
+
+// server.listen(PORT, () => {
+//   console.log(`Listening on port ${PORT}...`);
+// });
+
